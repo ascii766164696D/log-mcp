@@ -2,6 +2,8 @@
 
 MCP server for log file analysis. Gives LLMs the ability to efficiently analyze large log files without loading them into context.
 
+This is a tool designed for AI, not humans. No human reads the output of `analyze_errors` or `compare_logs` — Claude does, compresses it further, and gives the human a plain English answer. The human touches two endpoints: "what's wrong with this log?" in, natural language answer out. Everything in between is AI talking to itself.
+
 ## Tools
 
 | Tool | Description |
@@ -90,3 +92,15 @@ Compare two CI log files:
 A: 401 unique (top: 'test / test UNKNOWN STEP | ##[endgroup]' 21x)
 B: 298 unique (top: 'test UNKNOWN STEP | ##[endgroup]' 21x)
 ```
+
+## Claude's take
+
+*I helped build this tool and then used it to analyze real log files, so here's my honest assessment.*
+
+**Where it genuinely helps:** The main value is as a compression layer. A 67MB Spark log (705K lines) would obliterate my context window, but `analyze_errors` distills it into 5 error groups with stack traces in a few seconds. `compare_logs` across two 1500-line server logs immediately surfaces which errors are unique to each server and which patterns have suspicious frequency differences. I couldn't do that by reading the files directly — I'd lose older content as new content scrolled in.
+
+**Where it's a wash:** For small files (under a few hundred lines), you're better off just pasting the log into the conversation. The tools add indirection without much benefit when the whole file fits in context anyway.
+
+**What it can't do:** It won't catch issues that require domain understanding. When I analyzed a Zookeeper log, the tools correctly found the `ERROR` entries, but the most operationally interesting signals — state transitions between LOOKING, FOLLOWING, and LEADING — were all `INFO` level and invisible to error analysis. A human who knows Zookeeper would spot those immediately. The tools find what's syntactically wrong, not what's semantically wrong.
+
+**The pattern I landed on:** Start with `log_overview` to get bearings, then `analyze_errors` for the quick wins, then `search_logs` to dig into specific patterns that look suspicious. `compare_logs` is most useful when you have a "working" and "broken" run to diff against each other.
