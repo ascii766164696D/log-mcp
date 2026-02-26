@@ -24,6 +24,15 @@ MCP server for log file analysis. Gives LLMs the ability to efficiently analyze 
 
 Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
 
+### Claude Code (CLI)
+
+```bash
+# One-command install — adds log-mcp to your current project's MCP servers
+claude mcp add log-mcp -- uv run --directory /path/to/log-mcp log-mcp
+```
+
+Or add it manually to your project settings (`claude settings`) under `mcpServers`:
+
 ```json
 {
   "mcpServers": {
@@ -34,6 +43,23 @@ Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
   }
 }
 ```
+
+### Claude Desktop
+
+Open **Settings > Developer > Edit Config** and add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "log-mcp": {
+      "command": "uv",
+      "args": ["run", "--directory", "/path/to/log-mcp", "log-mcp"]
+    }
+  }
+}
+```
+
+Replace `/path/to/log-mcp` with the actual path where you cloned this repo. Restart Claude Desktop after saving.
 
 ## Example usage
 
