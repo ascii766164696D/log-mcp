@@ -28,13 +28,27 @@ This is a tool designed for AI, not humans. No human reads the output of `analyz
 
 ## Install
 
-Requires Python 3.10+ and [uv](https://docs.astral.sh/uv/).
+Requires Python 3.10+, [uv](https://docs.astral.sh/uv/), and a Rust toolchain (for the classifier).
 
-### Claude Code (CLI)
+### Just ask Claude
+
+Open a Claude Code session and say:
+
+> Install https://github.com/ascii766164696D/log-mcp as an MCP server and build the Rust classifier too
+
+Claude will clone the repo, run `claude mcp add`, build the Rust classifier with `pip install -e .`, and verify everything works. Restart Claude Code after to pick up the new MCP server.
+
+### Manual install
 
 ```bash
-# One-command install — adds log-mcp to your current project's MCP servers
-claude mcp add log-mcp -- uv run --directory /path/to/log-mcp log-mcp
+git clone https://github.com/ascii766164696D/log-mcp.git
+cd log-mcp
+
+# Register the MCP server
+claude mcp add log-mcp -- uv run --directory $(pwd) log-mcp
+
+# Build the Rust classifier (optional — tools fall back to Python without it)
+cd rust/classifier && pip install -e . && cd ../..
 ```
 
 Or add it manually to your project settings (`claude settings`) under `mcpServers`:
@@ -67,16 +81,7 @@ Open **Settings > Developer > Edit Config** and add to `claude_desktop_config.js
 
 Replace `/path/to/log-mcp` with the actual path where you cloned this repo. Restart Claude Desktop after saving.
 
-### Rust classifier (optional)
-
-All tools work without the classifier (Python fallback), but installing it enables the ML pre-filter for `analyze_errors`, `search_logs`, and `classify_lines`:
-
-```bash
-cd rust/classifier
-pip install -e .
-```
-
-Requires a Rust toolchain. The BERT stage additionally requires a Metal-capable GPU (Apple Silicon).
+The Rust classifier requires a Rust toolchain to build. The BERT stage additionally requires a Metal-capable GPU (Apple Silicon). All tools work without the classifier — they fall back to Python log parsing.
 
 ## Example usage
 
