@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from datetime import datetime
 
 _classifier = None
+_transformer = None
 
 # Lightweight level extraction — much cheaper than full log parsing.
 _LEVEL_RE = re.compile(
@@ -72,6 +73,35 @@ def get_classifier():
 
     _classifier = LookSkipClassifier(model_path)
     return _classifier
+
+
+def get_transformer():
+    """Lazy-load the Rust transformer classifier. Returns None if unavailable."""
+    global _transformer
+    if _transformer is not None:
+        return _transformer
+
+    try:
+        from look_skip_classifier import TransformerClassifier
+    except ImportError:
+        return None
+
+    model_dir = os.environ.get("LOOK_SKIP_TRANSFORMER_PATH")
+    if not model_dir:
+        here = os.path.dirname(__file__)
+        candidate = os.path.normpath(
+            os.path.join(here, "..", "..", "data", "models", "transformer", "export")
+        )
+        if os.path.isdir(candidate) and os.path.isfile(
+            os.path.join(candidate, "model.safetensors")
+        ):
+            model_dir = candidate
+
+    if not model_dir or not os.path.isdir(model_dir):
+        return None
+
+    _transformer = TransformerClassifier(model_dir)
+    return _transformer
 
 
 def _parse_timestamp(text: str) -> datetime | None:
