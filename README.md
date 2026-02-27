@@ -28,7 +28,11 @@ This is a tool designed for AI, not humans. No human reads the output of `analyz
 
 ## Install
 
-Requires Python 3.10+, [uv](https://docs.astral.sh/uv/), and a Rust toolchain (for the classifier).
+**Prerequisites** (fresh Mac):
+```bash
+brew install python uv
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
 
 ### Just ask Claude
 
