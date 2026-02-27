@@ -5,7 +5,7 @@ from collections import Counter
 from datetime import datetime
 
 from .base import LogEntry, LogParser
-from .text_parser import _KNOWN_LEVELS, _parse_timestamp
+from .text_parser import _KNOWN_LEVELS, _normalize_level, _parse_timestamp
 
 # Broad regex that finds an ISO-ish timestamp anywhere in a line.
 # Captures: 2024-01-15T10:30:45.1234567Z, 2024-01-15 10:30:45+00:00, etc.
@@ -13,12 +13,13 @@ from .text_parser import _KNOWN_LEVELS, _parse_timestamp
 _TS_ANYWHERE = re.compile(
     r"(\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}(?:[.,]\d+)?(?:Z|[+-]\d{2}:?\d{2})?)"
     r"|(\d{2}/\d{2}/\d{2} \d{2}:\d{2}:\d{2})"
+    r"|(\d{2}/[A-Z][a-z]{2}/\d{4}:\d{2}:\d{2}:\d{2}(?:\s[+-]\d{4})?)"
 )
 
 
 def _extract_ts(m: re.Match) -> str:
-    """Return the matched timestamp string from either alternative."""
-    return m.group(1) or m.group(2)
+    """Return the matched timestamp string from any alternative."""
+    return m.group(1) or m.group(2) or m.group(3)
 
 # Delimiters to try, in priority order.
 _DELIMITERS = ["\t", "|"]
@@ -154,7 +155,7 @@ class AdaptiveTextParser(LogParser):
             rest = (delim.join(rest_parts)).strip()
             checked += 1
             first_word = rest.split()[0] if rest.split() else ""
-            if first_word.upper() in _KNOWN_LEVELS:
+            if first_word.strip("[]").upper() in _KNOWN_LEVELS:
                 level_count += 1
         return checked > 0 and level_count / checked >= 0.3
 
@@ -171,7 +172,7 @@ class AdaptiveTextParser(LogParser):
             rest = line[m.end() :].strip()
             checked += 1
             first_word = rest.split()[0] if rest.split() else ""
-            if first_word.upper() in _KNOWN_LEVELS:
+            if first_word.strip("[]").upper() in _KNOWN_LEVELS:
                 level_count += 1
         return checked > 0 and level_count / checked >= 0.3
 
@@ -219,8 +220,8 @@ class AdaptiveTextParser(LogParser):
 
         if self._level_after_ts and rest:
             words = rest.split(None, 1)
-            if words and words[0].upper() in _KNOWN_LEVELS:
-                level = words[0].upper()
+            if words and words[0].strip("[]").upper() in _KNOWN_LEVELS:
+                level = _normalize_level(words[0].strip("[]").upper())
                 message = words[1] if len(words) > 1 else ""
 
         return LogEntry(
@@ -250,8 +251,8 @@ class AdaptiveTextParser(LogParser):
 
         if self._level_after_ts and rest:
             words = rest.split(None, 1)
-            if words and words[0].upper() in _KNOWN_LEVELS:
-                level = words[0].upper()
+            if words and words[0].strip("[]").upper() in _KNOWN_LEVELS:
+                level = _normalize_level(words[0].strip("[]").upper())
                 message = words[1] if len(words) > 1 else ""
 
         return LogEntry(

@@ -52,10 +52,26 @@ _TIMESTAMP_FORMATS = [
     "%Y-%m-%d %H:%M:%S",
     "%b %d %H:%M:%S",
     "%y/%m/%d %H:%M:%S",
+    "%d/%b/%Y:%H:%M:%S %z",
+    "%d/%b/%Y:%H:%M:%S",
 ]
 
 # Levels that might appear in log messages
-_KNOWN_LEVELS = {"TRACE", "DEBUG", "INFO", "WARN", "WARNING", "ERROR", "FATAL", "CRITICAL"}
+_KNOWN_LEVELS = {"TRACE", "DEBUG", "INFO", "WARN", "WARNING", "ERROR", "FATAL", "CRITICAL",
+                 "CRIT", "ALERT", "EMERG", "NOTICE"}
+
+# Map short/alternate level names to canonical forms
+_LEVEL_ALIASES = {
+    "CRIT": "CRITICAL",
+    "EMERG": "FATAL",
+    "ALERT": "FATAL",
+    "WARNING": "WARNING",
+}
+
+
+def _normalize_level(level: str) -> str:
+    """Normalize a level string to its canonical form."""
+    return _LEVEL_ALIASES.get(level, level)
 
 
 def _parse_timestamp(value: str) -> datetime | None:
