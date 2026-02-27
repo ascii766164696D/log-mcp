@@ -8,6 +8,8 @@ build/
 test.log
 test2.log
 .DS_Store
+.env*
+.idea/
 data/*
 !data/labels/
 !data/batches/

@@ -2,6 +2,7 @@
 name = "log-mcp"
 version = "0.1.0"
 description = "MCP server for log file analysis"
+license = "MIT"
 requires-python = ">=3.10"
 dependencies = ["mcp[cli]"]
 
