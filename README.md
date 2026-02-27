@@ -6,7 +6,7 @@ MCP server for log file analysis. Gives LLMs the ability to efficiently analyze 
   Log file (e.g. 705K lines, 67 MB)
     │
     ▼
-  Rust TF-IDF classifier ─── 1.3M lines/sec ──▶ 70-95% discarded as routine
+  Rust TF-IDF classifier ─── 1.3M lines/sec ──▶ 70-95% discarded as routine,
     │                        finds lines that are semantically interesting,
     │                        also captures lines not explicitly marked as ERROR
     │                        (grep ERROR: 2 lines, classifier: 92)
