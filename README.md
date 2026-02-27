@@ -211,143 +211,23 @@ TF-IDF model evaluated with GroupKFold cross-validation (holdout: BGL, Thunderbi
 
 ## Retraining with your own logs
 
-The classifier ships pre-trained, but you can retrain it on your own logs to improve accuracy for your specific log formats.
-
-### Architecture
-
-```
- YOUR LOGS          Claude Batch API          sklearn / BERT
- (.log files)       (labeling)                (training)
-      |                   |                        |
-      v                   v                        v
- +-----------+    +---------------+    +--------------------+
- | 2K-line   |--->| 50-line       |--->| all_labeled.jsonl  |
- | samples   |    | windows sent  |    | ~40K labeled lines |
- | per file  |    | to Claude for |    | LOOK/SKIP + reason |
- +-----------+    | LOOK/SKIP     |    +--------------------+
-                  | labeling      |             |
-                  +---------------+       +-----+------+
-                                          |            |
-                                          v            v
-                                   +-----------+ +------------+
-                                   | TF-IDF +  | | BERT-mini  |
-                                   | LogReg    | | fine-tuned |
-                                   +-----------+ +------------+
-                                          |            |
-                                          v            v
-                                   +-----------+ +------------+
-                                   | .json     | | safetensors|
-                                   | (6.7 MB)  | | (43 MB)    |
-                                   +-----------+ +------------+
-                                          |            |
-                                          +-----+------+
-                                                |
-                                                v
-                                   +------------------------+
-                                   | Rust classifier        |
-                                   | TF-IDF @ 1.3M lines/s  |
-                                   | BERT @ GPU batched     |
-                                   +------------------------+
-```
-
-### Quick start: add your logs and retrain
-
-**Prerequisites:**
-```bash
-# Anthropic API key (for Claude labeling)
-export ANTHROPIC_API_KEY=sk-ant-...
-
-# Install dependencies
-uv sync --group labeling --group training
-```
-
-**Step 1: Add your log files**
-
-Place 2K-line samples in `data/loghub/`:
+The classifier ships pre-trained, but you can retrain it on your own logs. The short version:
 
 ```bash
-# Take a sample from your production logs
+# 1. Add your logs
 head -2000 /var/log/myapp/app.log > data/loghub/MyApp_2k.log
-```
 
-**Step 2: Label with Claude**
-
-```bash
-# Label only new (unlabeled) datasets
+# 2. Label with Claude (Batch API, ~$0.10-0.50 per file)
+export ANTHROPIC_API_KEY=sk-ant-...
+uv sync --group labeling --group training
 uv run python -m scripts.labeling.label_new
 
-# Or dry-run first to see what will be labeled
-uv run python -m scripts.labeling.label_new --dry-run
-```
-
-This sends 50-line windows to Claude Haiku via the Batch API (~$0.10-0.50 per 2K-line file). Claude classifies each line as LOOK or SKIP with a reason. Results are appended to `data/labels/all_labeled.jsonl`.
-
-**Step 3: Train the TF-IDF model**
-
-```bash
+# 3. Train and export
 uv run --group training python -m scripts.labeling.train_model
 uv run --group training python -m scripts.labeling.export_model
+
+# 4. Rebuild Rust classifier
+cd rust/classifier && pip install -e .
 ```
 
-This trains a logistic regression on TF-IDF + handcrafted features (word n-grams, char n-grams, 17 structural features like "has stack trace", "has negative language", etc). Uses GroupKFold cross-validation to avoid dataset leakage. Exports to `data/models/look_skip_model.json` for the Rust classifier.
-
-**Step 4: (Optional) Train the BERT model**
-
-```bash
-uv run --group transformer python -m scripts.labeling.train_transformer
-uv run --group transformer python -m scripts.labeling.export_transformer
-```
-
-Fine-tunes a BERT-mini (4 layers, 256 hidden, 11M params) on the same labels. Exports to `data/models/transformer/export/` for Rust candle inference. This is optional — the TF-IDF model works well on its own.
-
-**Step 5: Rebuild the Rust classifier**
-
-```bash
-cd rust/classifier
-pip install -e .
-```
-
-### Full pipeline from scratch
-
-To redo everything from scratch (download loghub samples, label all, train, export):
-
-```bash
-uv run python -m scripts.labeling.run_pipeline
-uv run --group training python -m scripts.labeling.train_model
-uv run --group training python -m scripts.labeling.export_model
-```
-
-`run_pipeline` handles: download loghub → prepare batch requests → submit to Claude → poll until done → parse labels → validate against ground truth (BGL, Thunderbird).
-
-### Pipeline scripts reference
-
-| Script | What it does | Command |
-|---|---|---|
-| `download_loghub` | Download 2K-line loghub samples | `uv run python -m scripts.labeling.download_loghub` |
-| `generate_error_logs` | Generate synthetic error-heavy logs | `uv run python -m scripts.labeling.generate_error_logs` |
-| `prepare_batches` | Create Batch API requests (50-line windows) | `uv run python -m scripts.labeling.prepare_batches` |
-| `submit_batch` | Submit to Anthropic Batch API | `uv run python -m scripts.labeling.submit_batch` |
-| `collect_results` | Poll and download batch results | `uv run python -m scripts.labeling.collect_results` |
-| `parse_labels` | Extract per-line LOOK/SKIP labels | `uv run python -m scripts.labeling.parse_labels` |
-| `validate_labels` | Compare against BGL/Thunderbird ground truth | `uv run python -m scripts.labeling.validate_labels` |
-| `label_new` | Label only new/unlabeled datasets | `uv run python -m scripts.labeling.label_new` |
-| `train_model` | Train TF-IDF + LogReg classifier | `uv run --group training python -m scripts.labeling.train_model` |
-| `export_model` | Export to JSON for Rust | `uv run --group training python -m scripts.labeling.export_model` |
-| `train_transformer` | Fine-tune BERT-mini | `uv run --group transformer python -m scripts.labeling.train_transformer` |
-| `export_transformer` | Export BERT for Rust candle | `uv run --group transformer python -m scripts.labeling.export_transformer` |
-| `run_pipeline` | Run full pipeline end-to-end | `uv run python -m scripts.labeling.run_pipeline` |
-| `eval_rust_loghub` | Benchmark Rust classifier | `python scripts/labeling/eval_rust_loghub.py` |
-
-### Data layout
-
-```
-data/
-  loghub/           # 2K-line log samples (23 datasets)
-  labels/           # Claude LOOK/SKIP labels per dataset
-    all_labeled.jsonl  # Combined training set (~40K lines)
-  batches/          # Anthropic Batch API artifacts
-  models/
-    look_skip_model.json              # TF-IDF model for Rust (6.7 MB)
-    transformer/export/               # BERT model for Rust (43 MB)
-    eval_*.json                       # Evaluation reports
-```
+See [`scripts/labeling/RETRAINING.md`](scripts/labeling/RETRAINING.md) for the full guide — how labeling works, what features the model uses, how to customize the prompt, and how to train the optional BERT model.
