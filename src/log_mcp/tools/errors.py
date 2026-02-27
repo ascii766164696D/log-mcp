@@ -4,6 +4,7 @@ import re
 
 from mcp.server.fastmcp import FastMCP
 
+from ..classifier_bridge import ClassifiedLine, classify_and_extract
 from ..normalize import normalize
 from ..parsing.detector import detect_parser
 from ..util import validate_file
@@ -85,6 +86,50 @@ def _group_errors(
     return total_errors, groups
 
 
+def _analyze_errors_fast(
+    classified: list[ClassifiedLine],
+    include_stack_traces: bool,
+    max_unique_errors: int,
+) -> tuple[int, dict[str, dict], bool]:
+    """Fast path: analyze errors from pre-classified LOOK lines.
+
+    Returns (total_errors, groups, used_heuristics).
+    """
+    # Convert ClassifiedLine to (LogEntry-like, fingerprint) tuples for _group_errors
+    from ..parsing.base import LogEntry
+
+    level_entries = []
+    all_classified = []
+    for cl in classified:
+        entry = LogEntry(
+            line_number=cl.line_number,
+            raw=cl.text,
+            timestamp=cl.timestamp,
+            level=cl.level,
+            message=cl.message,
+        )
+        all_classified.append((entry, cl))
+        if cl.level in _ERROR_LEVELS:
+            level_entries.append((entry, normalize(entry.message)))
+
+    if level_entries:
+        total_errors, groups = _group_errors(
+            level_entries, include_stack_traces, max_unique_errors
+        )
+        return total_errors, groups, False
+
+    # Fallback: content heuristics on LOOK lines
+    content_entries = []
+    for entry, _cl in all_classified:
+        if _CONTENT_ERROR_RE.search(entry.message):
+            content_entries.append((entry, normalize(entry.message)))
+
+    total_errors, groups = _group_errors(
+        content_entries, include_stack_traces, max_unique_errors
+    )
+    return total_errors, groups, True
+
+
 def register_tools(mcp: FastMCP) -> None:
     @mcp.tool()
     def analyze_errors(
@@ -100,33 +145,42 @@ def register_tools(mcp: FastMCP) -> None:
         if err:
             return f"Error: {err}"
 
-        parser = detect_parser(file_path)
-
-        # Pass 1: filter by log level
-        level_entries = []
-        all_entries = []
-        for entry in parser.parse_file(file_path):
-            all_entries.append(entry)
-            if entry.level in _ERROR_LEVELS:
-                level_entries.append((entry, normalize(entry.message)))
-
-        used_heuristics = False
-
-        if level_entries:
-            total_errors, groups = _group_errors(
-                level_entries, include_stack_traces, max_unique_errors
+        # Fast path: Rust classifier pre-filters to LOOK lines only
+        result = classify_and_extract(file_path, threshold=0.3)
+        if result is not None:
+            classified, _total_lines = result
+            total_errors, groups, used_heuristics = _analyze_errors_fast(
+                classified, include_stack_traces, max_unique_errors
             )
         else:
-            # Pass 2 fallback: content-based heuristics
-            content_entries = []
-            for entry in all_entries:
-                if _CONTENT_ERROR_RE.search(entry.message):
-                    content_entries.append((entry, normalize(entry.message)))
+            # Slow path: existing Python parser
+            parser = detect_parser(file_path)
 
-            total_errors, groups = _group_errors(
-                content_entries, include_stack_traces, max_unique_errors
-            )
-            used_heuristics = True
+            # Pass 1: filter by log level
+            level_entries = []
+            all_entries = []
+            for entry in parser.parse_file(file_path):
+                all_entries.append(entry)
+                if entry.level in _ERROR_LEVELS:
+                    level_entries.append((entry, normalize(entry.message)))
+
+            used_heuristics = False
+
+            if level_entries:
+                total_errors, groups = _group_errors(
+                    level_entries, include_stack_traces, max_unique_errors
+                )
+            else:
+                # Pass 2 fallback: content-based heuristics
+                content_entries = []
+                for entry in all_entries:
+                    if _CONTENT_ERROR_RE.search(entry.message):
+                        content_entries.append((entry, normalize(entry.message)))
+
+                total_errors, groups = _group_errors(
+                    content_entries, include_stack_traces, max_unique_errors
+                )
+                used_heuristics = True
 
         # Sort by frequency descending
         sorted_groups = sorted(groups.values(), key=lambda g: g["count"], reverse=True)
