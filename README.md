@@ -115,12 +115,12 @@ The `classify_lines` tool uses a two-stage ML pipeline to separate interesting l
 
 ```mermaid
 flowchart TD
-    A["Your log file (e.g. 4.7M lines)"] --> B{"Rust classifier\navailable?"}
-    B -->|Yes| C["Stage 1: TF-IDF\nRust, ~1.3M lines/sec\nlogistic regression\nthreshold × 0.6"]
-    B -->|No| D["Fallback: Python\nlog parsing"]
+    A["Your log file (e.g. 4.7M lines)"] --> B{"Rust classifier<br/>available?"}
+    B -->|Yes| C["Stage 1: TF-IDF<br/>Rust, ~1.3M lines/sec<br/>logistic regression<br/>threshold × 0.6"]
+    B -->|No| D["Fallback: Python<br/>log parsing"]
     C --> E["LOOK lines (~5-30%)"]
-    E --> F["Stage 2: BERT-mini\nRust + Metal GPU\nre-scores LOOK lines\napplies final threshold"]
-    F --> G["Final LOOK lines\n(with BERT probabilities)"]
+    E --> F["Stage 2: BERT-mini<br/>Rust + Metal GPU<br/>re-scores LOOK lines<br/>applies final threshold"]
+    F --> G["Final LOOK lines<br/>(with BERT probabilities)"]
 ```
 
 On a Thunderbird HPC log (2K lines), this finds **92 interesting lines** including sendmail DNS failures, DHCP lease errors, and Ganglia RRD update collisions — none of which have a standard ERROR log level. A `search_logs level=ERROR` on the same file returns only 2 lines.
@@ -180,12 +180,12 @@ TF-IDF model evaluated with GroupKFold cross-validation (holdout: BGL, Thunderbi
 
 ```mermaid
 flowchart TD
-    A["450M log lines\n16 datasets, ~67 GB"] --> B["Rust TF-IDF classifier\n1.38M lines/sec, 325s"]
-    B --> C["~87M LOOK lines (19%)\n81% of lines eliminated"]
-    C --> D["BERT re-scoring (optional)\ndemotes 20-40% of TF-IDF LOOK"]
+    A["450M log lines<br/>16 datasets, ~67 GB"] --> B["Rust TF-IDF classifier<br/>1.38M lines/sec, 325s"]
+    B --> C["~87M LOOK lines (19%)<br/>81% of lines eliminated"]
+    C --> D["BERT re-scoring (optional)<br/>demotes 20-40% of TF-IDF LOOK"]
     D --> E["~50-70M final LOOK lines"]
-    E --> F["Python tool logic\ngroup errors, search, etc."]
-    F --> G["5-50 error groups / search results\nfits in LLM context"]
+    E --> F["Python tool logic<br/>group errors, search, etc."]
+    F --> G["5-50 error groups / search results<br/>fits in LLM context"]
 ```
 
 ## Retraining with your own logs
