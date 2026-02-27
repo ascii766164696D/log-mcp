@@ -2,7 +2,7 @@
 
 MCP server for log file analysis. Gives LLMs the ability to efficiently analyze large log files without loading them into context.
 
-A Rust-based ML classifier (TF-IDF logistic regression, optionally followed by BERT-mini on Metal GPU) pre-filters log lines at 1.3M lines/sec, so only the interesting 5-30% reach Python for parsing and grouping. This makes tools like `analyze_errors` and `search_logs` practical on files with millions of lines — the classifier handles the I/O-bound scan, Python handles the logic on the reduced set.
+A Rust-based ML classifier pre-filters log lines at 1.3M lines/sec (TF-IDF), optionally refined by BERT-mini on Metal GPU at ~2K lines/sec on the LOOK subset. Only the interesting 5-30% reach Python for parsing and grouping. This makes tools like `analyze_errors` and `search_logs` practical on files with millions of lines — the classifier handles the I/O-bound scan, Python handles the logic on the reduced set.
 
 This is a tool designed for AI, not humans. No human reads the output of `analyze_errors` or `compare_logs` — Claude does, compresses it further, and gives the human a plain English answer. The human touches two endpoints: "what's wrong with this log?" in, natural language answer out. Everything in between is AI talking to itself.
 
@@ -20,7 +20,7 @@ This is a tool designed for AI, not humans. No human reads the output of `analyz
 
 ## Key features
 
-- **ML pre-filter** — a Rust TF-IDF classifier scans files at 1.3M lines/sec, so `analyze_errors` and `search_logs` only process the 5-30% of lines that matter. Optional BERT-mini (Metal GPU) re-scores for higher precision. Works without parsed log levels — catches errors, security events, hardware faults, and anomalies that don't have ERROR in them.
+- **ML pre-filter** — a Rust TF-IDF classifier scans files at 1.3M lines/sec, so `analyze_errors` and `search_logs` only process the 5-30% of lines that matter. Optional BERT-mini re-scores LOOK lines at ~2K lines/sec on Metal GPU for higher precision. Works without parsed log levels — catches errors, security events, hardware faults, and anomalies that don't have ERROR in them.
 - **Auto-detection** of log formats: JSON, standard text (`2024-01-15 10:30:45 ERROR ...`), syslog, Spark/Log4j (`17/06/08 13:33:49 INFO ...`), and tab/pipe-delimited formats (GitHub Actions CI logs)
 - **Normalization** collapses variable parts (UUIDs, hex IDs, IPs, numbers) so that messages differing only in IDs or timestamps are grouped as the same pattern
 - **Content-based error detection** falls back to regex heuristics (`fatal:`, `Permission denied`, `##[error]`, etc.) when log files lack standard levels
@@ -32,11 +32,13 @@ Requires Python 3.10+, [uv](https://docs.astral.sh/uv/), and a Rust toolchain (f
 
 ### Just ask Claude
 
-Open a Claude Code session and say:
+Open a Claude Code session and paste this prompt:
 
-> Install https://github.com/ascii766164696D/log-mcp as an MCP server and build the Rust classifier too
+```
+Install https://github.com/ascii766164696D/log-mcp as an MCP server and build the Rust classifier too
+```
 
-Claude will clone the repo, run `claude mcp add`, build the Rust classifier with `pip install -e .`, and verify everything works. Restart Claude Code after to pick up the new MCP server.
+Claude will clone the repo, register the MCP server, and build the Rust classifier. Restart Claude Code after to pick up the new server.
 
 ### Manual install
 
@@ -137,7 +139,7 @@ flowchart TD
     B -->|Yes| C["Stage 1: TF-IDF<br/>Rust, ~1.3M lines/sec<br/>logistic regression<br/>threshold × 0.6"]
     B -->|No| D["Fallback: Python<br/>log parsing"]
     C --> E["LOOK lines (~5-30%)"]
-    E --> F["Stage 2: BERT-mini<br/>Rust + Metal GPU<br/>re-scores LOOK lines<br/>applies final threshold"]
+    E --> F["Stage 2: BERT-mini<br/>Rust + Metal GPU, ~2K lines/sec<br/>re-scores LOOK lines<br/>applies final threshold"]
     F --> G["Final LOOK lines<br/>(with BERT probabilities)"]
 ```
 
