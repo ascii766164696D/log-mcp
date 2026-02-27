@@ -113,26 +113,14 @@ The `classify_lines` tool uses a two-stage ML pipeline to separate interesting l
 
 ### How it works
 
-```
-                         YOUR LOG FILE
-                        (e.g. 4.7M lines)
-                              |
-            +-----------------+-----------------+
-            |                                   |
-      Stage 1: TF-IDF                    (if no classifier,
-      Rust, ~1.3M lines/sec              tools fall back to
-      logistic regression                Python log parsing)
-      threshold × 0.6                         |
-            |                                 v
-      LOOK lines (~5-30%)             existing behavior
-            |
-      Stage 2: BERT-mini
-      Rust + Metal GPU
-      re-scores LOOK lines
-      applies final threshold
-            |
-      Final LOOK lines
-      (with BERT probabilities)
+```mermaid
+flowchart TD
+    A["Your log file (e.g. 4.7M lines)"] --> B{"Rust classifier\navailable?"}
+    B -->|Yes| C["Stage 1: TF-IDF\nRust, ~1.3M lines/sec\nlogistic regression\nthreshold × 0.6"]
+    B -->|No| D["Fallback: Python\nlog parsing"]
+    C --> E["LOOK lines (~5-30%)"]
+    E --> F["Stage 2: BERT-mini\nRust + Metal GPU\nre-scores LOOK lines\napplies final threshold"]
+    F --> G["Final LOOK lines\n(with BERT probabilities)"]
 ```
 
 On a Thunderbird HPC log (2K lines), this finds **92 interesting lines** including sendmail DNS failures, DHCP lease errors, and Ganglia RRD update collisions — none of which have a standard ERROR log level. A `search_logs level=ERROR` on the same file returns only 2 lines.
@@ -190,23 +178,14 @@ TF-IDF model evaluated with GroupKFold cross-validation (holdout: BGL, Thunderbi
 
 ### End-to-end reduction
 
-```
-  450M log lines (16 datasets, ~67 GB)
-           |
-     Rust TF-IDF classifier
-     1.38M lines/sec, 325s
-           |
-     ~87M LOOK lines (19%)   ← 81% of lines eliminated
-           |
-     (optional) BERT re-scoring
-     demotes 20-40% of TF-IDF LOOK
-           |
-     ~50-70M final LOOK lines
-           |
-     Python tool logic
-     (group errors, search, etc.)
-           |
-     5-50 error groups / search results  ← fits in LLM context
+```mermaid
+flowchart TD
+    A["450M log lines\n16 datasets, ~67 GB"] --> B["Rust TF-IDF classifier\n1.38M lines/sec, 325s"]
+    B --> C["~87M LOOK lines (19%)\n81% of lines eliminated"]
+    C --> D["BERT re-scoring (optional)\ndemotes 20-40% of TF-IDF LOOK"]
+    D --> E["~50-70M final LOOK lines"]
+    E --> F["Python tool logic\ngroup errors, search, etc."]
+    F --> G["5-50 error groups / search results\nfits in LLM context"]
 ```
 
 ## Retraining with your own logs
