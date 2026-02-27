@@ -12,4 +12,7 @@ data/*
 !data/models/
 data/models/*
 !data/models/look_skip_model.json
+!data/models/transformer/
+data/models/transformer/*
+!data/models/transformer/export/
 **/target/

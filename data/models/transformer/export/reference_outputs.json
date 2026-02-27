@@ -1,0 +1,80 @@
+{
+  "test_lines": [
+    "2024-01-15 ERROR: Connection refused to database server at 10.0.0.5:5432",
+    "2024-01-15 INFO: Health check passed, all services running",
+    "kernel: Out of memory: Kill process 12345 (java) score 950",
+    "Jan 15 03:00:01 server01 CRON[1234]: (root) CMD (logrotate /etc/logrotate.conf)",
+    "FATAL: password authentication failed for user \"admin\""
+  ],
+  "logits": [
+    [
+      2.228139877319336,
+      -2.1945061683654785
+    ],
+    [
+      -2.0871801376342773,
+      1.9392417669296265
+    ],
+    [
+      1.5992244482040405,
+      -1.6106404066085815
+    ],
+    [
+      -1.9820976257324219,
+      2.2252185344696045
+    ],
+    [
+      2.3895680904388428,
+      -2.364931344985962
+    ]
+  ],
+  "probabilities": [
+    [
+      0.9881398677825928,
+      0.011860080063343048
+    ],
+    [
+      0.01752542145550251,
+      0.9824746251106262
+    ],
+    [
+      0.9612037539482117,
+      0.03879617154598236
+    ],
+    [
+      0.014667913317680359,
+      0.9853320717811584
+    ],
+    [
+      0.9914606809616089,
+      0.008539306931197643
+    ]
+  ],
+  "predictions": [
+    {
+      "label": "LOOK",
+      "p_look": 0.98814,
+      "p_skip": 0.01186
+    },
+    {
+      "label": "SKIP",
+      "p_look": 0.017525,
+      "p_skip": 0.982475
+    },
+    {
+      "label": "LOOK",
+      "p_look": 0.961204,
+      "p_skip": 0.038796
+    },
+    {
+      "label": "SKIP",
+      "p_look": 0.014668,
+      "p_skip": 0.985332
+    },
+    {
+      "label": "LOOK",
+      "p_look": 0.991461,
+      "p_skip": 0.008539
+    }
+  ]
+}
