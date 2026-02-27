@@ -16,9 +16,11 @@ This is a tool designed for AI, not humans. No human reads the output of `analyz
 | `analyze_errors` | Deduplicate errors by fingerprint, count frequencies, extract stack traces |
 | `log_stats` | Volume histogram, level breakdown, top repeated patterns |
 | `compare_logs` | Find patterns unique to each file and frequency outliers across files |
+| `classify_lines` | ML classifier (TF-IDF → BERT) separates interesting lines from noise |
 
 ## Key features
 
+- **ML pre-filter** — a Rust TF-IDF classifier scans files at 1.3M lines/sec, so `analyze_errors` and `search_logs` only process the 5-30% of lines that matter. Optional BERT-mini (Metal GPU) re-scores for higher precision. Works without parsed log levels — catches errors, security events, hardware faults, and anomalies that don't have ERROR in them.
 - **Auto-detection** of log formats: JSON, standard text (`2024-01-15 10:30:45 ERROR ...`), syslog, Spark/Log4j (`17/06/08 13:33:49 INFO ...`), and tab/pipe-delimited formats (GitHub Actions CI logs)
 - **Normalization** collapses variable parts (UUIDs, hex IDs, IPs, numbers) so that messages differing only in IDs or timestamps are grouped as the same pattern
 - **Content-based error detection** falls back to regex heuristics (`fatal:`, `Permission denied`, `##[error]`, etc.) when log files lack standard levels
@@ -64,6 +66,17 @@ Open **Settings > Developer > Edit Config** and add to `claude_desktop_config.js
 ```
 
 Replace `/path/to/log-mcp` with the actual path where you cloned this repo. Restart Claude Desktop after saving.
+
+### Rust classifier (optional)
+
+All tools work without the classifier (Python fallback), but installing it enables the ML pre-filter for `analyze_errors`, `search_logs`, and `classify_lines`:
+
+```bash
+cd rust/classifier
+pip install -e .
+```
+
+Requires a Rust toolchain. The BERT stage additionally requires a Metal-capable GPU (Apple Silicon).
 
 ## Example usage
 
