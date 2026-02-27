@@ -2,7 +2,23 @@
 
 MCP server for log file analysis. Gives LLMs the ability to efficiently analyze large log files without loading them into context.
 
-A Rust-based ML classifier pre-filters log lines at 1.3M lines/sec (TF-IDF), optionally refined by BERT-mini on Metal GPU at ~2K lines/sec on the LOOK subset. Only the interesting 5-30% reach Python for parsing and grouping. This makes tools like `analyze_errors` and `search_logs` practical on files with millions of lines — the classifier handles the I/O-bound scan, Python handles the logic on the reduced set.
+```
+  Log file (e.g. 705K lines, 67 MB)
+    │
+    ▼
+  Rust TF-IDF classifier ─── 1.3M lines/sec ──▶ 70-95% discarded as routine
+    │                        finds lines that are semantically interesting,
+    │                        also captures lines not explicitly marked as ERROR
+    │                        (grep ERROR: 2 lines, classifier: 92)
+    ▼
+  BERT-mini (optional) ───── GPU, ~2K lines/sec ─▶ re-scores LOOK lines
+    │
+    ▼
+  Python MCP tools ────────── search, compare, group errors
+    │
+    ▼
+  LLM (Claude) ───────────── compresses tool output into plain English
+```
 
 This is a tool designed for AI, not humans. No human reads the output of `analyze_errors` or `compare_logs` — Claude does, compresses it further, and gives the human a plain English answer. The human touches two endpoints: "what's wrong with this log?" in, natural language answer out. Everything in between is AI talking to itself.
 
