@@ -131,8 +131,7 @@ uv run --group transformer python -m scripts.labeling.export_transformer
 **Step 5: Rebuild the Rust classifier**
 
 ```bash
-cd rust/classifier
-pip install -e .
+uv pip install -e rust/classifier
 ```
 
 ## Full pipeline from scratch

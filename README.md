@@ -54,7 +54,7 @@ cd log-mcp
 claude mcp add log-mcp -- uv run --directory $(pwd) log-mcp
 
 # Build the Rust classifier (optional — tools fall back to Python without it)
-cd rust/classifier && pip install -e . && cd ../..
+uv pip install -e rust/classifier
 ```
 
 Or add it manually to your project settings (`claude settings`) under `mcpServers`:
@@ -230,7 +230,7 @@ uv run --group training python -m scripts.labeling.train_model
 uv run --group training python -m scripts.labeling.export_model
 
 # 4. Rebuild Rust classifier
-cd rust/classifier && pip install -e .
+uv pip install -e rust/classifier
 ```
 
 See [`scripts/labeling/RETRAINING.md`](scripts/labeling/RETRAINING.md) for the full guide — how labeling works, what features the model uses, how to customize the prompt, and how to train the optional BERT model.
