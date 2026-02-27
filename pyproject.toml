@@ -19,3 +19,19 @@ packages = ["src/log_mcp"]
 dev = [
     "pytest>=9.0.2",
 ]
+labeling = [
+    "anthropic>=0.42.0",
+]
+training = [
+    "scikit-learn>=1.4",
+]
+transformer = [
+    "torch>=2.1",
+    "transformers>=4.36",
+    "datasets>=2.16",
+    "safetensors>=0.4",
+    "accelerate>=0.25",
+    "scikit-learn>=1.4",
+    "sentencepiece>=0.1.99",
+    "protobuf>=4.25",
+]

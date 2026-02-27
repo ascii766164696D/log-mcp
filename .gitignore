@@ -8,3 +8,5 @@ build/
 test.log
 test2.log
 .DS_Store
+data/
+**/target/
