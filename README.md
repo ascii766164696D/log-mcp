@@ -11,7 +11,7 @@ MCP server for log file analysis. Gives LLMs the ability to efficiently analyze 
     │                        also captures lines not explicitly marked as ERROR
     │                        (grep ERROR: 2 lines, classifier: 92)
     ▼
-  BERT-mini (optional) ───── GPU, ~2K lines/sec ─▶ fewer false positives in results
+  BERT-mini (optional) ───── GPU, ~2K lines/sec ─▶ refines interest scores on found lines
     │
     ▼
   Python MCP tools ────────── search, compare, group errors
