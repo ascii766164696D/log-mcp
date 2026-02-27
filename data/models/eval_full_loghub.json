@@ -1,0 +1,285 @@
+{
+  "BGL": {
+    "n_lines": 200000,
+    "n_gt_look": 2769,
+    "n_pred_look": 37934,
+    "accuracy": 0.8242,
+    "look_precision": 0.073,
+    "look_recall": 1.0,
+    "look_f1": 0.1361,
+    "missed_errors": 0,
+    "false_alarms": 35165,
+    "load_time_s": 0.02,
+    "predict_time_s": 22.02,
+    "keyword_analysis": {
+      "error_lines": 32470,
+      "error_captured": 32455,
+      "error_missed": 15,
+      "error_capture_rate": 100.0,
+      "missed_error_samples": [
+        "1118245894 2005.06.08 R33-M1-N6 2005-06-08-08.51.34.505108 R33-M1-N6 NULL DISCOVERY SEVERE Can not get assembly information for node card",
+        "1118245901 2005.06.08 R33-M1-ND 2005-06-08-08.51.41.580083 R33-M1-ND NULL DISCOVERY SEVERE Can not get assembly information for node card",
+        "1118245908 2005.06.08 R33-M1-N4 2005-06-08-08.51.48.652260 R33-M1-N4 NULL DISCOVERY SEVERE Can not get assembly information for node card",
+        "1118245915 2005.06.08 R33-M1-N1 2005-06-08-08.51.55.679909 R33-M1-N1 NULL DISCOVERY SEVERE Can not get assembly information for node card",
+        "1118245922 2005.06.08 R33-M1-N8 2005-06-08-08.52.02.598712 R33-M1-N8 NULL DISCOVERY SEVERE Can not get assembly information for node card",
+        "1118245929 2005.06.08 R33-M1-N3 2005-06-08-08.52.09.586338 R33-M1-N3 NULL DISCOVERY SEVERE Can not get assembly information for node card",
+        "1118245936 2005.06.08 R33-M1-NA 2005-06-08-08.52.16.589324 R33-M1-NA NULL DISCOVERY SEVERE Can not get assembly information for node card",
+        "1118245943 2005.06.08 R33-M1-N5 2005-06-08-08.52.23.489515 R33-M1-N5 NULL DISCOVERY SEVERE Can not get assembly information for node card",
+        "1118245950 2005.06.08 R33-M1-N7 2005-06-08-08.52.30.534561 R33-M1-N7 NULL DISCOVERY SEVERE Can not get assembly information for node card",
+        "1118245957 2005.06.08 R33-M1-NE 2005-06-08-08.52.37.563320 R33-M1-NE NULL DISCOVERY SEVERE Can not get assembly information for node card"
+      ],
+      "warn_lines": 25,
+      "warn_captured": 25,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    }
+  },
+  "HDFS": {
+    "n_lines": 200000,
+    "n_look": 159,
+    "n_skip": 199841,
+    "pct_look": 0.08,
+    "keyword_analysis": {
+      "error_lines": 151,
+      "error_captured": 151,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 8,
+      "warn_captured": 8,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.03,
+    "predict_time_s": 23.99
+  },
+  "OpenStack-abnormal": {
+    "n_lines": 18434,
+    "n_look": 471,
+    "n_skip": 17963,
+    "pct_look": 2.56,
+    "keyword_analysis": {
+      "error_lines": 197,
+      "error_captured": 197,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 275,
+      "warn_captured": 275,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.01,
+    "predict_time_s": 5.07
+  },
+  "OpenStack-normal": {
+    "n_lines": 52312,
+    "n_look": 1437,
+    "n_skip": 50875,
+    "pct_look": 2.75,
+    "keyword_analysis": {
+      "error_lines": 584,
+      "error_captured": 584,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 855,
+      "warn_captured": 855,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.01,
+    "predict_time_s": 15.02
+  },
+  "Hadoop": {
+    "n_lines": 200000,
+    "n_look": 92068,
+    "n_skip": 107932,
+    "pct_look": 46.03,
+    "keyword_analysis": {
+      "error_lines": 4987,
+      "error_captured": 4987,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 4541,
+      "warn_captured": 4541,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.05,
+    "predict_time_s": 23.9
+  },
+  "HPC": {
+    "n_lines": 200000,
+    "n_look": 77978,
+    "n_skip": 122022,
+    "pct_look": 38.99,
+    "keyword_analysis": {
+      "error_lines": 6008,
+      "error_captured": 6008,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 19203,
+      "warn_captured": 19203,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.02,
+    "predict_time_s": 10.93
+  },
+  "Linux": {
+    "n_lines": 25567,
+    "n_look": 19414,
+    "n_skip": 6153,
+    "pct_look": 75.93,
+    "keyword_analysis": {
+      "error_lines": 4169,
+      "error_captured": 4149,
+      "error_missed": 20,
+      "error_capture_rate": 99.5,
+      "missed_error_samples": [
+        "Jun 13 11:55:04 combo rpc.statd[1636]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220",
+        "Jun 13 11:55:05 combo rpc.statd[1636]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220",
+        "Jun 13 11:55:08 combo rpc.statd[1636]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220",
+        "Jun 13 11:55:09 combo rpc.statd[1636]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220",
+        "Jun 13 11:55:09 combo rpc.statd[1636]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220",
+        "Jun 13 11:55:10 combo rpc.statd[1636]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220",
+        "Jun 25 09:11:48 combo rpc.statd[1636]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220",
+        "Jul 20 13:59:41 combo rpc.statd[1636]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220",
+        "Jul 20 13:59:42 combo rpc.statd[1636]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220",
+        "Sep 28 13:38:11 combo rpc.statd[1608]: gethostbyname error for ^X\ufffd\ufffd\ufffd^X\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd^Z\ufffd\ufffd\ufffd%8x%8x%8x%8x%8x%8x%8x%8x%8x%62716x%hn%51859x%hn\\220\\220\\220\\220\\220"
+      ],
+      "warn_lines": 19,
+      "warn_captured": 19,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.0,
+    "predict_time_s": 1.85
+  },
+  "Mac": {
+    "n_lines": 117283,
+    "n_look": 26506,
+    "n_skip": 90777,
+    "pct_look": 22.6,
+    "keyword_analysis": {
+      "error_lines": 14431,
+      "error_captured": 14427,
+      "error_missed": 4,
+      "error_capture_rate": 100.0,
+      "missed_error_samples": [
+        "Jul  6 00:30:36 authorMacBook-Pro ksfetch[36437]: 2017-07-06 00:30:36.633 ksfetch[36437/0x7fff79824000] [lvl=2] -[FetchDelegate fetcher:failedWithErro",
+        "Jul  6 00:30:37 authorMacBook-Pro ksfetch[36439]: 2017-07-06 00:30:37.063 ksfetch[36439/0x7fff79824000] [lvl=2] -[FetchDelegate fetcher:failedWithErro",
+        "Jul  6 00:30:38 authorMacBook-Pro ksfetch[36444]: 2017-07-06 00:30:38.995 ksfetch[36444/0x7fff79824000] [lvl=2] -[FetchDelegate fetcher:failedWithErro",
+        "Jul  6 00:30:39 authorMacBook-Pro ksfetch[36445]: 2017-07-06 00:30:39.046 ksfetch[36445/0x7fff79824000] [lvl=2] -[FetchDelegate fetcher:failedWithErro"
+      ],
+      "warn_lines": 520,
+      "warn_captured": 520,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.02,
+    "predict_time_s": 14.81
+  },
+  "SSH": {
+    "n_lines": 200000,
+    "n_look": 176278,
+    "n_skip": 23722,
+    "pct_look": 88.14,
+    "keyword_analysis": {
+      "error_lines": 124235,
+      "error_captured": 124235,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 12,
+      "warn_captured": 12,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.03,
+    "predict_time_s": 17.93
+  },
+  "Zookeeper": {
+    "n_lines": 74380,
+    "n_look": 49998,
+    "n_skip": 24382,
+    "pct_look": 67.22,
+    "keyword_analysis": {
+      "error_lines": 12886,
+      "error_captured": 12886,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 48507,
+      "warn_captured": 48507,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.01,
+    "predict_time_s": 8.79
+  },
+  "HealthApp": {
+    "n_lines": 200000,
+    "n_look": 1242,
+    "n_skip": 198758,
+    "pct_look": 0.62,
+    "keyword_analysis": {
+      "error_lines": 517,
+      "error_captured": 517,
+      "error_missed": 0,
+      "error_capture_rate": 100.0
+    },
+    "load_time_s": 0.03,
+    "predict_time_s": 17.31
+  },
+  "Apache": {
+    "n_lines": 56482,
+    "n_look": 42727,
+    "n_skip": 13755,
+    "pct_look": 75.65,
+    "keyword_analysis": {
+      "error_lines": 38081,
+      "error_captured": 38081,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 168,
+      "warn_captured": 168,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.01,
+    "predict_time_s": 3.87
+  },
+  "Proxifier": {
+    "n_lines": 21329,
+    "n_look": 884,
+    "n_skip": 20445,
+    "pct_look": 4.14,
+    "keyword_analysis": {
+      "error_lines": 882,
+      "error_captured": 882,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 2,
+      "warn_captured": 2,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.0,
+    "predict_time_s": 2.07
+  },
+  "Android": {
+    "n_lines": 200000,
+    "n_look": 13620,
+    "n_skip": 186380,
+    "pct_look": 6.81,
+    "keyword_analysis": {
+      "error_lines": 8878,
+      "error_captured": 8878,
+      "error_missed": 0,
+      "error_capture_rate": 100.0,
+      "warn_lines": 4476,
+      "warn_captured": 4476,
+      "warn_missed": 0,
+      "warn_capture_rate": 100.0
+    },
+    "load_time_s": 0.04,
+    "predict_time_s": 19.3
+  }
+}

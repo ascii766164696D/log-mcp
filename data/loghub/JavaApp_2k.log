@@ -1,0 +1,570 @@
+2025-06-15 10:00:00.000 [ INFO] o.s.b.SpringApplication - Starting MyApp v2.4.1 using Java 17.0.2
+2025-06-15 10:00:00.000 [ INFO] o.s.b.SpringApplication - Active profiles: production
+2025-06-15 10:00:02.000 [ INFO] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories
+2025-06-15 10:00:03.000 [ INFO] o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-06-15 10:00:04.000 [ INFO] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-15 10:00:05.000 [ INFO] c.m.config.DataSourceConfig - Initializing HikariCP connection pool
+2025-06-15 10:00:05.000 [ INFO] c.z.h.HikariDataSource - HikariPool-1 - Start completed.
+2025-06-15 10:00:05.000 [ INFO] o.s.b.SpringApplication - Started MyApp in 8.234 seconds
+2025-06-15 10:00:05.000 [ WARN] c.m.service.OrderService - Retry attempt 2/5 for order #13905 after transient failure
+2025-06-15 10:00:06.000 [ WARN] c.m.service.OrderService - Circuit breaker 'orderService' is now OPEN after 11 consecutive failures
+2025-06-15 10:00:07.000 [ERROR] com.myapp.cache.RedisCacheManager - java.sql.SQLException: Too many connections
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:444)
+	at com.myapp.service.UserService.findById(UserService.java:387)
+	at com.myapp.cache.RedisCacheManager.consumeMessage(RedisCacheManager.java:172)
+	at com.myapp.controller.ApiController.getConnection(ApiController.java:420)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:77)
+	at java.base/java.lang.Thread.run(Thread.java:848)
+2025-06-15 10:00:07.000 [ERROR] com.myapp.config.DataSourceConfig - java.lang.NullPointerException: Cannot read field "id" because "user" is null
+	at org.springframework.beans.factory.BeanFactory.handleOrder(BeanFactory.java:223)
+	at com.myapp.service.OrderService.initializeBean(OrderService.java:454)
+	at com.myapp.messaging.KafkaConsumer.getConnection(KafkaConsumer.java:390)
+	at com.myapp.service.OrderService.processRequest(OrderService.java:368)
+	at com.myapp.repository.UserRepository.initializeBean(UserRepository.java:70)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2025-06-15 10:00:09.000 [ INFO] c.m.controller.ApiController - POST /api/v1/orders - 201 Created (117ms)
+2025-06-15 10:00:11.000 [ERROR] c.z.h.p.HikariPool - HikariPool-1 - Connection is not available, request timed out after 57332ms.
+2025-06-15 10:00:13.000 [ WARN] c.z.h.p.HikariPool - HikariPool-1 - Apparent connection leak detected (open for 101 seconds)
+2025-06-15 10:00:13.000 [ERROR] com.myapp.config.DataSourceConfig - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cacheManager': Injection of autowired dependencies failed
+	at com.myapp.controller.ApiController.getConnection(ApiController.java:113)
+	at org.springframework.beans.factory.BeanFactory.evictCache(BeanFactory.java:168)
+	at com.myapp.repository.UserRepository.consumeMessage(UserRepository.java:461)
+	at com.myapp.service.UserService.getConnection(UserService.java:450)
+	at com.myapp.service.UserService.consumeMessage(UserService.java:235)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2025-06-15 10:00:16.000 [ERROR] com.myapp.repository.UserRepository - java.lang.NullPointerException: Cannot read field "id" because "user" is null
+	at com.myapp.cache.RedisCacheManager.authenticate(RedisCacheManager.java:103)
+	at com.myapp.config.DataSourceConfig.findById(DataSourceConfig.java:156)
+	at com.myapp.config.DataSourceConfig.evictCache(DataSourceConfig.java:489)
+	at com.myapp.cache.RedisCacheManager.consumeMessage(RedisCacheManager.java:142)
+	at com.myapp.controller.ApiController.authenticate(ApiController.java:76)
+	at java.base/java.lang.Thread.run(Thread.java:896)
+2025-06-15 10:00:17.000 [ERROR] com.myapp.controller.ApiController - java.lang.NullPointerException: Cannot invoke method on null reference
+	at com.myapp.cache.RedisCacheManager.handleOrder(RedisCacheManager.java:227)
+	at com.myapp.cache.RedisCacheManager.authenticate(RedisCacheManager.java:300)
+	at com.myapp.config.DataSourceConfig.processRequest(DataSourceConfig.java:378)
+	at com.myapp.service.OrderService.initializeBean(OrderService.java:423)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:180)
+	at java.base/java.lang.Thread.run(Thread.java:855)
+2025-06-15 10:00:18.000 [FATAL] com.myapp.config.DataSourceConfig - java.lang.OutOfMemoryError: Java heap space
+	at com.myapp.service.OrderService.initializeBean(OrderService.java:460)
+	at com.myapp.repository.UserRepository.findById(UserRepository.java:221)
+	at com.myapp.controller.ApiController.processRequest(ApiController.java:336)
+	at com.myapp.messaging.KafkaConsumer.authenticate(KafkaConsumer.java:39)
+	at com.myapp.service.OrderService.consumeMessage(OrderService.java:479)
+	at java.base/java.lang.Thread.run(Thread.java:839)
+2025-06-15 10:00:18.000 [ERROR] com.myapp.service.OrderService - java.lang.ClassNotFoundException: com.myapp.legacy.OldService
+	at org.springframework.beans.factory.BeanFactory.handleOrder(BeanFactory.java:419)
+	at com.myapp.controller.ApiController.findById(ApiController.java:367)
+	at org.springframework.beans.factory.BeanFactory.findById(BeanFactory.java:165)
+	at com.myapp.cache.RedisCacheManager.getConnection(RedisCacheManager.java:306)
+	at com.myapp.repository.UserRepository.initializeBean(UserRepository.java:234)
+	at java.base/java.lang.Thread.run(Thread.java:885)
+2025-06-15 10:00:21.000 [ERROR] c.m.messaging.KafkaConsumer - Failed to deserialize message from topic orders-updated
+2025-06-15 10:00:22.000 [ERROR] com.myapp.repository.UserRepository - com.fasterxml.jackson.databind.JsonMappingException: Unexpected token (START_ARRAY), expected VALUE_STRING at [line: 1, column: 40]
+	at com.myapp.service.OrderService.consumeMessage(OrderService.java:40)
+	at com.myapp.repository.UserRepository.getConnection(UserRepository.java:33)
+	at com.myapp.service.OrderService.processRequest(OrderService.java:147)
+	at com.myapp.service.OrderService.processRequest(OrderService.java:470)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:293)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+2025-06-15 10:00:23.000 [ERROR] com.myapp.repository.UserRepository - java.lang.ClassNotFoundException: com.myapp.plugins.ExtPlugin
+	at org.springframework.beans.factory.BeanFactory.getConnection(BeanFactory.java:431)
+	at org.springframework.beans.factory.BeanFactory.evictCache(BeanFactory.java:127)
+	at com.myapp.service.OrderService.handleOrder(OrderService.java:367)
+	at com.myapp.cache.RedisCacheManager.consumeMessage(RedisCacheManager.java:246)
+	at com.myapp.cache.RedisCacheManager.authenticate(RedisCacheManager.java:472)
+	at java.base/java.lang.Thread.run(Thread.java:893)
+2025-06-15 10:00:26.000 [ERROR] com.myapp.service.UserService - java.lang.NullPointerException: Cannot invoke method on null reference
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:157)
+	at com.myapp.repository.UserRepository.getConnection(UserRepository.java:304)
+	at org.springframework.beans.factory.BeanFactory.findById(BeanFactory.java:246)
+	at com.myapp.controller.ApiController.initializeBean(ApiController.java:266)
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:256)
+	at java.base/java.lang.Thread.run(Thread.java:870)
+2025-06-15 10:00:27.000 [ERROR] com.myapp.service.OrderService - java.lang.NullPointerException: Cannot invoke method on null reference
+	at com.myapp.controller.ApiController.evictCache(ApiController.java:278)
+	at org.springframework.beans.factory.BeanFactory.getConnection(BeanFactory.java:472)
+	at com.myapp.cache.RedisCacheManager.processRequest(RedisCacheManager.java:114)
+	at com.myapp.cache.RedisCacheManager.processRequest(RedisCacheManager.java:229)
+	at com.myapp.config.DataSourceConfig.authenticate(DataSourceConfig.java:176)
+	at java.base/java.lang.Thread.run(Thread.java:854)
+2025-06-15 10:00:28.000 [ERROR] c.m.messaging.KafkaConsumer - Failed to deserialize message from topic orders-updated
+2025-06-15 10:00:29.000 [ERROR] com.myapp.config.DataSourceConfig - com.fasterxml.jackson.databind.JsonMappingException: Unexpected token (START_ARRAY), expected VALUE_STRING at [line: 1, column: 58]
+	at com.myapp.service.UserService.processRequest(UserService.java:412)
+	at com.myapp.messaging.KafkaConsumer.processRequest(KafkaConsumer.java:55)
+	at org.springframework.beans.factory.BeanFactory.findById(BeanFactory.java:59)
+	at com.myapp.service.OrderService.findById(OrderService.java:65)
+	at com.myapp.service.OrderService.getConnection(OrderService.java:236)
+	at java.base/java.lang.Thread.run(Thread.java:815)
+2025-06-15 10:00:30.000 [DEBUG] c.m.repository.UserRepository - Executing query: SELECT * FROM users WHERE id = 9334
+2025-06-15 10:00:33.000 [ERROR] com.myapp.service.OrderService - org.apache.kafka.common.errors.TimeoutException: Topic partition-0 not present in metadata after 100591ms
+	at com.myapp.messaging.KafkaConsumer.initializeBean(KafkaConsumer.java:134)
+	at com.myapp.messaging.KafkaConsumer.getConnection(KafkaConsumer.java:165)
+	at com.myapp.cache.RedisCacheManager.findById(RedisCacheManager.java:373)
+	at com.myapp.config.DataSourceConfig.authenticate(DataSourceConfig.java:191)
+	at com.myapp.service.OrderService.processRequest(OrderService.java:264)
+	at java.base/java.lang.Thread.run(Thread.java:879)
+2025-06-15 10:00:34.000 [ INFO] c.m.messaging.KafkaConsumer - Consumed 202 messages from topic orders-created in 1s
+2025-06-15 10:00:35.000 [ERROR] com.myapp.service.OrderService - java.sql.SQLException: Statement cancelled due to timeout after 46 seconds
+	at com.myapp.messaging.KafkaConsumer.initializeBean(KafkaConsumer.java:110)
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:343)
+	at com.myapp.service.UserService.initializeBean(UserService.java:369)
+	at com.myapp.service.OrderService.findById(OrderService.java:165)
+	at com.myapp.service.OrderService.handleOrder(OrderService.java:410)
+	at java.base/java.lang.Thread.run(Thread.java:870)
+2025-06-15 10:00:37.000 [FATAL] com.myapp.repository.UserRepository - java.lang.OutOfMemoryError: Metaspace
+	at com.myapp.repository.UserRepository.initializeBean(UserRepository.java:288)
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:493)
+	at com.myapp.service.UserService.handleOrder(UserService.java:354)
+	at com.myapp.cache.RedisCacheManager.initializeBean(RedisCacheManager.java:52)
+	at com.myapp.service.UserService.consumeMessage(UserService.java:424)
+	at java.base/java.lang.Thread.run(Thread.java:816)
+2025-06-15 10:00:40.000 [ WARN] c.m.service.OrderService - Retry attempt 4/5 for order #31178 after transient failure
+2025-06-15 10:00:40.000 [ WARN] c.m.service.OrderService - Circuit breaker 'orderService' is now OPEN after 18 consecutive failures
+2025-06-15 10:00:42.000 [ERROR] com.myapp.service.UserService - java.lang.NullPointerException: null
+	at com.myapp.controller.ApiController.evictCache(ApiController.java:95)
+	at com.myapp.service.UserService.initializeBean(UserService.java:216)
+	at com.myapp.service.UserService.consumeMessage(UserService.java:137)
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:211)
+	at com.myapp.cache.RedisCacheManager.findById(RedisCacheManager.java:151)
+	at java.base/java.lang.Thread.run(Thread.java:820)
+2025-06-15 10:00:45.000 [ INFO] c.m.messaging.KafkaConsumer - Consumed 930 messages from topic orders-created in 2s
+2025-06-15 10:00:46.000 [ERROR] com.myapp.cache.RedisCacheManager - java.lang.NullPointerException: Cannot read field "id" because "user" is null
+	at com.myapp.config.DataSourceConfig.findById(DataSourceConfig.java:433)
+	at com.myapp.service.OrderService.evictCache(OrderService.java:476)
+	at com.myapp.service.UserService.authenticate(UserService.java:143)
+	at com.myapp.repository.UserRepository.authenticate(UserRepository.java:209)
+	at com.myapp.config.DataSourceConfig.getConnection(DataSourceConfig.java:144)
+	at java.base/java.lang.Thread.run(Thread.java:803)
+2025-06-15 10:00:48.000 [ERROR] c.m.messaging.KafkaConsumer - Failed to deserialize message from topic orders-updated
+2025-06-15 10:00:50.000 [ERROR] com.myapp.service.OrderService - com.fasterxml.jackson.databind.JsonMappingException: Unexpected token (START_ARRAY), expected VALUE_STRING at [line: 1, column: 81]
+	at com.myapp.messaging.KafkaConsumer.evictCache(KafkaConsumer.java:377)
+	at com.myapp.messaging.KafkaConsumer.processRequest(KafkaConsumer.java:89)
+	at com.myapp.config.DataSourceConfig.findById(DataSourceConfig.java:327)
+	at com.myapp.config.DataSourceConfig.processRequest(DataSourceConfig.java:85)
+	at com.myapp.cache.RedisCacheManager.consumeMessage(RedisCacheManager.java:403)
+	at java.base/java.lang.Thread.run(Thread.java:900)
+2025-06-15 10:00:53.000 [ERROR] com.myapp.service.OrderService - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cacheManager': Injection of autowired dependencies failed
+	at com.myapp.repository.UserRepository.initializeBean(UserRepository.java:52)
+	at com.myapp.cache.RedisCacheManager.processRequest(RedisCacheManager.java:296)
+	at com.myapp.repository.UserRepository.consumeMessage(UserRepository.java:250)
+	at com.myapp.service.OrderService.consumeMessage(OrderService.java:349)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:398)
+	at java.base/java.lang.Thread.run(Thread.java:838)
+2025-06-15 10:00:56.000 [ERROR] com.myapp.messaging.KafkaConsumer - java.sql.SQLException: Deadlock found when trying to get lock; try restarting transaction
+	at com.myapp.config.DataSourceConfig.findById(DataSourceConfig.java:128)
+	at com.myapp.cache.RedisCacheManager.evictCache(RedisCacheManager.java:376)
+	at com.myapp.controller.ApiController.initializeBean(ApiController.java:237)
+	at com.myapp.service.UserService.initializeBean(UserService.java:176)
+	at com.myapp.repository.UserRepository.evictCache(UserRepository.java:432)
+	at java.base/java.lang.Thread.run(Thread.java:874)
+2025-06-15 10:00:59.000 [ WARN] c.m.service.OrderService - Retry attempt 4/5 for order #70946 after transient failure
+2025-06-15 10:01:00.000 [ WARN] c.m.service.OrderService - Circuit breaker 'orderService' is now OPEN after 19 consecutive failures
+2025-06-15 10:01:02.000 [ERROR] com.myapp.config.DataSourceConfig - java.sql.SQLException: Connection refused to host: db-primary.internal:5432
+	at com.myapp.service.OrderService.getConnection(OrderService.java:374)
+	at com.myapp.config.DataSourceConfig.getConnection(DataSourceConfig.java:442)
+	at com.myapp.repository.UserRepository.findById(UserRepository.java:42)
+	at com.myapp.service.UserService.getConnection(UserService.java:273)
+	at com.myapp.service.OrderService.authenticate(OrderService.java:242)
+	at java.base/java.lang.Thread.run(Thread.java:880)
+2025-06-15 10:01:05.000 [ERROR] com.myapp.cache.RedisCacheManager - org.apache.kafka.common.errors.TimeoutException: Topic partition-11 not present in metadata after 105636ms
+	at com.myapp.cache.RedisCacheManager.getConnection(RedisCacheManager.java:105)
+	at com.myapp.service.UserService.handleOrder(UserService.java:428)
+	at com.myapp.cache.RedisCacheManager.getConnection(RedisCacheManager.java:120)
+	at org.springframework.beans.factory.BeanFactory.processRequest(BeanFactory.java:315)
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:263)
+	at java.base/java.lang.Thread.run(Thread.java:817)
+2025-06-15 10:01:07.000 [ INFO] c.m.controller.ApiController - GET /api/v1/users/8703 - 200 OK (40ms)
+2025-06-15 10:01:10.000 [ INFO] c.m.messaging.KafkaConsumer - Consumed 553 messages from topic orders-created in 5s
+2025-06-15 10:01:11.000 [ INFO] c.m.controller.ApiController - GET /api/v1/users/8977 - 200 OK (33ms)
+2025-06-15 10:01:14.000 [ WARN] o.s.s.w.a.ExceptionTranslationFilter - Authentication failed: Bad credentials for user 'service-account'
+2025-06-15 10:01:17.000 [ERROR] com.myapp.config.DataSourceConfig - java.lang.ClassNotFoundException: com.myapp.legacy.OldService
+	at com.myapp.repository.UserRepository.initializeBean(UserRepository.java:255)
+	at com.myapp.service.OrderService.initializeBean(OrderService.java:150)
+	at com.myapp.config.DataSourceConfig.consumeMessage(DataSourceConfig.java:193)
+	at com.myapp.service.OrderService.findById(OrderService.java:107)
+	at com.myapp.repository.UserRepository.evictCache(UserRepository.java:385)
+	at java.base/java.lang.Thread.run(Thread.java:819)
+2025-06-15 10:01:20.000 [ WARN] o.s.s.w.a.ExceptionTranslationFilter - Authentication failed: Bad credentials for user 'admin'
+2025-06-15 10:01:23.000 [ERROR] c.z.h.p.HikariPool - HikariPool-1 - Connection is not available, request timed out after 47780ms.
+2025-06-15 10:01:23.000 [ WARN] c.z.h.p.HikariPool - HikariPool-1 - Apparent connection leak detected (open for 166 seconds)
+2025-06-15 10:01:23.000 [FATAL] com.myapp.cache.RedisCacheManager - java.lang.OutOfMemoryError: Direct buffer memory
+	at com.myapp.cache.RedisCacheManager.authenticate(RedisCacheManager.java:33)
+	at com.myapp.messaging.KafkaConsumer.initializeBean(KafkaConsumer.java:415)
+	at com.myapp.cache.RedisCacheManager.evictCache(RedisCacheManager.java:305)
+	at com.myapp.repository.UserRepository.authenticate(UserRepository.java:142)
+	at com.myapp.config.DataSourceConfig.evictCache(DataSourceConfig.java:278)
+	at java.base/java.lang.Thread.run(Thread.java:803)
+2025-06-15 10:01:26.000 [ERROR] c.z.h.p.HikariPool - HikariPool-1 - Connection is not available, request timed out after 51917ms.
+2025-06-15 10:01:27.000 [ WARN] c.z.h.p.HikariPool - HikariPool-1 - Apparent connection leak detected (open for 245 seconds)
+2025-06-15 10:01:27.000 [ INFO] c.m.controller.ApiController - GET /api/v1/users/2092 - 200 OK (44ms)
+2025-06-15 10:01:27.000 [DEBUG] c.m.repository.UserRepository - Executing query: SELECT * FROM users WHERE id = 9698
+2025-06-15 10:01:30.000 [ERROR] com.myapp.controller.ApiController - java.lang.NullPointerException: Cannot invoke "String.length()" because "str" is null
+	at com.myapp.controller.ApiController.processRequest(ApiController.java:163)
+	at com.myapp.cache.RedisCacheManager.consumeMessage(RedisCacheManager.java:138)
+	at org.springframework.beans.factory.BeanFactory.consumeMessage(BeanFactory.java:202)
+	at com.myapp.cache.RedisCacheManager.initializeBean(RedisCacheManager.java:415)
+	at com.myapp.cache.RedisCacheManager.initializeBean(RedisCacheManager.java:457)
+	at java.base/java.lang.Thread.run(Thread.java:810)
+2025-06-15 10:01:31.000 [ERROR] com.myapp.messaging.KafkaConsumer - java.sql.SQLException: Connection refused to host: db-primary.internal:5432
+	at com.myapp.service.OrderService.processRequest(OrderService.java:416)
+	at com.myapp.service.UserService.getConnection(UserService.java:132)
+	at com.myapp.service.UserService.findById(UserService.java:152)
+	at com.myapp.controller.ApiController.authenticate(ApiController.java:372)
+	at com.myapp.service.OrderService.getConnection(OrderService.java:268)
+	at java.base/java.lang.Thread.run(Thread.java:889)
+2025-06-15 10:01:31.000 [ERROR] com.myapp.controller.ApiController - java.lang.ClassNotFoundException: com.myapp.plugins.ExtPlugin
+	at com.myapp.controller.ApiController.initializeBean(ApiController.java:85)
+	at com.myapp.service.UserService.initializeBean(UserService.java:324)
+	at com.myapp.cache.RedisCacheManager.evictCache(RedisCacheManager.java:396)
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:333)
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:386)
+	at java.base/java.lang.Thread.run(Thread.java:898)
+2025-06-15 10:01:31.000 [ERROR] com.myapp.service.OrderService - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cacheManager': Injection of autowired dependencies failed
+	at com.myapp.messaging.KafkaConsumer.evictCache(KafkaConsumer.java:368)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:289)
+	at com.myapp.messaging.KafkaConsumer.processRequest(KafkaConsumer.java:464)
+	at com.myapp.cache.RedisCacheManager.authenticate(RedisCacheManager.java:84)
+	at com.myapp.cache.RedisCacheManager.consumeMessage(RedisCacheManager.java:355)
+	at java.base/java.lang.Thread.run(Thread.java:858)
+2025-06-15 10:01:32.000 [ WARN] o.s.s.w.a.ExceptionTranslationFilter - Authentication failed: Bad credentials for user 'service-account'
+2025-06-15 10:01:34.000 [ WARN] o.s.s.w.a.ExceptionTranslationFilter - Authentication failed: Bad credentials for user 'deploy-bot'
+2025-06-15 10:01:37.000 [ WARN] c.m.service.OrderService - Retry attempt 5/5 for order #70931 after transient failure
+2025-06-15 10:01:39.000 [ WARN] c.m.service.OrderService - Circuit breaker 'orderService' is now OPEN after 13 consecutive failures
+2025-06-15 10:01:41.000 [ INFO] c.m.controller.ApiController - POST /api/v1/orders - 201 Created (42ms)
+2025-06-15 10:01:44.000 [ INFO] c.m.controller.ApiController - POST /api/v1/orders - 201 Created (82ms)
+2025-06-15 10:01:44.000 [ERROR] com.myapp.messaging.KafkaConsumer - org.apache.kafka.common.errors.TimeoutException: Topic partition-10 not present in metadata after 84837ms
+	at org.springframework.beans.factory.BeanFactory.consumeMessage(BeanFactory.java:123)
+	at org.springframework.beans.factory.BeanFactory.getConnection(BeanFactory.java:211)
+	at com.myapp.config.DataSourceConfig.consumeMessage(DataSourceConfig.java:173)
+	at com.myapp.config.DataSourceConfig.processRequest(DataSourceConfig.java:294)
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:153)
+	at java.base/java.lang.Thread.run(Thread.java:892)
+2025-06-15 10:01:45.000 [ERROR] c.z.h.p.HikariPool - HikariPool-1 - Connection is not available, request timed out after 48192ms.
+2025-06-15 10:01:48.000 [ WARN] c.z.h.p.HikariPool - HikariPool-1 - Apparent connection leak detected (open for 236 seconds)
+2025-06-15 10:01:51.000 [ERROR] c.m.messaging.KafkaConsumer - Failed to deserialize message from topic orders-updated
+2025-06-15 10:01:53.000 [ERROR] com.myapp.service.OrderService - com.fasterxml.jackson.databind.JsonMappingException: Unexpected token (START_ARRAY), expected VALUE_STRING at [line: 1, column: 14]
+	at com.myapp.repository.UserRepository.evictCache(UserRepository.java:384)
+	at com.myapp.repository.UserRepository.initializeBean(UserRepository.java:369)
+	at com.myapp.messaging.KafkaConsumer.authenticate(KafkaConsumer.java:313)
+	at com.myapp.messaging.KafkaConsumer.evictCache(KafkaConsumer.java:411)
+	at com.myapp.messaging.KafkaConsumer.consumeMessage(KafkaConsumer.java:389)
+	at java.base/java.lang.Thread.run(Thread.java:858)
+2025-06-15 10:01:53.000 [ERROR] com.myapp.repository.UserRepository - java.lang.ClassNotFoundException: com.myapp.plugins.ExtPlugin
+	at com.myapp.repository.UserRepository.consumeMessage(UserRepository.java:91)
+	at com.myapp.controller.ApiController.getConnection(ApiController.java:140)
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:400)
+	at com.myapp.config.DataSourceConfig.handleOrder(DataSourceConfig.java:456)
+	at com.myapp.repository.UserRepository.initializeBean(UserRepository.java:146)
+	at java.base/java.lang.Thread.run(Thread.java:846)
+2025-06-15 10:01:55.000 [FATAL] com.myapp.controller.ApiController - java.lang.OutOfMemoryError: Java heap space
+	at com.myapp.service.UserService.processRequest(UserService.java:313)
+	at com.myapp.config.DataSourceConfig.findById(DataSourceConfig.java:356)
+	at org.springframework.beans.factory.BeanFactory.handleOrder(BeanFactory.java:476)
+	at com.myapp.service.UserService.initializeBean(UserService.java:270)
+	at org.springframework.beans.factory.BeanFactory.authenticate(BeanFactory.java:204)
+	at java.base/java.lang.Thread.run(Thread.java:823)
+2025-06-15 10:01:55.000 [ INFO] c.m.messaging.KafkaConsumer - Consumed 358 messages from topic orders-created in 4s
+2025-06-15 10:01:55.000 [ INFO] c.m.controller.ApiController - GET /api/v1/users/6566 - 200 OK (36ms)
+2025-06-15 10:01:56.000 [ERROR] com.myapp.controller.ApiController - org.apache.kafka.common.errors.TimeoutException: Topic partition-10 not present in metadata after 63513ms
+	at com.myapp.config.DataSourceConfig.handleOrder(DataSourceConfig.java:157)
+	at com.myapp.service.OrderService.evictCache(OrderService.java:340)
+	at com.myapp.repository.UserRepository.evictCache(UserRepository.java:260)
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:470)
+	at com.myapp.cache.RedisCacheManager.initializeBean(RedisCacheManager.java:321)
+	at java.base/java.lang.Thread.run(Thread.java:879)
+2025-06-15 10:01:57.000 [ERROR] com.myapp.repository.UserRepository - java.lang.NullPointerException: Cannot invoke method on null reference
+	at com.myapp.config.DataSourceConfig.handleOrder(DataSourceConfig.java:110)
+	at com.myapp.repository.UserRepository.findById(UserRepository.java:312)
+	at com.myapp.service.OrderService.findById(OrderService.java:31)
+	at com.myapp.cache.RedisCacheManager.authenticate(RedisCacheManager.java:382)
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:46)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2025-06-15 10:01:57.000 [ERROR] org.springframework.beans.factory.BeanFactory - java.lang.ClassNotFoundException: com.myapp.plugins.ExtPlugin
+	at com.myapp.repository.UserRepository.initializeBean(UserRepository.java:433)
+	at com.myapp.repository.UserRepository.evictCache(UserRepository.java:88)
+	at com.myapp.repository.UserRepository.findById(UserRepository.java:495)
+	at com.myapp.config.DataSourceConfig.findById(DataSourceConfig.java:66)
+	at com.myapp.service.UserService.findById(UserService.java:435)
+	at java.base/java.lang.Thread.run(Thread.java:839)
+2025-06-15 10:01:57.000 [ WARN] c.m.service.OrderService - Retry attempt 4/5 for order #67560 after transient failure
+2025-06-15 10:01:59.000 [ WARN] c.m.service.OrderService - Circuit breaker 'orderService' is now OPEN after 19 consecutive failures
+2025-06-15 10:02:02.000 [ERROR] c.m.messaging.KafkaConsumer - Failed to deserialize message from topic orders-updated
+2025-06-15 10:02:02.000 [ERROR] com.myapp.service.OrderService - com.fasterxml.jackson.databind.JsonMappingException: Unexpected token (START_ARRAY), expected VALUE_STRING at [line: 1, column: 122]
+	at com.myapp.cache.RedisCacheManager.consumeMessage(RedisCacheManager.java:339)
+	at com.myapp.config.DataSourceConfig.processRequest(DataSourceConfig.java:76)
+	at com.myapp.repository.UserRepository.processRequest(UserRepository.java:421)
+	at com.myapp.config.DataSourceConfig.processRequest(DataSourceConfig.java:420)
+	at com.myapp.controller.ApiController.authenticate(ApiController.java:295)
+	at java.base/java.lang.Thread.run(Thread.java:883)
+2025-06-15 10:02:03.000 [ERROR] c.z.h.p.HikariPool - HikariPool-1 - Connection is not available, request timed out after 39114ms.
+2025-06-15 10:02:06.000 [ WARN] c.z.h.p.HikariPool - HikariPool-1 - Apparent connection leak detected (open for 209 seconds)
+2025-06-15 10:02:09.000 [ WARN] c.m.service.OrderService - Retry attempt 5/5 for order #21959 after transient failure
+2025-06-15 10:02:12.000 [ WARN] c.m.service.OrderService - Circuit breaker 'orderService' is now OPEN after 16 consecutive failures
+2025-06-15 10:02:13.000 [ERROR] com.myapp.service.OrderService - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cacheManager': Injection of autowired dependencies failed
+	at com.myapp.messaging.KafkaConsumer.evictCache(KafkaConsumer.java:385)
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:369)
+	at com.myapp.cache.RedisCacheManager.processRequest(RedisCacheManager.java:262)
+	at com.myapp.service.OrderService.consumeMessage(OrderService.java:159)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:425)
+	at java.base/java.lang.Thread.run(Thread.java:851)
+2025-06-15 10:02:16.000 [ INFO] c.m.controller.ApiController - POST /api/v1/orders - 201 Created (20ms)
+2025-06-15 10:02:18.000 [ERROR] c.z.h.p.HikariPool - HikariPool-1 - Connection is not available, request timed out after 36146ms.
+2025-06-15 10:02:21.000 [ WARN] c.z.h.p.HikariPool - HikariPool-1 - Apparent connection leak detected (open for 219 seconds)
+2025-06-15 10:02:23.000 [ WARN] c.m.service.OrderService - Retry attempt 2/5 for order #36680 after transient failure
+2025-06-15 10:02:25.000 [ WARN] c.m.service.OrderService - Circuit breaker 'orderService' is now OPEN after 9 consecutive failures
+2025-06-15 10:02:28.000 [ERROR] c.z.h.p.HikariPool - HikariPool-1 - Connection is not available, request timed out after 52880ms.
+2025-06-15 10:02:28.000 [ WARN] c.z.h.p.HikariPool - HikariPool-1 - Apparent connection leak detected (open for 91 seconds)
+2025-06-15 10:02:29.000 [ INFO] c.m.messaging.KafkaConsumer - Consumed 723 messages from topic orders-created in 2s
+2025-06-15 10:02:29.000 [ERROR] com.myapp.cache.RedisCacheManager - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService': Injection of autowired dependencies failed
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:266)
+	at com.myapp.service.OrderService.findById(OrderService.java:285)
+	at com.myapp.config.DataSourceConfig.initializeBean(DataSourceConfig.java:242)
+	at org.springframework.beans.factory.BeanFactory.authenticate(BeanFactory.java:154)
+	at org.springframework.beans.factory.BeanFactory.findById(BeanFactory.java:226)
+	at java.base/java.lang.Thread.run(Thread.java:824)
+2025-06-15 10:02:30.000 [DEBUG] c.m.repository.UserRepository - Executing query: SELECT * FROM users WHERE id = 8328
+2025-06-15 10:02:33.000 [ INFO] c.m.controller.ApiController - POST /api/v1/orders - 201 Created (90ms)
+2025-06-15 10:02:33.000 [ERROR] com.myapp.config.DataSourceConfig - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cacheManager': Injection of autowired dependencies failed
+	at com.myapp.config.DataSourceConfig.initializeBean(DataSourceConfig.java:458)
+	at org.springframework.beans.factory.BeanFactory.findById(BeanFactory.java:258)
+	at org.springframework.beans.factory.BeanFactory.consumeMessage(BeanFactory.java:200)
+	at com.myapp.cache.RedisCacheManager.authenticate(RedisCacheManager.java:194)
+	at com.myapp.repository.UserRepository.getConnection(UserRepository.java:322)
+	at java.base/java.lang.Thread.run(Thread.java:849)
+2025-06-15 10:02:35.000 [ERROR] com.myapp.service.UserService - java.lang.ClassNotFoundException: com.myapp.plugins.ExtPlugin
+	at org.springframework.beans.factory.BeanFactory.evictCache(BeanFactory.java:227)
+	at com.myapp.controller.ApiController.authenticate(ApiController.java:48)
+	at com.myapp.controller.ApiController.consumeMessage(ApiController.java:475)
+	at com.myapp.service.OrderService.authenticate(OrderService.java:81)
+	at org.springframework.beans.factory.BeanFactory.processRequest(BeanFactory.java:399)
+	at java.base/java.lang.Thread.run(Thread.java:818)
+2025-06-15 10:02:36.000 [ERROR] c.z.h.p.HikariPool - HikariPool-1 - Connection is not available, request timed out after 51455ms.
+2025-06-15 10:02:39.000 [ WARN] c.z.h.p.HikariPool - HikariPool-1 - Apparent connection leak detected (open for 79 seconds)
+2025-06-15 10:02:41.000 [ERROR] c.m.cache.RedisCacheManager - Redis connection failed: Connection refused: redis-2.internal:6379
+2025-06-15 10:02:41.000 [ WARN] c.m.service.OrderService - Retry attempt 5/5 for order #95175 after transient failure
+2025-06-15 10:02:44.000 [ WARN] c.m.service.OrderService - Circuit breaker 'orderService' is now OPEN after 15 consecutive failures
+2025-06-15 10:02:44.000 [ INFO] c.m.messaging.KafkaConsumer - Consumed 741 messages from topic orders-created in 4s
+2025-06-15 10:02:46.000 [ WARN] c.m.service.OrderService - Retry attempt 3/5 for order #92727 after transient failure
+2025-06-15 10:02:46.000 [ WARN] c.m.service.OrderService - Circuit breaker 'orderService' is now OPEN after 12 consecutive failures
+2025-06-15 10:02:46.000 [ERROR] c.z.h.p.HikariPool - HikariPool-1 - Connection is not available, request timed out after 33225ms.
+2025-06-15 10:02:47.000 [ WARN] c.z.h.p.HikariPool - HikariPool-1 - Apparent connection leak detected (open for 173 seconds)
+2025-06-15 10:02:47.000 [ERROR] c.m.messaging.KafkaConsumer - Failed to deserialize message from topic orders-created
+2025-06-15 10:02:49.000 [ERROR] com.myapp.service.UserService - com.fasterxml.jackson.databind.JsonMappingException: Unexpected token (START_ARRAY), expected VALUE_STRING at [line: 1, column: 93]
+	at com.myapp.messaging.KafkaConsumer.consumeMessage(KafkaConsumer.java:250)
+	at com.myapp.controller.ApiController.getConnection(ApiController.java:301)
+	at com.myapp.cache.RedisCacheManager.findById(RedisCacheManager.java:117)
+	at com.myapp.controller.ApiController.handleOrder(ApiController.java:342)
+	at com.myapp.cache.RedisCacheManager.getConnection(RedisCacheManager.java:284)
+	at java.base/java.lang.Thread.run(Thread.java:874)
+2025-06-15 10:02:52.000 [FATAL] com.myapp.config.DataSourceConfig - java.lang.OutOfMemoryError: Direct buffer memory
+	at com.myapp.config.DataSourceConfig.processRequest(DataSourceConfig.java:490)
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:376)
+	at com.myapp.controller.ApiController.handleOrder(ApiController.java:256)
+	at com.myapp.messaging.KafkaConsumer.initializeBean(KafkaConsumer.java:357)
+	at com.myapp.cache.RedisCacheManager.initializeBean(RedisCacheManager.java:263)
+	at java.base/java.lang.Thread.run(Thread.java:838)
+2025-06-15 10:02:52.000 [FATAL] org.springframework.beans.factory.BeanFactory - java.lang.OutOfMemoryError: Direct buffer memory
+	at com.myapp.repository.UserRepository.evictCache(UserRepository.java:322)
+	at com.myapp.messaging.KafkaConsumer.initializeBean(KafkaConsumer.java:388)
+	at com.myapp.config.DataSourceConfig.processRequest(DataSourceConfig.java:454)
+	at com.myapp.cache.RedisCacheManager.initializeBean(RedisCacheManager.java:34)
+	at com.myapp.service.UserService.authenticate(UserService.java:456)
+	at java.base/java.lang.Thread.run(Thread.java:836)
+2025-06-15 10:02:54.000 [ERROR] c.m.cache.RedisCacheManager - Redis connection failed: Connection refused: redis-1.internal:6379
+2025-06-15 10:02:55.000 [FATAL] com.myapp.config.DataSourceConfig - java.lang.OutOfMemoryError: GC overhead limit exceeded
+	at com.myapp.service.OrderService.processRequest(OrderService.java:188)
+	at org.springframework.beans.factory.BeanFactory.processRequest(BeanFactory.java:326)
+	at com.myapp.messaging.KafkaConsumer.findById(KafkaConsumer.java:76)
+	at com.myapp.config.DataSourceConfig.consumeMessage(DataSourceConfig.java:412)
+	at com.myapp.cache.RedisCacheManager.findById(RedisCacheManager.java:132)
+	at java.base/java.lang.Thread.run(Thread.java:816)
+2025-06-15 10:02:57.000 [ERROR] c.m.cache.RedisCacheManager - Redis connection failed: Connection refused: redis-2.internal:6379
+2025-06-15 10:02:59.000 [ INFO] c.m.controller.ApiController - GET /api/v1/users/4211 - 200 OK (35ms)
+2025-06-15 10:02:59.000 [ WARN] o.s.s.w.a.ExceptionTranslationFilter - Authentication failed: Bad credentials for user 'service-account'
+2025-06-15 10:03:02.000 [ERROR] com.myapp.repository.UserRepository - java.sql.SQLException: Too many connections
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:434)
+	at com.myapp.cache.RedisCacheManager.processRequest(RedisCacheManager.java:165)
+	at com.myapp.service.OrderService.authenticate(OrderService.java:218)
+	at com.myapp.config.DataSourceConfig.evictCache(DataSourceConfig.java:451)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:375)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2025-06-15 10:03:02.000 [ERROR] com.myapp.repository.UserRepository - java.sql.SQLException: Statement cancelled due to timeout after 109 seconds
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:362)
+	at com.myapp.cache.RedisCacheManager.handleOrder(RedisCacheManager.java:101)
+	at com.myapp.service.UserService.processRequest(UserService.java:185)
+	at org.springframework.beans.factory.BeanFactory.handleOrder(BeanFactory.java:79)
+	at com.myapp.repository.UserRepository.findById(UserRepository.java:228)
+	at java.base/java.lang.Thread.run(Thread.java:858)
+2025-06-15 10:03:03.000 [ERROR] com.myapp.cache.RedisCacheManager - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'cacheManager': Injection of autowired dependencies failed
+	at com.myapp.cache.RedisCacheManager.handleOrder(RedisCacheManager.java:456)
+	at org.springframework.beans.factory.BeanFactory.evictCache(BeanFactory.java:173)
+	at com.myapp.service.UserService.consumeMessage(UserService.java:141)
+	at org.springframework.beans.factory.BeanFactory.authenticate(BeanFactory.java:150)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:381)
+	at java.base/java.lang.Thread.run(Thread.java:847)
+2025-06-15 10:03:06.000 [ERROR] com.myapp.service.UserService - org.apache.kafka.common.errors.TimeoutException: Topic partition-10 not present in metadata after 83506ms
+	at com.myapp.config.DataSourceConfig.getConnection(DataSourceConfig.java:92)
+	at org.springframework.beans.factory.BeanFactory.handleOrder(BeanFactory.java:369)
+	at com.myapp.repository.UserRepository.processRequest(UserRepository.java:55)
+	at com.myapp.messaging.KafkaConsumer.getConnection(KafkaConsumer.java:94)
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:454)
+	at java.base/java.lang.Thread.run(Thread.java:897)
+2025-06-15 10:03:08.000 [ERROR] com.myapp.repository.UserRepository - org.apache.kafka.common.errors.TimeoutException: Topic partition-9 not present in metadata after 74152ms
+	at com.myapp.controller.ApiController.processRequest(ApiController.java:171)
+	at com.myapp.controller.ApiController.findById(ApiController.java:306)
+	at com.myapp.config.DataSourceConfig.findById(DataSourceConfig.java:86)
+	at com.myapp.service.UserService.findById(UserService.java:37)
+	at com.myapp.messaging.KafkaConsumer.getConnection(KafkaConsumer.java:331)
+	at java.base/java.lang.Thread.run(Thread.java:841)
+2025-06-15 10:03:09.000 [ERROR] com.myapp.service.UserService - java.lang.NullPointerException: Cannot read field "id" because "user" is null
+	at com.myapp.cache.RedisCacheManager.handleOrder(RedisCacheManager.java:411)
+	at com.myapp.service.OrderService.authenticate(OrderService.java:259)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:261)
+	at com.myapp.repository.UserRepository.processRequest(UserRepository.java:402)
+	at com.myapp.config.DataSourceConfig.authenticate(DataSourceConfig.java:359)
+	at java.base/java.lang.Thread.run(Thread.java:803)
+2025-06-15 10:03:12.000 [ERROR] com.myapp.cache.RedisCacheManager - java.lang.NullPointerException: Cannot invoke "String.length()" because "str" is null
+	at com.myapp.service.OrderService.authenticate(OrderService.java:394)
+	at org.springframework.beans.factory.BeanFactory.handleOrder(BeanFactory.java:490)
+	at com.myapp.service.OrderService.consumeMessage(OrderService.java:341)
+	at com.myapp.controller.ApiController.handleOrder(ApiController.java:94)
+	at com.myapp.config.DataSourceConfig.consumeMessage(DataSourceConfig.java:225)
+	at java.base/java.lang.Thread.run(Thread.java:876)
+2025-06-15 10:03:12.000 [ERROR] com.myapp.cache.RedisCacheManager - org.apache.kafka.common.errors.TimeoutException: Topic partition-7 not present in metadata after 93131ms
+	at com.myapp.service.OrderService.getConnection(OrderService.java:250)
+	at org.springframework.beans.factory.BeanFactory.getConnection(BeanFactory.java:241)
+	at com.myapp.messaging.KafkaConsumer.authenticate(KafkaConsumer.java:234)
+	at com.myapp.cache.RedisCacheManager.handleOrder(RedisCacheManager.java:190)
+	at com.myapp.cache.RedisCacheManager.consumeMessage(RedisCacheManager.java:370)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2025-06-15 10:03:12.000 [ERROR] org.springframework.beans.factory.BeanFactory - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService': Injection of autowired dependencies failed
+	at com.myapp.service.OrderService.handleOrder(OrderService.java:77)
+	at com.myapp.cache.RedisCacheManager.handleOrder(RedisCacheManager.java:411)
+	at com.myapp.messaging.KafkaConsumer.findById(KafkaConsumer.java:314)
+	at com.myapp.service.UserService.consumeMessage(UserService.java:373)
+	at com.myapp.service.OrderService.evictCache(OrderService.java:211)
+	at java.base/java.lang.Thread.run(Thread.java:885)
+2025-06-15 10:03:12.000 [DEBUG] c.m.repository.UserRepository - Executing query: SELECT * FROM users WHERE id = 6930
+2025-06-15 10:03:14.000 [ INFO] c.m.messaging.KafkaConsumer - Consumed 714 messages from topic orders-created in 3s
+2025-06-15 10:03:17.000 [ERROR] com.myapp.controller.ApiController - java.lang.NullPointerException: null
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:209)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:420)
+	at com.myapp.config.DataSourceConfig.getConnection(DataSourceConfig.java:443)
+	at com.myapp.cache.RedisCacheManager.processRequest(RedisCacheManager.java:341)
+	at com.myapp.config.DataSourceConfig.processRequest(DataSourceConfig.java:122)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2025-06-15 10:03:19.000 [ WARN] o.s.s.w.a.ExceptionTranslationFilter - Authentication failed: Bad credentials for user 'service-account'
+2025-06-15 10:03:22.000 [ERROR] com.myapp.controller.ApiController - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService': Injection of autowired dependencies failed
+	at com.myapp.service.OrderService.findById(OrderService.java:409)
+	at com.myapp.service.UserService.handleOrder(UserService.java:412)
+	at com.myapp.repository.UserRepository.evictCache(UserRepository.java:244)
+	at org.springframework.beans.factory.BeanFactory.consumeMessage(BeanFactory.java:110)
+	at com.myapp.messaging.KafkaConsumer.initializeBean(KafkaConsumer.java:399)
+	at java.base/java.lang.Thread.run(Thread.java:841)
+2025-06-15 10:03:22.000 [ERROR] c.m.cache.RedisCacheManager - Redis connection failed: Connection refused: redis-3.internal:6379
+2025-06-15 10:03:23.000 [ INFO] c.m.controller.ApiController - POST /api/v1/orders - 201 Created (59ms)
+2025-06-15 10:03:23.000 [ERROR] c.m.cache.RedisCacheManager - Redis connection failed: Connection refused: redis-1.internal:6379
+2025-06-15 10:03:26.000 [ERROR] com.myapp.cache.RedisCacheManager - java.lang.ClassNotFoundException: org.apache.kafka.common.serialization.CustomDeserializer
+	at org.springframework.beans.factory.BeanFactory.evictCache(BeanFactory.java:169)
+	at com.myapp.repository.UserRepository.handleOrder(UserRepository.java:206)
+	at com.myapp.cache.RedisCacheManager.handleOrder(RedisCacheManager.java:175)
+	at org.springframework.beans.factory.BeanFactory.initializeBean(BeanFactory.java:53)
+	at com.myapp.repository.UserRepository.evictCache(UserRepository.java:336)
+	at java.base/java.lang.Thread.run(Thread.java:807)
+2025-06-15 10:03:27.000 [ERROR] com.myapp.repository.UserRepository - java.lang.NullPointerException: Cannot read field "id" because "user" is null
+	at com.myapp.config.DataSourceConfig.initializeBean(DataSourceConfig.java:197)
+	at com.myapp.service.OrderService.processRequest(OrderService.java:284)
+	at com.myapp.cache.RedisCacheManager.findById(RedisCacheManager.java:96)
+	at com.myapp.cache.RedisCacheManager.getConnection(RedisCacheManager.java:286)
+	at com.myapp.messaging.KafkaConsumer.handleOrder(KafkaConsumer.java:233)
+	at java.base/java.lang.Thread.run(Thread.java:894)
+2025-06-15 10:03:27.000 [ERROR] org.springframework.beans.factory.BeanFactory - java.lang.NullPointerException: Cannot invoke method on null reference
+	at com.myapp.messaging.KafkaConsumer.evictCache(KafkaConsumer.java:323)
+	at com.myapp.cache.RedisCacheManager.evictCache(RedisCacheManager.java:178)
+	at com.myapp.service.OrderService.evictCache(OrderService.java:40)
+	at com.myapp.messaging.KafkaConsumer.findById(KafkaConsumer.java:440)
+	at org.springframework.beans.factory.BeanFactory.consumeMessage(BeanFactory.java:75)
+	at java.base/java.lang.Thread.run(Thread.java:855)
+2025-06-15 10:03:30.000 [ INFO] c.m.controller.ApiController - GET /api/v1/users/3987 - 200 OK (32ms)
+2025-06-15 10:03:32.000 [ERROR] com.myapp.config.DataSourceConfig - org.apache.kafka.common.errors.TimeoutException: Topic partition-6 not present in metadata after 117050ms
+	at com.myapp.repository.UserRepository.consumeMessage(UserRepository.java:428)
+	at com.myapp.controller.ApiController.handleOrder(ApiController.java:291)
+	at com.myapp.service.OrderService.getConnection(OrderService.java:493)
+	at com.myapp.messaging.KafkaConsumer.consumeMessage(KafkaConsumer.java:402)
+	at com.myapp.controller.ApiController.getConnection(ApiController.java:82)
+	at java.base/java.lang.Thread.run(Thread.java:818)
+2025-06-15 10:03:32.000 [ERROR] com.myapp.controller.ApiController - java.lang.ClassNotFoundException: com.myapp.legacy.OldService
+	at com.myapp.controller.ApiController.authenticate(ApiController.java:267)
+	at org.springframework.beans.factory.BeanFactory.consumeMessage(BeanFactory.java:472)
+	at com.myapp.messaging.KafkaConsumer.findById(KafkaConsumer.java:255)
+	at com.myapp.service.OrderService.authenticate(OrderService.java:256)
+	at com.myapp.config.DataSourceConfig.initializeBean(DataSourceConfig.java:332)
+	at java.base/java.lang.Thread.run(Thread.java:807)
+2025-06-15 10:03:35.000 [ERROR] com.myapp.config.DataSourceConfig - org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService': Injection of autowired dependencies failed
+	at org.springframework.beans.factory.BeanFactory.processRequest(BeanFactory.java:59)
+	at com.myapp.messaging.KafkaConsumer.initializeBean(KafkaConsumer.java:69)
+	at com.myapp.service.OrderService.evictCache(OrderService.java:266)
+	at com.myapp.service.UserService.authenticate(UserService.java:495)
+	at com.myapp.repository.UserRepository.consumeMessage(UserRepository.java:339)
+	at java.base/java.lang.Thread.run(Thread.java:860)
+2025-06-15 10:03:37.000 [ERROR] com.myapp.service.OrderService - java.sql.SQLException: Deadlock found when trying to get lock; try restarting transaction
+	at com.myapp.service.OrderService.findById(OrderService.java:50)
+	at com.myapp.repository.UserRepository.authenticate(UserRepository.java:254)
+	at com.myapp.controller.ApiController.consumeMessage(ApiController.java:220)
+	at com.myapp.config.DataSourceConfig.evictCache(DataSourceConfig.java:239)
+	at com.myapp.messaging.KafkaConsumer.processRequest(KafkaConsumer.java:434)
+	at java.base/java.lang.Thread.run(Thread.java:880)
+2025-06-15 10:03:39.000 [ERROR] c.m.messaging.KafkaConsumer - Failed to deserialize message from topic orders-created
+2025-06-15 10:03:41.000 [ERROR] com.myapp.cache.RedisCacheManager - com.fasterxml.jackson.databind.JsonMappingException: Unexpected token (START_ARRAY), expected VALUE_STRING at [line: 1, column: 34]
+	at com.myapp.config.DataSourceConfig.findById(DataSourceConfig.java:200)
+	at com.myapp.service.OrderService.findById(OrderService.java:499)
+	at com.myapp.messaging.KafkaConsumer.initializeBean(KafkaConsumer.java:365)
+	at com.myapp.cache.RedisCacheManager.findById(RedisCacheManager.java:334)
+	at com.myapp.service.OrderService.initializeBean(OrderService.java:316)
+	at java.base/java.lang.Thread.run(Thread.java:848)
+2025-06-15 10:03:42.000 [ERROR] c.m.messaging.KafkaConsumer - Failed to deserialize message from topic orders-updated
+2025-06-15 10:03:45.000 [ERROR] com.myapp.service.OrderService - com.fasterxml.jackson.databind.JsonMappingException: Unexpected token (START_ARRAY), expected VALUE_STRING at [line: 1, column: 181]
+	at com.myapp.messaging.KafkaConsumer.processRequest(KafkaConsumer.java:215)
+	at com.myapp.config.DataSourceConfig.findById(DataSourceConfig.java:139)
+	at com.myapp.messaging.KafkaConsumer.authenticate(KafkaConsumer.java:128)
+	at com.myapp.repository.UserRepository.findById(UserRepository.java:109)
+	at com.myapp.service.OrderService.initializeBean(OrderService.java:462)
+	at java.base/java.lang.Thread.run(Thread.java:900)
+2025-06-15 10:03:46.000 [ERROR] com.myapp.messaging.KafkaConsumer - java.lang.NullPointerException: Cannot invoke method on null reference
+	at com.myapp.cache.RedisCacheManager.findById(RedisCacheManager.java:113)
+	at com.myapp.controller.ApiController.findById(ApiController.java:399)
+	at org.springframework.beans.factory.BeanFactory.processRequest(BeanFactory.java:240)
+	at com.myapp.messaging.KafkaConsumer.getConnection(KafkaConsumer.java:257)
+	at com.myapp.config.DataSourceConfig.authenticate(DataSourceConfig.java:149)
+	at java.base/java.lang.Thread.run(Thread.java:868)
+2025-06-15 10:03:48.000 [ERROR] com.myapp.repository.UserRepository - java.lang.ClassNotFoundException: com.myapp.plugins.ExtPlugin
+	at org.springframework.beans.factory.BeanFactory.authenticate(BeanFactory.java:423)
+	at com.myapp.config.DataSourceConfig.evictCache(DataSourceConfig.java:287)
+	at com.myapp.cache.RedisCacheManager.findById(RedisCacheManager.java:448)
+	at com.myapp.repository.UserRepository.findById(UserRepository.java:476)
+	at com.myapp.config.DataSourceConfig.processRequest(DataSourceConfig.java:358)
+	at java.base/java.lang.Thread.run(Thread.java:861)
+2025-06-15 10:03:48.000 [ INFO] c.m.controller.ApiController - POST /api/v1/orders - 201 Created (161ms)
+2025-06-15 10:03:48.000 [ WARN] o.s.s.w.a.ExceptionTranslationFilter - Authentication failed: Bad credentials for user 'deploy-bot'
+2025-06-15 10:03:53.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 86% (3890MB/4020MB)
+2025-06-15 10:04:00.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 99% (3762MB/4018MB)
+2025-06-15 10:04:03.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 99% (3613MB/4057MB)
+2025-06-15 10:04:06.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 91% (3527MB/4050MB)
+2025-06-15 10:04:09.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 91% (3541MB/4047MB)
+2025-06-15 10:04:12.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 90% (3976MB/4012MB)
+2025-06-15 10:04:17.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 87% (3519MB/4036MB)
+2025-06-15 10:04:22.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 97% (3861MB/4060MB)
+2025-06-15 10:04:27.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 85% (3963MB/4010MB)
+2025-06-15 10:04:33.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 88% (3927MB/4019MB)
+2025-06-15 10:04:36.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 97% (3647MB/4030MB)
+2025-06-15 10:04:40.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 85% (3622MB/4053MB)
+2025-06-15 10:04:41.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 86% (3928MB/4063MB)
+2025-06-15 10:04:47.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 94% (3623MB/4091MB)
+2025-06-15 10:04:52.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 91% (3500MB/4078MB)
+2025-06-15 10:04:54.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 94% (3713MB/4023MB)
+2025-06-15 10:04:59.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 90% (3534MB/4067MB)
+2025-06-15 10:05:06.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 98% (3740MB/4005MB)
+2025-06-15 10:05:11.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 89% (3882MB/4002MB)
+2025-06-15 10:05:12.000 [ WARN] o.s.b.a.HeapMemoryMonitor - Heap memory usage: 90% (3623MB/4093MB)

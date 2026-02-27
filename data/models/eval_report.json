@@ -1,0 +1,41 @@
+{
+  "best_params": {
+    "clf__C": 1.0,
+    "clf__class_weight": "balanced",
+    "features__tfidf_char__max_features": 80000,
+    "features__tfidf_normalized__tfidf__max_features": 50000
+  },
+  "best_cv_look_f1": 0.792,
+  "grid_search_time_s": 772.7,
+  "train_size": 30811,
+  "test_size": 4000,
+  "holdout_datasets": [
+    "BGL",
+    "Thunderbird"
+  ],
+  "overall": {
+    "accuracy": 0.5268,
+    "look_precision": 0.8919,
+    "look_recall": 0.3129,
+    "look_f1": 0.4633,
+    "skip_precision": 0.4183,
+    "skip_recall": 0.9287,
+    "skip_f1": 0.5768
+  },
+  "per_dataset": {
+    "BGL": {
+      "n": 2000,
+      "accuracy": 0.4765,
+      "look_precision": 0.8828,
+      "look_recall": 0.4319,
+      "look_f1": 0.58
+    },
+    "Thunderbird": {
+      "n": 2000,
+      "accuracy": 0.577,
+      "look_precision": 0.9691,
+      "look_recall": 0.1003,
+      "look_f1": 0.1818
+    }
+  }
+}

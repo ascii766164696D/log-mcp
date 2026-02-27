@@ -1,0 +1,844 @@
+{
+  "summary": {
+    "total_lines": 449755983,
+    "total_classify_time_s": 324.95,
+    "wall_time_s": 325.33,
+    "overall_lines_per_second": 1384077,
+    "total_errors": 35911283,
+    "total_errors_captured": 35892861,
+    "total_warns": 14347199,
+    "total_warns_captured": 14346609,
+    "error_capture_rate": 99.9487,
+    "model_load_time_s": 0.02
+  },
+  "datasets": {
+    "BGL": {
+      "n_lines": 4747963,
+      "n_look": 1971100,
+      "n_skip": 2776863,
+      "pct_look": 41.51,
+      "classify_time_s": 3.25,
+      "lines_per_second": 1462129,
+      "keyword_analysis": {
+        "error_lines": 1339591,
+        "error_captured": 1321339,
+        "error_missed": 18252,
+        "error_capture_rate": 98.64,
+        "warn_lines": 23336,
+        "warn_captured": 23336,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 1,
+          "prob": 0.9458,
+          "text": "- 1117838570 2005.06.03 R02-M1-N0-C:J12-U11 2005-06-03-15.42.50.363779 R02-M1-N0-C:J12-U11 RAS KERNEL INFO instruction c"
+        },
+        {
+          "line": 2,
+          "prob": 0.947,
+          "text": "- 1117838570 2005.06.03 R02-M1-N0-C:J12-U11 2005-06-03-15.42.50.527847 R02-M1-N0-C:J12-U11 RAS KERNEL INFO instruction c"
+        },
+        {
+          "line": 3,
+          "prob": 0.946,
+          "text": "- 1117838570 2005.06.03 R02-M1-N0-C:J12-U11 2005-06-03-15.42.50.675872 R02-M1-N0-C:J12-U11 RAS KERNEL INFO instruction c"
+        },
+        {
+          "line": 4,
+          "prob": 0.9449,
+          "text": "- 1117838570 2005.06.03 R02-M1-N0-C:J12-U11 2005-06-03-15.42.50.823719 R02-M1-N0-C:J12-U11 RAS KERNEL INFO instruction c"
+        },
+        {
+          "line": 5,
+          "prob": 0.945,
+          "text": "- 1117838570 2005.06.03 R02-M1-N0-C:J12-U11 2005-06-03-15.42.50.982731 R02-M1-N0-C:J12-U11 RAS KERNEL INFO instruction c"
+        }
+      ],
+      "n_files": 1
+    },
+    "HDFS": {
+      "n_lines": 11175629,
+      "n_look": 366506,
+      "n_skip": 10809123,
+      "pct_look": 3.28,
+      "classify_time_s": 6.89,
+      "lines_per_second": 1620834,
+      "keyword_analysis": {
+        "error_lines": 365474,
+        "error_captured": 365474,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 1032,
+        "warn_captured": 1032,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 6336,
+          "prob": 0.9474,
+          "text": "081109 203633 147 INFO dfs.DataNode$DataXceiver: writeBlock blk_-3102267849859399193 received exception java.net.SocketT"
+        },
+        {
+          "line": 6493,
+          "prob": 0.9255,
+          "text": "081109 203634 190 INFO dfs.DataNode$PacketResponder: PacketResponder blk_-3102267849859399193 2 Exception java.io.EOFExc"
+        },
+        {
+          "line": 28755,
+          "prob": 0.9905,
+          "text": "081109 203932 307 INFO dfs.DataNode$DataXceiver: writeBlock blk_7648436334209344608 received exception java.io.IOExcepti"
+        },
+        {
+          "line": 30815,
+          "prob": 0.9893,
+          "text": "081109 203948 305 INFO dfs.DataNode$DataXceiver: writeBlock blk_-5447417104355795463 received exception java.io.IOExcept"
+        },
+        {
+          "line": 32522,
+          "prob": 0.9899,
+          "text": "081109 204002 317 INFO dfs.DataNode$DataXceiver: writeBlock blk_-3048100091565287612 received exception java.io.IOExcept"
+        }
+      ],
+      "n_files": 1
+    },
+    "OpenStack-abnormal": {
+      "n_lines": 18434,
+      "n_look": 500,
+      "n_skip": 17934,
+      "pct_look": 2.71,
+      "classify_time_s": 0.02,
+      "lines_per_second": 765263,
+      "keyword_analysis": {
+        "error_lines": 197,
+        "error_captured": 197,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 274,
+        "warn_captured": 274,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 15,
+          "prob": 0.9847,
+          "text": "nova-compute.log.2017-05-14_21:27:09 2017-05-14 19:39:09.660 2931 WARNING nova.compute.manager [req-addc1839-2ed5-4778-b"
+        },
+        {
+          "line": 73,
+          "prob": 0.9587,
+          "text": "nova-api.log.2017-05-14_21:27:04 2017-05-14 19:39:33.233 25746 INFO nova.api.openstack.wsgi [req-3d0b9329-15c3-48ea-8740"
+        },
+        {
+          "line": 75,
+          "prob": 0.997,
+          "text": "nova-compute.log.2017-05-14_21:27:09 2017-05-14 19:39:36.041 2931 WARNING nova.virt.libvirt.imagecache [req-addc1839-2ed"
+        },
+        {
+          "line": 163,
+          "prob": 0.9609,
+          "text": "nova-api.log.2017-05-14_21:27:04 2017-05-14 19:40:15.120 25746 INFO nova.api.openstack.wsgi [req-d055d9ee-9583-45f9-b14a"
+        },
+        {
+          "line": 165,
+          "prob": 0.9968,
+          "text": "nova-compute.log.2017-05-14_21:27:09 2017-05-14 19:40:16.170 2931 WARNING nova.virt.libvirt.imagecache [req-addc1839-2ed"
+        }
+      ],
+      "n_files": 1
+    },
+    "OpenStack-normal": {
+      "n_lines": 52312,
+      "n_look": 1551,
+      "n_skip": 50761,
+      "pct_look": 2.96,
+      "classify_time_s": 0.06,
+      "lines_per_second": 827248,
+      "keyword_analysis": {
+        "error_lines": 584,
+        "error_captured": 584,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 853,
+        "warn_captured": 853,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 57,
+          "prob": 0.9972,
+          "text": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:00:20.345 2931 WARNING nova.virt.libvirt.imagecache [req-addc1839-2"
+        },
+        {
+          "line": 60,
+          "prob": 0.9582,
+          "text": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 00:00:21.067 25746 INFO nova.api.openstack.wsgi [req-0b851395-2895-44b9-82"
+        },
+        {
+          "line": 147,
+          "prob": 0.9972,
+          "text": "nova-compute.log.1.2017-05-16_13:55:31 2017-05-16 00:01:01.698 2931 WARNING nova.virt.libvirt.imagecache [req-addc1839-2"
+        },
+        {
+          "line": 151,
+          "prob": 0.9685,
+          "text": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 00:01:03.114 25746 INFO nova.api.openstack.wsgi [req-fff6fe1a-cbb6-4b38-80"
+        },
+        {
+          "line": 236,
+          "prob": 0.9595,
+          "text": "nova-api.log.1.2017-05-16_13:53:08 2017-05-16 00:01:43.495 25746 INFO nova.api.openstack.wsgi [req-a0893d5a-dc60-4c49-82"
+        }
+      ],
+      "n_files": 1
+    },
+    "Hadoop": {
+      "n_lines": 394310,
+      "n_look": 232039,
+      "n_skip": 162271,
+      "pct_look": 58.85,
+      "classify_time_s": 0.87,
+      "lines_per_second": 452717,
+      "keyword_analysis": {
+        "error_lines": 12156,
+        "error_captured": 12156,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 6037,
+        "warn_captured": 6037,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 54,
+          "prob": 0.9791,
+          "text": "2015-10-17 21:47:52,462 INFO [main] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerRequestor: maxTaskFailuresPerNode i"
+        },
+        {
+          "line": 122,
+          "prob": 0.7022,
+          "text": "2015-10-17 21:47:53,649 INFO [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerRequestor: getR"
+        },
+        {
+          "line": 123,
+          "prob": 0.9254,
+          "text": "2015-10-17 21:47:53,654 INFO [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerAllocator: Reca"
+        },
+        {
+          "line": 131,
+          "prob": 0.9295,
+          "text": "2015-10-17 21:47:54,679 INFO [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerAllocator: Reca"
+        },
+        {
+          "line": 179,
+          "prob": 0.7148,
+          "text": "2015-10-17 21:47:55,682 INFO [RMCommunicator Allocator] org.apache.hadoop.mapreduce.v2.app.rm.RMContainerRequestor: getR"
+        }
+      ],
+      "n_files": 978
+    },
+    "HPC": {
+      "n_lines": 433490,
+      "n_look": 222402,
+      "n_skip": 211088,
+      "pct_look": 51.3,
+      "classify_time_s": 0.24,
+      "lines_per_second": 1816207,
+      "keyword_analysis": {
+        "error_lines": 115645,
+        "error_captured": 115645,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 50682,
+        "warn_captured": 50682,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 1,
+          "prob": 0.9977,
+          "text": "460903 resourcemgmtdaeomon node-25 server subsys 1145552216 1 failed to configure resourcemgmt subsystem err = 10"
+        },
+        {
+          "line": 2,
+          "prob": 0.9975,
+          "text": "460919 resourcemgmtdaeomon node-25 server subsys 1145552221 1 failed to configure resourcemgmt subsystem err = 10"
+        },
+        {
+          "line": 3,
+          "prob": 0.9976,
+          "text": "460932 resourcemgmtdaeomon node-25 server subsys 1145552226 1 failed to configure resourcemgmt subsystem err = 10"
+        },
+        {
+          "line": 4,
+          "prob": 0.9975,
+          "text": "460949 resourcemgmtdaeomon node-25 server subsys 1145552232 1 failed to configure resourcemgmt subsystem err = 10"
+        },
+        {
+          "line": 5,
+          "prob": 0.9975,
+          "text": "460971 resourcemgmtdaeomon node-25 server subsys 1145552237 1 failed to configure resourcemgmt subsystem err = 10"
+        }
+      ],
+      "n_files": 1
+    },
+    "Linux": {
+      "n_lines": 25567,
+      "n_look": 19157,
+      "n_skip": 6410,
+      "pct_look": 74.93,
+      "classify_time_s": 0.02,
+      "lines_per_second": 1455185,
+      "keyword_analysis": {
+        "error_lines": 4169,
+        "error_captured": 4149,
+        "error_missed": 20,
+        "error_capture_rate": 99.52,
+        "warn_lines": 19,
+        "warn_captured": 19,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 38,
+          "prob": 0.9975,
+          "text": "Jun  9 06:06:20 combo kernel: There is already a security framework initialized, register_security failed."
+        },
+        {
+          "line": 39,
+          "prob": 0.9967,
+          "text": "Jun  9 06:06:20 combo kernel: Failure registering capabilities with the kernel"
+        },
+        {
+          "line": 53,
+          "prob": 0.9869,
+          "text": "Jun  9 06:06:21 combo kernel: Enabling unmasked SIMD FPU exception support... done."
+        },
+        {
+          "line": 67,
+          "prob": 0.9755,
+          "text": "Jun  9 06:06:21 combo kernel: PCI: Invalid ACPI-PCI IRQ routing table"
+        },
+        {
+          "line": 88,
+          "prob": 0.5011,
+          "text": "Jun  9 06:06:21 combo kernel: agpgart: Maximum main memory to use for agp memory: 93M"
+        }
+      ],
+      "n_files": 1
+    },
+    "Mac": {
+      "n_lines": 117283,
+      "n_look": 40506,
+      "n_skip": 76777,
+      "pct_look": 34.54,
+      "classify_time_s": 0.1,
+      "lines_per_second": 1211650,
+      "keyword_analysis": {
+        "error_lines": 14420,
+        "error_captured": 14420,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 323,
+        "warn_captured": 323,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 3,
+          "prob": 0.5135,
+          "text": "Jul  1 09:00:55 calvisitor-10-105-160-95 kernel[0]: AirPort: Link Down on awdl0. Reason 1 (Unspecified)."
+        },
+        {
+          "line": 25,
+          "prob": 0.7586,
+          "text": "Jul  1 09:00:55 calvisitor-10-105-160-95 kernel[0]: AirPort: Link Down on en0. Reason 8 (Disassociated because station l"
+        },
+        {
+          "line": 30,
+          "prob": 0.9949,
+          "text": "Jul  1 09:00:55 calvisitor-10-105-160-95 symptomsd[215]: -[NetworkAnalyticsEngine _writeJournalRecord:fromCellFingerprin"
+        },
+        {
+          "line": 49,
+          "prob": 0.7809,
+          "text": "Jul  1 09:00:56 authorMacBook-Pro kernel[0]: in6_unlink_ifa: IPv6 address 0x77c911455cd9bcdb has no prefix"
+        },
+        {
+          "line": 50,
+          "prob": 0.9993,
+          "text": "Jul  1 09:00:56 authorMacBook-Pro mDNSResponder[91]:  69: Could not write data to client PID[11203](Mail) because of err"
+        }
+      ],
+      "n_files": 1
+    },
+    "SSH": {
+      "n_lines": 655147,
+      "n_look": 586511,
+      "n_skip": 68636,
+      "pct_look": 89.52,
+      "classify_time_s": 0.45,
+      "lines_per_second": 1467766,
+      "keyword_analysis": {
+        "error_lines": 374228,
+        "error_captured": 374228,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 8,
+        "warn_captured": 8,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 1,
+          "prob": 0.9994,
+          "text": "Dec 10 06:55:46 LabSZ sshd[24200]: reverse mapping checking getaddrinfo for ns.marryaldkfaczcz.com [173.234.31.186] fail"
+        },
+        {
+          "line": 2,
+          "prob": 0.9803,
+          "text": "Dec 10 06:55:46 LabSZ sshd[24200]: Invalid user webmaster from 173.234.31.186"
+        },
+        {
+          "line": 3,
+          "prob": 0.9912,
+          "text": "Dec 10 06:55:46 LabSZ sshd[24200]: input_userauth_request: invalid user webmaster [preauth]"
+        },
+        {
+          "line": 4,
+          "prob": 0.8459,
+          "text": "Dec 10 06:55:46 LabSZ sshd[24200]: pam_unix(sshd:auth): check pass; user unknown"
+        },
+        {
+          "line": 5,
+          "prob": 0.989,
+          "text": "Dec 10 06:55:46 LabSZ sshd[24200]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rho"
+        }
+      ],
+      "n_files": 1
+    },
+    "Zookeeper": {
+      "n_lines": 74380,
+      "n_look": 50388,
+      "n_skip": 23992,
+      "pct_look": 67.74,
+      "classify_time_s": 0.06,
+      "lines_per_second": 1296421,
+      "keyword_analysis": {
+        "error_lines": 12886,
+        "error_captured": 12886,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 36259,
+        "warn_captured": 35669,
+        "warn_missed": 590,
+        "warn_capture_rate": 98.37
+      },
+      "sample_look": [
+        {
+          "line": 12,
+          "prob": 0.992,
+          "text": "2015-07-29 17:41:41,680 - INFO  [main:QuorumPeer@429] - currentEpoch not found! Creating with a reasonable default of 0."
+        },
+        {
+          "line": 13,
+          "prob": 0.9918,
+          "text": "2015-07-29 17:41:41,683 - INFO  [main:QuorumPeer@444] - acceptedEpoch not found! Creating with a reasonable default of 0"
+        },
+        {
+          "line": 15,
+          "prob": 0.5044,
+          "text": "2015-07-29 17:41:41,714 - INFO  [QuorumPeer[myid=1]/0:0:0:0:0:0:0:0:2181:QuorumPeer@670] - LOOKING"
+        },
+        {
+          "line": 18,
+          "prob": 0.9996,
+          "text": "2015-07-29 17:41:41,733 - WARN  [WorkerSender[myid=1]:QuorumCnxManager@368] - Cannot open channel to 2 at election addre"
+        },
+        {
+          "line": 19,
+          "prob": 0.9996,
+          "text": "2015-07-29 17:41:41,738 - WARN  [WorkerSender[myid=1]:QuorumCnxManager@368] - Cannot open channel to 3 at election addre"
+        }
+      ],
+      "n_files": 1
+    },
+    "HealthApp": {
+      "n_lines": 253395,
+      "n_look": 3234,
+      "n_skip": 250161,
+      "pct_look": 1.28,
+      "classify_time_s": 0.15,
+      "lines_per_second": 1668144,
+      "keyword_analysis": {
+        "error_lines": 212,
+        "error_captured": 212,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 0,
+        "warn_captured": 0,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 722,
+          "prob": 0.9695,
+          "text": "20171223-22:19:58:380|HiH_HiHealthDataInsertStore|30002312|saveHealthDetailData() saveOneDetailData fail hiHealthData = "
+        },
+        {
+          "line": 725,
+          "prob": 0.969,
+          "text": "20171223-22:19:58:381|HiH_HiHealthDataInsertStore|30002312|saveHealthDetailData() saveOneDetailData fail hiHealthData = "
+        },
+        {
+          "line": 730,
+          "prob": 0.9802,
+          "text": "20171223-22:19:58:411|HiH_HiHealthBinder|30002312|insertHiHealthData() bulkSaveDetailHiHealthData fail errorCode = 4,err"
+        },
+        {
+          "line": 733,
+          "prob": 0.9337,
+          "text": "20171223-22:19:58:411|Step_LSC|30002312|uploadStaticsToDB failed message=true"
+        },
+        {
+          "line": 742,
+          "prob": 0.5264,
+          "text": "20171223-22:19:58:417|HiH_HiSyncUtil|30002312|checkFirstSyncByType no such data in db ,type is 1 deviceCode is 0"
+        }
+      ],
+      "n_files": 1
+    },
+    "Apache": {
+      "n_lines": 56482,
+      "n_look": 42630,
+      "n_skip": 13852,
+      "pct_look": 75.48,
+      "classify_time_s": 0.04,
+      "lines_per_second": 1556083,
+      "keyword_analysis": {
+        "error_lines": 38081,
+        "error_captured": 37931,
+        "error_missed": 150,
+        "error_capture_rate": 99.61,
+        "warn_lines": 168,
+        "warn_captured": 168,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 2,
+          "prob": 0.8989,
+          "text": "[Thu Jun 09 06:07:04 2005] [notice] LDAP: SSL support unavailable"
+        },
+        {
+          "line": 7,
+          "prob": 0.8955,
+          "text": "[Thu Jun 09 06:07:05 2005] [notice] LDAP: SSL support unavailable"
+        },
+        {
+          "line": 8,
+          "prob": 0.9972,
+          "text": "[Thu Jun 09 06:07:05 2005] [error] env.createBean2(): Factory error creating channel.jni:jni ( channel.jni, jni)"
+        },
+        {
+          "line": 9,
+          "prob": 0.9999,
+          "text": "[Thu Jun 09 06:07:05 2005] [error] config.update(): Can't create channel.jni:jni"
+        },
+        {
+          "line": 10,
+          "prob": 0.999,
+          "text": "[Thu Jun 09 06:07:05 2005] [error] env.createBean2(): Factory error creating vm: ( vm, )"
+        }
+      ],
+      "n_files": 1
+    },
+    "Proxifier": {
+      "n_lines": 21329,
+      "n_look": 887,
+      "n_skip": 20442,
+      "pct_look": 4.16,
+      "classify_time_s": 0.02,
+      "lines_per_second": 1278069,
+      "keyword_analysis": {
+        "error_lines": 882,
+        "error_captured": 882,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 2,
+        "warn_captured": 2,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 2583,
+          "prob": 0.9931,
+          "text": "[10.30 17:15:42] QQ.exe - tcpconn6.tencent.com:443 error : A connection request was canceled before the completion. "
+        },
+        {
+          "line": 2584,
+          "prob": 0.9935,
+          "text": "[10.30 17:15:42] QQ.exe - tcpconn6.tencent.com:80 error : A connection request was canceled before the completion. "
+        },
+        {
+          "line": 2587,
+          "prob": 0.9893,
+          "text": "[10.30 17:16:10] QQ.exe - tcpconn4.tencent.com:80 error : Could not connect through proxy proxy.cse.cuhk.edu.hk:5070 - P"
+        },
+        {
+          "line": 2588,
+          "prob": 0.9887,
+          "text": "[10.30 17:16:10] QQ.exe - tcpconn4.tencent.com:443 error : Could not connect through proxy proxy.cse.cuhk.edu.hk:5070 - "
+        },
+        {
+          "line": 4104,
+          "prob": 0.9999,
+          "text": "[10.30 17:45:53] WeChat.exe - long.weixin.qq.com:8080 error : Could not connect through proxy proxy.cse.cuhk.edu.hk:5070"
+        }
+      ],
+      "n_files": 1
+    },
+    "Android": {
+      "n_lines": 1555005,
+      "n_look": 180266,
+      "n_skip": 1374739,
+      "pct_look": 11.59,
+      "classify_time_s": 1.13,
+      "lines_per_second": 1372938,
+      "keyword_analysis": {
+        "error_lines": 77695,
+        "error_captured": 77695,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 1763,
+        "warn_captured": 1763,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 12,
+          "prob": 0.9943,
+          "text": "12-17 19:31:36.264  2852  3328 D KeyguardService: Caller checkPermission fail"
+        },
+        {
+          "line": 70,
+          "prob": 0.996,
+          "text": "12-17 19:31:36.319   802   802 E Thermal-daemon: [Thermal_Hw] temperature_valid, battery : temperature is invalid, inval"
+        },
+        {
+          "line": 71,
+          "prob": 0.9515,
+          "text": "12-17 19:31:36.319   802   802 E Thermal-daemon: [Thermal_Hw] temperature_filter: get invalid temperature, use old temp"
+        },
+        {
+          "line": 81,
+          "prob": 0.9905,
+          "text": "12-17 19:31:36.331 31949 31967 I TCP     : WatchThread{4786} TcpSocket.close(TcpSocket.java:158) shutdown output: java.n"
+        },
+        {
+          "line": 82,
+          "prob": 0.9882,
+          "text": "12-17 19:31:36.332 31949 31967 I TCP     : WatchThread{4786} TcpSocket.close(TcpSocket.java:170) shutdown input: java.ne"
+        }
+      ],
+      "n_files": 1
+    },
+    "Thunderbird": {
+      "n_lines": 211212192,
+      "n_look": 63277085,
+      "n_skip": 147935107,
+      "pct_look": 29.96,
+      "classify_time_s": 139.22,
+      "lines_per_second": 1517130,
+      "keyword_analysis": {
+        "error_lines": 32718329,
+        "error_captured": 32718329,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 13515532,
+        "warn_captured": 13515532,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 2,
+          "prob": 1.0,
+          "text": "- 1131524071 2005.11.09 tbird-admin1 Nov 10 00:14:31 local@tbird-admin1 postfix/postdrop[10896]: warning: unable to look"
+        },
+        {
+          "line": 3,
+          "prob": 1.0,
+          "text": "- 1131524073 2005.11.09 tbird-admin1 Nov 10 00:14:33 local@tbird-admin1 postfix/postdrop[10900]: warning: unable to look"
+        },
+        {
+          "line": 4,
+          "prob": 1.0,
+          "text": "- 1131524106 2005.11.09 tbird-admin1 Nov 10 00:15:06 local@tbird-admin1 postfix/postdrop[10910]: warning: unable to look"
+        },
+        {
+          "line": 5,
+          "prob": 1.0,
+          "text": "- 1131524107 2005.11.09 tbird-admin1 Nov 10 00:15:07 local@tbird-admin1 postfix/postdrop[10913]: warning: unable to look"
+        },
+        {
+          "line": 6,
+          "prob": 1.0,
+          "text": "- 1131524196 2005.11.09 tbird-admin1 Nov 10 00:16:36 local@tbird-admin1 postfix/postdrop[10939]: warning: unable to look"
+        }
+      ],
+      "n_files": 1
+    },
+    "Windows": {
+      "n_lines": 114608388,
+      "n_look": 1189823,
+      "n_skip": 113418565,
+      "pct_look": 1.04,
+      "classify_time_s": 90.4,
+      "lines_per_second": 1267730,
+      "keyword_analysis": {
+        "error_lines": 323883,
+        "error_captured": 323883,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 202860,
+        "warn_captured": 202860,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 12,
+          "prob": 0.9916,
+          "text": "2016-09-28 04:30:31, Info                  CBS    SQM: Failed to start upload with file pattern: C:\\Windows\\servicing\\sq"
+        },
+        {
+          "line": 13,
+          "prob": 0.9938,
+          "text": "2016-09-28 04:30:31, Info                  CBS    SQM: Failed to start standard sample upload. [HRESULT = 0x80004005 - E"
+        },
+        {
+          "line": 15,
+          "prob": 0.997,
+          "text": "2016-09-28 04:30:31, Info                  CBS    SQM: Warning: Failed to upload all unsent reports. [HRESULT = 0x800040"
+        },
+        {
+          "line": 28,
+          "prob": 0.9987,
+          "text": "2016-09-28 04:30:31, Info                  CBS    Warning: Unrecognized packageExtended attribute."
+        },
+        {
+          "line": 29,
+          "prob": 0.989,
+          "text": "2016-09-28 04:30:31, Info                  CBS    Expecting attribute name [HRESULT = 0x800f080d - CBS_E_MANIFEST_INVALI"
+        }
+      ],
+      "n_files": 1
+    },
+    "Spark": {
+      "n_lines": 33236604,
+      "n_look": 4078615,
+      "n_skip": 29157989,
+      "pct_look": 12.27,
+      "classify_time_s": 23.03,
+      "lines_per_second": 1443083,
+      "keyword_analysis": {
+        "error_lines": 20843,
+        "error_captured": 20843,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 8029,
+        "warn_captured": 8029,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 486,
+          "prob": 0.995,
+          "text": "15/09/01 18:19:50 ERROR executor.CoarseGrainedExecutorBackend: Driver 10.10.18.32:65488 disassociated! Shutting down."
+        },
+        {
+          "line": 478,
+          "prob": 0.995,
+          "text": "15/09/01 18:19:50 ERROR executor.CoarseGrainedExecutorBackend: Driver 10.10.18.32:65488 disassociated! Shutting down."
+        },
+        {
+          "line": 478,
+          "prob": 0.995,
+          "text": "15/09/01 18:19:50 ERROR executor.CoarseGrainedExecutorBackend: Driver 10.10.18.32:65488 disassociated! Shutting down."
+        },
+        {
+          "line": 454,
+          "prob": 0.995,
+          "text": "15/09/01 18:19:50 ERROR executor.CoarseGrainedExecutorBackend: Driver 10.10.18.32:65488 disassociated! Shutting down."
+        },
+        {
+          "line": 458,
+          "prob": 0.995,
+          "text": "15/09/01 18:19:50 ERROR executor.CoarseGrainedExecutorBackend: Driver 10.10.18.32:65488 disassociated! Shutting down."
+        }
+      ],
+      "n_files": 3852
+    },
+    "HDFS_v2": {
+      "n_lines": 71118073,
+      "n_look": 14143808,
+      "n_skip": 56974265,
+      "pct_look": 19.89,
+      "classify_time_s": 59.0,
+      "lines_per_second": 1205324,
+      "keyword_analysis": {
+        "error_lines": 492008,
+        "error_captured": 492008,
+        "error_missed": 0,
+        "error_capture_rate": 100.0,
+        "warn_lines": 500022,
+        "warn_captured": 500022,
+        "warn_missed": 0,
+        "warn_capture_rate": 100.0
+      },
+      "sample_look": [
+        {
+          "line": 22,
+          "prob": 0.8867,
+          "text": "2015-12-03 14:37:48,452 INFO org.apache.hadoop.security.authentication.server.AuthenticationFilter: Unable to initialize"
+        },
+        {
+          "line": 76,
+          "prob": 0.9976,
+          "text": "2015-12-03 20:22:05,133 INFO org.apache.hadoop.hdfs.server.datanode.DirectoryScanner: BlockPool BP-108841162-10.10.34.11"
+        },
+        {
+          "line": 79,
+          "prob": 0.9977,
+          "text": "2015-12-04 02:22:05,128 INFO org.apache.hadoop.hdfs.server.datanode.DirectoryScanner: BlockPool BP-108841162-10.10.34.11"
+        },
+        {
+          "line": 82,
+          "prob": 0.9976,
+          "text": "2015-12-04 08:22:05,128 INFO org.apache.hadoop.hdfs.server.datanode.DirectoryScanner: BlockPool BP-108841162-10.10.34.11"
+        },
+        {
+          "line": 85,
+          "prob": 0.9976,
+          "text": "2015-12-04 14:22:05,128 INFO org.apache.hadoop.hdfs.server.datanode.DirectoryScanner: BlockPool BP-108841162-10.10.34.11"
+        }
+      ],
+      "n_files": 31
+    }
+  }
+}

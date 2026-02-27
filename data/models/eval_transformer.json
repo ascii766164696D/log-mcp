@@ -1,0 +1,40 @@
+{
+  "model": "prajjwal1/bert-mini",
+  "max_seq_len": 256,
+  "train_time_s": 220.3,
+  "train_size": 30811,
+  "test_size": 4000,
+  "holdout_datasets": [
+    "BGL",
+    "Thunderbird"
+  ],
+  "class_weights": {
+    "LOOK": 1.36,
+    "SKIP": 0.791
+  },
+  "overall": {
+    "accuracy": 0.8488,
+    "look_precision": 0.8642,
+    "look_recall": 0.9115,
+    "look_f1": 0.8872,
+    "skip_precision": 0.8146,
+    "skip_recall": 0.7307,
+    "skip_f1": 0.7704
+  },
+  "per_dataset": {
+    "BGL": {
+      "n": 2000,
+      "accuracy": 0.7965,
+      "look_precision": 0.8787,
+      "look_recall": 0.8781,
+      "look_f1": 0.8784
+    },
+    "Thunderbird": {
+      "n": 2000,
+      "accuracy": 0.901,
+      "look_precision": 0.8418,
+      "look_recall": 0.9712,
+      "look_f1": 0.9019
+    }
+  }
+}

@@ -9,9 +9,13 @@ test.log
 test2.log
 .DS_Store
 data/*
+!data/labels/
+!data/batches/
+!data/loghub/
 !data/models/
 data/models/*
 !data/models/look_skip_model.json
+!data/models/eval_*.json
 !data/models/transformer/
 data/models/transformer/*
 !data/models/transformer/export/

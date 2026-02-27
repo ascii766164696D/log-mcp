@@ -1,0 +1,562 @@
+Jun 15 10:01:43 prod-node-03 kernel: Linux version 5.15.0-91-generic (buildd@lcy02-amd64-032)
+Jun 15 10:01:47 prod-node-03 kernel: Command line: BOOT_IMAGE=/vmlinuz-5.15.0-91-generic root=/dev/mapper/vg0-root ro quiet splash
+Jun 15 10:01:49 prod-node-03 systemd[1]: Started Journal Service.
+Jun 15 10:01:49 prod-node-03 systemd[1]: Reached target Local File Systems.
+[111.591017] CPU11: Package temperature above threshold, cpu clock throttled (temperature: 109C)
+[112.548600] mce: CPU11: Core temperature above threshold, cpu clock throttled
+[113.980974] blk_update_request: I/O error, dev sda, sector 8569210 op 0x0:(READ) flags 0x0
+[115.868241] Buffer I/O error on dev sda1, logical block 1071151, async page read
+Jun 15 10:01:57 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 90
+[118.026951] Out of memory: Kill process 14072 (java) score 977 or sacrifice child
+[118.824001] Killed process 14072 (java) total-vm:1823704kB, anon-rss:911852kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:02:02 prod-node-03 systemd[1]: java.service: Main process exited, code=killed, status=9/KILL
+[122.993696] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[124.287850] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[124.860786] Call Trace:
+[126.585201]  <TASK>
+[126.681761]  mount_root+0x127/0x160
+[127.993568]  prepare_namespace+0x13c/0x170
+[128.540728]  kernel_init+0x13/0x150
+[130.139613]  </TASK>
+Jun 15 10:02:13 prod-node-03 kernel: ens5: NIC Link is Down
+Jun 15 10:02:20 prod-node-03 kernel: ens5: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:02:25 prod-node-03 kernel: NETDEV WATCHDOG: ens5 (i40e): transmit queue 5 timed out
+[146.232340] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[148.081036] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[149.120069] Call Trace:
+[150.722564]  <TASK>
+[152.176999]  mount_root+0x127/0x160
+[152.335775]  prepare_namespace+0x13c/0x170
+[153.541079]  kernel_init+0x13/0x150
+[155.185939]  </TASK>
+[155.346997] CPU20: Package temperature above threshold, cpu clock throttled (temperature: 98C)
+[156.669174] mce: CPU20: Core temperature above threshold, cpu clock throttled
+[157.874815] mce: [Hardware Error]: Machine check events logged
+[157.960483] mce: [Hardware Error]: CPU 27: Machine Check: 2 Bank 14: bcfbfe59ec167772
+[159.956786] mce: [Hardware Error]: TSC 86c1bade5fe9 ADDR b353415a669d
+[161.916860] mce: [Hardware Error]: Machine check events logged
+[163.519251] mce: [Hardware Error]: CPU 3: Machine Check: 1 Bank 12: 5ff5015df69a5983
+[163.805667] mce: [Hardware Error]: TSC 80daedadf428 ADDR 8401eaf3f807
+Jun 15 10:02:44 prod-node-03 kernel: usb 4-1: device descriptor read/64, error -32
+Jun 15 10:02:47 prod-node-03 kernel: usb 3-3: device not accepting address 14, error -32
+[167.929532] EDAC MC2: 48 CE error on CPU#3 Channel#0 DIMM#1 (channel:1 slot:3)
+[169.850612] mce: [Hardware Error]: Machine check events logged
+[171.677783] mce: [Hardware Error]: CPU 1: Machine Check: 2 Bank 15: 40f48a84ca9a1163
+[173.086155] mce: [Hardware Error]: TSC b895251e0343 ADDR 851264c6a242
+[174.474422] blk_update_request: I/O error, dev nvme0n1, sector 38429479 op 0x0:(READ) flags 0x0
+[176.471681] Buffer I/O error on dev nvme0n11, logical block 4803684, async page read
+Jun 15 10:02:57 prod-node-03 smartd[892]: Device: /dev/nvme0n1, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 93
+Jun 15 10:03:00 prod-node-03 dhclient[1425]: DHCPREQUEST for 10.0.88.231 on eth0
+Jun 15 10:03:05 prod-node-03 kernel: audit: type=1400 audit(180.929:699): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/64410/status"
+[185.706674] mce: [Hardware Error]: Machine check events logged
+[187.409547] mce: [Hardware Error]: CPU 4: Machine Check: 8 Bank 9: 37502ee4f2f5c94c
+[188.685309] mce: [Hardware Error]: TSC 041f39b6a5b5 ADDR b42265ed41b3
+Jun 15 10:03:09 prod-node-03 systemd[1]: Started sshd service.
+Jun 15 10:03:13 prod-node-03 CRON[14171]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+[194.083539] blk_update_request: I/O error, dev sdb, sector 3627782 op 0x0:(READ) flags 0x0
+[195.228522] Buffer I/O error on dev sdb1, logical block 453472, async page read
+Jun 15 10:03:19 prod-node-03 smartd[892]: Device: /dev/sdb, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 97
+[199.885736] CPU5: Package temperature above threshold, cpu clock throttled (temperature: 97C)
+[201.884927] mce: CPU5: Core temperature above threshold, cpu clock throttled
+[202.785426] EDAC MC3: 99 CE error on CPU#3 Channel#0 DIMM#1 (channel:1 slot:0)
+[203.822112] EDAC MC2: 17 CE error on CPU#1 Channel#0 DIMM#3 (channel:0 slot:0)
+[204.146884] mce: [Hardware Error]: Machine check events logged
+[204.648844] mce: [Hardware Error]: CPU 14: Machine Check: 5 Bank 9: 941c8fd8a9293014
+[204.900059] mce: [Hardware Error]: TSC fa1993a2d3f4 ADDR 7af1038d4246
+[205.967482] mce: [Hardware Error]: Machine check events logged
+[207.216816] mce: [Hardware Error]: CPU 10: Machine Check: 9 Bank 4: cdcdd32badb7a2a8
+[209.064751] mce: [Hardware Error]: TSC ca87e9e6ea9a ADDR be3c6e56b0d7
+[210.961896] Out of memory: Kill process 57608 (java) score 523 or sacrifice child
+[212.504170] Killed process 57608 (java) total-vm:840673kB, anon-rss:420336kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:03:33 prod-node-03 systemd[1]: java.service: Main process exited, code=killed, status=9/KILL
+[215.137583] blk_update_request: I/O error, dev nvme0n1, sector 56013331 op 0x0:(READ) flags 0x0
+[215.199124] Buffer I/O error on dev nvme0n11, logical block 7001666, async page read
+Jun 15 10:03:36 prod-node-03 smartd[892]: Device: /dev/nvme0n1, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 98
+Jun 15 10:03:40 prod-node-03 kernel: audit: type=1400 audit(216.594:251): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/53736/status"
+Jun 15 10:03:41 prod-node-03 kernel: ens5: NIC Link is Down
+Jun 15 10:03:43 prod-node-03 kernel: ens5: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:03:46 prod-node-03 kernel: NETDEV WATCHDOG: ens5 (i40e): transmit queue 6 timed out
+[226.724352] blk_update_request: I/O error, dev nvme0n1, sector 19382885 op 0x0:(READ) flags 0x0
+[228.161359] Buffer I/O error on dev nvme0n11, logical block 2422860, async page read
+Jun 15 10:03:53 prod-node-03 smartd[892]: Device: /dev/nvme0n1, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 95
+Jun 15 10:03:54 prod-node-03 kernel: [25283]: segfault at 574314693d25 ip 574314693d25 sp 00007fff354ce393 error 4 in nginx[574314693d25+6123]
+Jun 15 10:03:56 prod-node-03 kernel: [34733]: segfault at 740f8f3507ea ip 740f8f3507ea sp 00007fff40617878 error 4 in haproxy[740f8f3507ea+5681]
+Jun 15 10:03:58 prod-node-03 dhclient[1382]: DHCPREQUEST for 10.0.68.226 on eth0
+Jun 15 10:03:58 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #483713: comm ls: deleted inode referenced: 520040
+Jun 15 10:04:01 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+Jun 15 10:04:03 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #177103: comm stat: deleted inode referenced: 628750
+Jun 15 10:04:06 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+Jun 15 10:04:11 prod-node-03 dhclient[1776]: DHCPREQUEST for 10.0.60.33 on eth0
+Jun 15 10:04:12 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #684929: comm stat: deleted inode referenced: 891638
+Jun 15 10:04:15 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+Jun 15 10:04:15 prod-node-03 kernel: eth0: NIC Link is Down
+Jun 15 10:04:18 prod-node-03 kernel: eth0: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:04:20 prod-node-03 kernel: NETDEV WATCHDOG: eth0 (i40e): transmit queue 7 timed out
+Jun 15 10:04:24 prod-node-03 kernel: [59532]: segfault at 592fb45d8b4d ip 592fb45d8b4d sp 00007fff87b24c5e error 4 in php-fpm[592fb45d8b4d+6427]
+Jun 15 10:04:28 prod-node-03 kernel: audit: type=1400 audit(264.697:316): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/53216/status"
+Jun 15 10:04:31 prod-node-03 dhclient[1788]: DHCPREQUEST for 10.0.13.153 on eth0
+Jun 15 10:04:34 prod-node-03 kernel: audit: type=1400 audit(271.901:996): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/51866/status"
+[275.203316] blk_update_request: I/O error, dev sda, sector 78419168 op 0x0:(READ) flags 0x0
+[276.252256] Buffer I/O error on dev sda1, logical block 9802396, async page read
+Jun 15 10:04:40 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 99
+Jun 15 10:04:44 prod-node-03 kernel: EXT4-fs error (device dm-0): ext4_lookup:1698: inode #353961: comm ls: deleted inode referenced: 700383
+Jun 15 10:04:45 prod-node-03 kernel: EXT4-fs (device dm-0): Remounting filesystem read-only
+[286.913830] Out of memory: Kill process 21558 (mongod) score 711 or sacrifice child
+[287.735174] Killed process 21558 (mongod) total-vm:1135148kB, anon-rss:567574kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:04:51 prod-node-03 systemd[1]: mongod.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:04:55 prod-node-03 kernel: audit: type=1400 audit(291.993:869): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/49223/status"
+[296.216676] EDAC MC1: 72 CE error on CPU#2 Channel#1 DIMM#3 (channel:1 slot:1)
+[297.437219] CPU22: Package temperature above threshold, cpu clock throttled (temperature: 103C)
+[297.822555] mce: CPU22: Core temperature above threshold, cpu clock throttled
+[298.273064] blk_update_request: I/O error, dev nvme0n1, sector 40163879 op 0x0:(READ) flags 0x0
+[300.218913] Buffer I/O error on dev nvme0n11, logical block 5020484, async page read
+Jun 15 10:05:04 prod-node-03 smartd[892]: Device: /dev/nvme0n1, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 94
+[305.245047] EDAC MC3: 41 CE error on CPU#3 Channel#1 DIMM#2 (channel:1 slot:0)
+[307.154310] CPU25: Package temperature above threshold, cpu clock throttled (temperature: 106C)
+[308.763737] mce: CPU25: Core temperature above threshold, cpu clock throttled
+[309.339710] mce: [Hardware Error]: Machine check events logged
+[310.834640] mce: [Hardware Error]: CPU 5: Machine Check: 5 Bank 14: d8c8eda7ed4fa641
+[311.377634] mce: [Hardware Error]: TSC fad6c736ba33 ADDR 9ba4f4d3e089
+[311.596978] CPU17: Package temperature above threshold, cpu clock throttled (temperature: 99C)
+[313.079019] mce: CPU17: Core temperature above threshold, cpu clock throttled
+[314.889482] blk_update_request: I/O error, dev sda, sector 90003592 op 0x0:(READ) flags 0x0
+[315.341600] Buffer I/O error on dev sda1, logical block 11250449, async page read
+Jun 15 10:05:15 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 93
+Jun 15 10:05:18 prod-node-03 kernel: bond0: NIC Link is Down
+Jun 15 10:05:23 prod-node-03 kernel: bond0: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:05:28 prod-node-03 kernel: NETDEV WATCHDOG: bond0 (ixgbe): transmit queue 0 timed out
+Jun 15 10:05:33 prod-node-03 kernel: audit: type=1400 audit(328.261:417): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/43787/status"
+Jun 15 10:05:37 prod-node-03 dhclient[1477]: DHCPREQUEST for 10.0.102.194 on eth0
+[339.174554] mce: [Hardware Error]: Machine check events logged
+[340.621066] mce: [Hardware Error]: CPU 5: Machine Check: 9 Bank 7: 40bdff884b8f1abd
+[340.972021] mce: [Hardware Error]: TSC 9e90c9ef8c09 ADDR 526cc9e9e5eb
+Jun 15 10:05:41 prod-node-03 kernel: audit: type=1400 audit(340.280:957): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/61269/status"
+Jun 15 10:05:45 prod-node-03 dhclient[1514]: DHCPREQUEST for 10.0.95.240 on eth0
+Jun 15 10:05:46 prod-node-03 dhclient[1092]: DHCPREQUEST for 10.0.19.3 on eth0
+Jun 15 10:05:51 prod-node-03 kernel: usb 3-3: device descriptor read/64, error -71
+Jun 15 10:05:52 prod-node-03 kernel: usb 4-2: device not accepting address 18, error -71
+Jun 15 10:05:55 prod-node-03 dhclient[1177]: DHCPREQUEST for 10.0.83.188 on eth0
+[356.787993] blk_update_request: I/O error, dev sda, sector 1990348 op 0x0:(READ) flags 0x0
+[358.369737] Buffer I/O error on dev sda1, logical block 248793, async page read
+Jun 15 10:06:01 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 99
+[363.568491] blk_update_request: I/O error, dev nvme0n1, sector 85828324 op 0x0:(READ) flags 0x0
+[365.222644] Buffer I/O error on dev nvme0n11, logical block 10728540, async page read
+Jun 15 10:06:06 prod-node-03 smartd[892]: Device: /dev/nvme0n1, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 98
+Jun 15 10:06:07 prod-node-03 kernel: eth0: NIC Link is Down
+Jun 15 10:06:10 prod-node-03 kernel: eth0: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:06:10 prod-node-03 kernel: NETDEV WATCHDOG: eth0 (i40e): transmit queue 3 timed out
+Jun 15 10:06:12 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #890371: comm stat: deleted inode referenced: 445637
+Jun 15 10:06:16 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+[376.204224] Out of memory: Kill process 43839 (node) score 620 or sacrifice child
+[376.441555] Killed process 43839 (node) total-vm:3405682kB, anon-rss:1702841kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:06:18 prod-node-03 systemd[1]: node.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:06:22 prod-node-03 kernel: bond0: NIC Link is Down
+Jun 15 10:06:29 prod-node-03 kernel: bond0: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:06:32 prod-node-03 kernel: NETDEV WATCHDOG: bond0 (i40e): transmit queue 1 timed out
+Jun 15 10:06:33 prod-node-03 kernel: audit: type=1400 audit(392.476:630): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/15473/status"
+Jun 15 10:06:37 prod-node-03 kernel: [11039]: segfault at b96878a33cd1 ip b96878a33cd1 sp 00007fff4d135e72 error 4 in haproxy[b96878a33cd1+9653]
+[398.165973] Out of memory: Kill process 37973 (java) score 924 or sacrifice child
+[399.177442] Killed process 37973 (java) total-vm:759032kB, anon-rss:379516kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:06:42 prod-node-03 systemd[1]: java.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:06:44 prod-node-03 kernel: [22503]: segfault at 13918c78707c ip 13918c78707c sp 00007fff3fe228b9 error 4 in haproxy[13918c78707c+1356]
+Jun 15 10:06:46 prod-node-03 dhclient[946]: DHCPREQUEST for 10.0.37.12 on eth0
+[407.838121] EDAC MC0: 9 CE error on CPU#3 Channel#0 DIMM#2 (channel:1 slot:1)
+Jun 15 10:06:49 prod-node-03 systemd[1]: Started systemd-journald service.
+Jun 15 10:06:51 prod-node-03 CRON[59414]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:06:55 prod-node-03 dhclient[1273]: DHCPREQUEST for 10.0.192.21 on eth0
+[416.648497] EDAC MC1: 84 CE error on CPU#2 Channel#0 DIMM#1 (channel:1 slot:1)
+[418.605500] blk_update_request: I/O error, dev sda, sector 3151483 op 0x0:(READ) flags 0x0
+[419.532045] Buffer I/O error on dev sda1, logical block 393935, async page read
+Jun 15 10:07:01 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 98
+Jun 15 10:07:02 prod-node-03 kernel: EXT4-fs error (device sda1): ext4_lookup:1698: inode #359535: comm stat: deleted inode referenced: 462974
+Jun 15 10:07:03 prod-node-03 kernel: EXT4-fs (device sda1): Remounting filesystem read-only
+Jun 15 10:07:06 prod-node-03 dhclient[731]: DHCPREQUEST for 10.0.16.208 on eth0
+Jun 15 10:07:07 prod-node-03 kernel: usb 1-2: device descriptor read/64, error -32
+Jun 15 10:07:11 prod-node-03 kernel: usb 1-4: device not accepting address 3, error -32
+Jun 15 10:07:13 prod-node-03 kernel: eth0: NIC Link is Down
+Jun 15 10:07:19 prod-node-03 kernel: eth0: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:07:22 prod-node-03 kernel: NETDEV WATCHDOG: eth0 (ixgbe): transmit queue 2 timed out
+[443.829426] mce: [Hardware Error]: Machine check events logged
+[445.582066] mce: [Hardware Error]: CPU 20: Machine Check: 9 Bank 10: 29bea53c1b6f404d
+[446.409773] mce: [Hardware Error]: TSC 538b56fc03a9 ADDR 9fb570859638
+[447.523652] mce: [Hardware Error]: Machine check events logged
+[448.213138] mce: [Hardware Error]: CPU 11: Machine Check: 6 Bank 15: 8a98000c5b03e8f8
+[449.262539] mce: [Hardware Error]: TSC 895cb0a4ddab ADDR 905993612ac9
+[450.961372] EDAC MC3: 20 CE error on CPU#2 Channel#1 DIMM#1 (channel:1 slot:1)
+[452.376818] mce: [Hardware Error]: Machine check events logged
+[453.491834] mce: [Hardware Error]: CPU 29: Machine Check: 0 Bank 13: f7d5c0f76d42a06a
+[453.899304] mce: [Hardware Error]: TSC 06e753226f63 ADDR c9f92b3e4741
+Jun 15 10:07:36 prod-node-03 kernel: usb 4-3: device descriptor read/64, error -32
+Jun 15 10:07:40 prod-node-03 kernel: usb 2-1: device not accepting address 10, error -71
+Jun 15 10:07:43 prod-node-03 kernel: usb 1-2: device descriptor read/64, error -110
+Jun 15 10:07:45 prod-node-03 kernel: usb 2-4: device not accepting address 8, error -71
+Jun 15 10:07:50 prod-node-03 kernel: audit: type=1400 audit(465.316:960): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/13453/status"
+Jun 15 10:07:54 prod-node-03 kernel: [50435]: segfault at ebb63547a45e ip ebb63547a45e sp 00007ffffa0a4c77 error 4 in haproxy[ebb63547a45e+2615]
+Jun 15 10:07:58 prod-node-03 systemd[1]: Started rsyslog service.
+Jun 15 10:08:00 prod-node-03 CRON[25294]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+[480.354570] Out of memory: Kill process 57628 (python3) score 574 or sacrifice child
+[481.461640] Killed process 57628 (python3) total-vm:3609037kB, anon-rss:1804518kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:08:04 prod-node-03 systemd[1]: python3.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:08:05 prod-node-03 systemd[1]: Started rsyslog service.
+Jun 15 10:08:06 prod-node-03 CRON[22618]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+[487.599038] CPU15: Package temperature above threshold, cpu clock throttled (temperature: 110C)
+[489.486023] mce: CPU15: Core temperature above threshold, cpu clock throttled
+Jun 15 10:08:11 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #858705: comm find: deleted inode referenced: 875520
+Jun 15 10:08:12 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+Jun 15 10:08:13 prod-node-03 systemd[1]: Started sshd service.
+Jun 15 10:08:16 prod-node-03 CRON[36818]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:08:16 prod-node-03 kernel: audit: type=1400 audit(496.655:658): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/63733/status"
+[496.678601] Out of memory: Kill process 56489 (java) score 842 or sacrifice child
+[496.692362] Killed process 56489 (java) total-vm:3930923kB, anon-rss:1965461kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:08:17 prod-node-03 systemd[1]: java.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:08:18 prod-node-03 kernel: usb 1-2: device descriptor read/64, error -32
+Jun 15 10:08:21 prod-node-03 kernel: usb 4-3: device not accepting address 3, error -71
+[502.002726] Out of memory: Kill process 35879 (mysqld) score 506 or sacrifice child
+[503.447389] Killed process 35879 (mysqld) total-vm:2225278kB, anon-rss:1112639kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:08:26 prod-node-03 systemd[1]: mysqld.service: Main process exited, code=killed, status=9/KILL
+[507.177436] mce: [Hardware Error]: Machine check events logged
+[508.226682] mce: [Hardware Error]: CPU 27: Machine Check: 2 Bank 3: c43f05ebef06a818
+[508.732266] mce: [Hardware Error]: TSC 3522b03d2231 ADDR 08f5a99ec586
+Jun 15 10:08:31 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #182857: comm stat: deleted inode referenced: 525750
+Jun 15 10:08:32 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+[513.128036] EDAC MC2: 88 CE error on CPU#0 Channel#0 DIMM#0 (channel:1 slot:3)
+[514.401895] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[515.807882] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[515.974172] Call Trace:
+[517.664986]  <TASK>
+[518.955156]  mount_root+0x127/0x160
+[519.618366]  prepare_namespace+0x13c/0x170
+[521.573047]  kernel_init+0x13/0x150
+[523.520753]  </TASK>
+Jun 15 10:08:48 prod-node-03 kernel: audit: type=1400 audit(523.143:236): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/14855/status"
+[529.894594] EDAC MC3: 35 CE error on CPU#0 Channel#0 DIMM#2 (channel:0 slot:1)
+[531.817571] mce: [Hardware Error]: Machine check events logged
+[532.945923] mce: [Hardware Error]: CPU 9: Machine Check: 6 Bank 2: 07699d4ce2569629
+[534.300316] mce: [Hardware Error]: TSC c0fb1291abd5 ADDR 000f75d99f63
+[535.881522] CPU24: Package temperature above threshold, cpu clock throttled (temperature: 99C)
+[537.260454] mce: CPU24: Core temperature above threshold, cpu clock throttled
+[538.135193] Out of memory: Kill process 49854 (node) score 550 or sacrifice child
+[539.812704] Killed process 49854 (node) total-vm:725219kB, anon-rss:362609kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:09:01 prod-node-03 systemd[1]: node.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:09:06 prod-node-03 systemd[1]: Started systemd-journald service.
+Jun 15 10:09:06 prod-node-03 CRON[22389]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+[548.659664] mce: [Hardware Error]: Machine check events logged
+[549.411142] mce: [Hardware Error]: CPU 31: Machine Check: 3 Bank 11: 4ae1938dcebceef0
+[550.171908] mce: [Hardware Error]: TSC e5838c2f00ae ADDR 76e9fb9521a9
+Jun 15 10:09:14 prod-node-03 systemd[1]: Started rsyslog service.
+Jun 15 10:09:14 prod-node-03 CRON[47734]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+[555.403181] mce: [Hardware Error]: Machine check events logged
+[555.587130] mce: [Hardware Error]: CPU 9: Machine Check: 6 Bank 10: bcd9565cdceb461b
+[557.110062] mce: [Hardware Error]: TSC 79d765f1ea4e ADDR b935da71235c
+Jun 15 10:09:20 prod-node-03 kernel: [6721]: segfault at 6881189cd06c ip 6881189cd06c sp 00007fffbe5d8fb9 error 4 in php-fpm[6881189cd06c+4977]
+Jun 15 10:09:20 prod-node-03 kernel: [25951]: segfault at 2471667143a9 ip 2471667143a9 sp 00007fffc0720f32 error 4 in php-fpm[2471667143a9+8501]
+[562.534530] mce: [Hardware Error]: Machine check events logged
+[563.194284] mce: [Hardware Error]: CPU 21: Machine Check: 9 Bank 12: 60f4d7cd5e07b9dc
+[564.913442] mce: [Hardware Error]: TSC e445b1553c6e ADDR 1800c3d0d3d2
+Jun 15 10:09:27 prod-node-03 kernel: audit: type=1400 audit(564.239:308): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/22015/status"
+[569.904735] EDAC MC3: 41 CE error on CPU#1 Channel#1 DIMM#2 (channel:1 slot:3)
+Jun 15 10:09:31 prod-node-03 systemd[1]: Started rsyslog service.
+Jun 15 10:09:35 prod-node-03 CRON[54509]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:09:36 prod-node-03 kernel: EXT4-fs error (device dm-0): ext4_lookup:1698: inode #309505: comm find: deleted inode referenced: 672133
+Jun 15 10:09:40 prod-node-03 kernel: EXT4-fs (device dm-0): Remounting filesystem read-only
+[581.518595] Out of memory: Kill process 48658 (mongod) score 607 or sacrifice child
+[582.101966] Killed process 48658 (mongod) total-vm:3471106kB, anon-rss:1735553kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:09:45 prod-node-03 systemd[1]: mongod.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:09:48 prod-node-03 dhclient[1337]: DHCPREQUEST for 10.0.255.36 on eth0
+[590.230963] blk_update_request: I/O error, dev nvme0n1, sector 20788754 op 0x0:(READ) flags 0x0
+[591.809328] Buffer I/O error on dev nvme0n11, logical block 2598594, async page read
+Jun 15 10:09:54 prod-node-03 smartd[892]: Device: /dev/nvme0n1, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 91
+Jun 15 10:09:54 prod-node-03 kernel: usb 4-4: device descriptor read/64, error -110
+Jun 15 10:09:57 prod-node-03 kernel: usb 3-1: device not accepting address 5, error -32
+Jun 15 10:10:02 prod-node-03 kernel: EXT4-fs error (device dm-0): ext4_lookup:1698: inode #742439: comm ls: deleted inode referenced: 690579
+Jun 15 10:10:06 prod-node-03 kernel: EXT4-fs (device dm-0): Remounting filesystem read-only
+Jun 15 10:10:06 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #934908: comm stat: deleted inode referenced: 211090
+Jun 15 10:10:07 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+[608.609023] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[609.770479] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[610.921375] Call Trace:
+[611.813486]  <TASK>
+[612.596363]  mount_root+0x127/0x160
+[614.141275]  prepare_namespace+0x13c/0x170
+[615.318867]  kernel_init+0x13/0x150
+[616.320298]  </TASK>
+Jun 15 10:10:18 prod-node-03 kernel: EXT4-fs error (device sda1): ext4_lookup:1698: inode #606222: comm ls: deleted inode referenced: 409783
+Jun 15 10:10:23 prod-node-03 kernel: EXT4-fs (device sda1): Remounting filesystem read-only
+Jun 15 10:10:26 prod-node-03 kernel: [62648]: segfault at 55c851b710b0 ip 55c851b710b0 sp 00007fffddf4d357 error 4 in php-fpm[55c851b710b0+2791]
+Jun 15 10:10:28 prod-node-03 kernel: [49528]: segfault at 88567ca2a6be ip 88567ca2a6be sp 00007fff1a591773 error 4 in php-fpm[88567ca2a6be+8037]
+[629.089274] EDAC MC1: 36 CE error on CPU#0 Channel#0 DIMM#1 (channel:1 slot:2)
+Jun 15 10:10:30 prod-node-03 kernel: [44955]: segfault at 8a9995d9db49 ip 8a9995d9db49 sp 00007fff1d4eb215 error 4 in haproxy[8a9995d9db49+3194]
+[631.471122] blk_update_request: I/O error, dev sda, sector 24667819 op 0x0:(READ) flags 0x0
+[631.754698] Buffer I/O error on dev sda1, logical block 3083477, async page read
+Jun 15 10:10:33 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 96
+Jun 15 10:10:34 prod-node-03 kernel: [26146]: segfault at 2abaf8725705 ip 2abaf8725705 sp 00007fff730f7402 error 4 in haproxy[2abaf8725705+8939]
+Jun 15 10:10:38 prod-node-03 dhclient[1650]: DHCPREQUEST for 10.0.253.105 on eth0
+Jun 15 10:10:40 prod-node-03 kernel: ens5: NIC Link is Down
+Jun 15 10:10:43 prod-node-03 kernel: ens5: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:10:44 prod-node-03 kernel: NETDEV WATCHDOG: ens5 (ixgbe): transmit queue 3 timed out
+[645.734737] mce: [Hardware Error]: Machine check events logged
+[645.962046] mce: [Hardware Error]: CPU 10: Machine Check: 7 Bank 15: e5daba8c482ec482
+[647.608789] mce: [Hardware Error]: TSC a4a53c1d9444 ADDR b3ce6dc6098b
+Jun 15 10:10:50 prod-node-03 kernel: EXT4-fs error (device sda1): ext4_lookup:1698: inode #896922: comm find: deleted inode referenced: 562806
+Jun 15 10:10:55 prod-node-03 kernel: EXT4-fs (device sda1): Remounting filesystem read-only
+Jun 15 10:10:56 prod-node-03 kernel: [55399]: segfault at 4f75d7fc3c95 ip 4f75d7fc3c95 sp 00007fffaaf8f3b5 error 4 in php-fpm[4f75d7fc3c95+8015]
+Jun 15 10:11:00 prod-node-03 kernel: [14541]: segfault at c9892f49f8ed ip c9892f49f8ed sp 00007fff57f4b522 error 4 in php-fpm[c9892f49f8ed+7743]
+Jun 15 10:11:04 prod-node-03 kernel: audit: type=1400 audit(660.987:672): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/9315/status"
+Jun 15 10:11:06 prod-node-03 kernel: [10584]: segfault at dca79467ae18 ip dca79467ae18 sp 00007fff7bcc3947 error 4 in apache2[dca79467ae18+7046]
+[667.880425] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[669.618372] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[671.312859] Call Trace:
+[671.500049]  <TASK>
+[673.444378]  mount_root+0x127/0x160
+[674.714424]  prepare_namespace+0x13c/0x170
+[676.109305]  kernel_init+0x13/0x150
+[677.809667]  </TASK>
+Jun 15 10:11:18 prod-node-03 systemd[1]: Started systemd-journald service.
+Jun 15 10:11:23 prod-node-03 CRON[29157]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+[683.765195] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[684.333097] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[685.428171] Call Trace:
+[685.690229]  <TASK>
+[687.395222]  mount_root+0x127/0x160
+[688.972041]  prepare_namespace+0x13c/0x170
+[690.760456]  kernel_init+0x13/0x150
+[692.285202]  </TASK>
+[694.144138] Out of memory: Kill process 42037 (mongod) score 563 or sacrifice child
+[694.460947] Killed process 42037 (mongod) total-vm:568288kB, anon-rss:284144kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:11:36 prod-node-03 systemd[1]: mongod.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:11:41 prod-node-03 kernel: audit: type=1400 audit(696.538:208): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/46127/status"
+Jun 15 10:11:46 prod-node-03 kernel: audit: type=1400 audit(701.409:163): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/58306/status"
+[707.333858] mce: [Hardware Error]: Machine check events logged
+[708.632031] mce: [Hardware Error]: CPU 16: Machine Check: 1 Bank 11: c63f1daa5a745fe7
+[710.084282] mce: [Hardware Error]: TSC 47ee410d7665 ADDR 189a27a0354e
+Jun 15 10:11:53 prod-node-03 systemd[1]: Started systemd-journald service.
+Jun 15 10:11:53 prod-node-03 CRON[47117]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+[715.150325] blk_update_request: I/O error, dev sda, sector 17910664 op 0x0:(READ) flags 0x0
+[716.189694] Buffer I/O error on dev sda1, logical block 2238833, async page read
+Jun 15 10:11:56 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 97
+[716.514773] EDAC MC0: 55 CE error on CPU#1 Channel#1 DIMM#0 (channel:0 slot:3)
+Jun 15 10:12:00 prod-node-03 dhclient[711]: DHCPREQUEST for 10.0.160.95 on eth0
+Jun 15 10:12:05 prod-node-03 kernel: [51689]: segfault at aa199253be97 ip aa199253be97 sp 00007ffff9589d37 error 4 in php-fpm[aa199253be97+2420]
+Jun 15 10:12:06 prod-node-03 kernel: [9071]: segfault at 56c3a39b4f0d ip 56c3a39b4f0d sp 00007ffffc3536e0 error 4 in haproxy[56c3a39b4f0d+5942]
+Jun 15 10:12:09 prod-node-03 kernel: usb 2-4: device descriptor read/64, error -71
+Jun 15 10:12:11 prod-node-03 kernel: usb 2-4: device not accepting address 14, error -32
+Jun 15 10:12:15 prod-node-03 kernel: usb 1-1: device descriptor read/64, error -71
+Jun 15 10:12:17 prod-node-03 kernel: usb 2-4: device not accepting address 20, error -71
+[738.078162] EDAC MC3: 99 CE error on CPU#0 Channel#0 DIMM#0 (channel:0 slot:2)
+Jun 15 10:12:19 prod-node-03 kernel: audit: type=1400 audit(738.908:408): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/34201/status"
+[740.202456] EDAC MC3: 55 CE error on CPU#3 Channel#0 DIMM#1 (channel:1 slot:0)
+[740.609648] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[742.225960] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[743.299204] Call Trace:
+[744.081276]  <TASK>
+[745.350230]  mount_root+0x127/0x160
+[747.019449]  prepare_namespace+0x13c/0x170
+[748.381879]  kernel_init+0x13/0x150
+[748.515043]  </TASK>
+[749.740024] EDAC MC1: 8 CE error on CPU#1 Channel#0 DIMM#3 (channel:0 slot:3)
+[750.092140] Out of memory: Kill process 44652 (redis-server) score 879 or sacrifice child
+[750.118458] Killed process 44652 (redis-server) total-vm:3260071kB, anon-rss:1630035kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:12:30 prod-node-03 systemd[1]: redis-server.service: Main process exited, code=killed, status=9/KILL
+[752.456987] Out of memory: Kill process 33532 (node) score 764 or sacrifice child
+[753.898797] Killed process 33532 (node) total-vm:2693643kB, anon-rss:1346821kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:12:34 prod-node-03 systemd[1]: node.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:12:36 prod-node-03 kernel: [52191]: segfault at b1e5684fa780 ip b1e5684fa780 sp 00007fffb000ffdb error 4 in apache2[b1e5684fa780+3734]
+[758.067152] blk_update_request: I/O error, dev sda, sector 77129205 op 0x0:(READ) flags 0x0
+[758.298704] Buffer I/O error on dev sda1, logical block 9641150, async page read
+Jun 15 10:12:38 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 98
+Jun 15 10:12:40 prod-node-03 dhclient[525]: DHCPREQUEST for 10.0.125.12 on eth0
+Jun 15 10:12:44 prod-node-03 kernel: EXT4-fs error (device sda1): ext4_lookup:1698: inode #287654: comm ls: deleted inode referenced: 679720
+Jun 15 10:12:48 prod-node-03 kernel: EXT4-fs (device sda1): Remounting filesystem read-only
+[769.600405] EDAC MC1: 42 CE error on CPU#1 Channel#1 DIMM#2 (channel:1 slot:0)
+Jun 15 10:12:53 prod-node-03 kernel: [45127]: segfault at 2cff174d5803 ip 2cff174d5803 sp 00007fff6fa35590 error 4 in nginx[2cff174d5803+5979]
+[775.268070] blk_update_request: I/O error, dev sdb, sector 79515412 op 0x0:(READ) flags 0x0
+[777.263647] Buffer I/O error on dev sdb1, logical block 9939426, async page read
+Jun 15 10:13:00 prod-node-03 smartd[892]: Device: /dev/sdb, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 93
+[780.966467] CPU15: Package temperature above threshold, cpu clock throttled (temperature: 99C)
+[781.787129] mce: CPU15: Core temperature above threshold, cpu clock throttled
+[783.466437] blk_update_request: I/O error, dev sdb, sector 85454668 op 0x0:(READ) flags 0x0
+[785.220957] Buffer I/O error on dev sdb1, logical block 10681833, async page read
+Jun 15 10:13:05 prod-node-03 smartd[892]: Device: /dev/sdb, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 95
+[787.273267] EDAC MC2: 14 CE error on CPU#1 Channel#0 DIMM#3 (channel:1 slot:0)
+Jun 15 10:13:10 prod-node-03 kernel: [19338]: segfault at 03d6e7b98a69 ip 03d6e7b98a69 sp 00007fff1fc5f10f error 4 in nginx[03d6e7b98a69+8126]
+Jun 15 10:13:12 prod-node-03 kernel: [20115]: segfault at de6d573f2c11 ip de6d573f2c11 sp 00007fff64ce1673 error 4 in apache2[de6d573f2c11+8635]
+Jun 15 10:13:14 prod-node-03 kernel: [24480]: segfault at 77d1c4b93d2b ip 77d1c4b93d2b sp 00007fff1d10e9f7 error 4 in php-fpm[77d1c4b93d2b+6828]
+[794.362737] Out of memory: Kill process 20584 (node) score 589 or sacrifice child
+[795.172117] Killed process 20584 (node) total-vm:3939705kB, anon-rss:1969852kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:13:17 prod-node-03 systemd[1]: node.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:13:18 prod-node-03 systemd[1]: Started sshd service.
+Jun 15 10:13:22 prod-node-03 CRON[7678]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:13:26 prod-node-03 kernel: [1783]: segfault at df2d5aa94d01 ip df2d5aa94d01 sp 00007fffa6fb09e7 error 4 in nginx[df2d5aa94d01+8265]
+[808.041333] Out of memory: Kill process 56527 (node) score 521 or sacrifice child
+[808.143558] Killed process 56527 (node) total-vm:1013918kB, anon-rss:506959kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:13:32 prod-node-03 systemd[1]: node.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:13:34 prod-node-03 kernel: bond0: NIC Link is Down
+Jun 15 10:13:37 prod-node-03 kernel: bond0: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:13:37 prod-node-03 kernel: NETDEV WATCHDOG: bond0 (mlx5_core): transmit queue 6 timed out
+[818.558944] blk_update_request: I/O error, dev sda, sector 37007428 op 0x0:(READ) flags 0x0
+[820.325909] Buffer I/O error on dev sda1, logical block 4625928, async page read
+Jun 15 10:13:43 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 90
+Jun 15 10:13:47 prod-node-03 kernel: usb 3-4: device descriptor read/64, error -71
+Jun 15 10:13:49 prod-node-03 kernel: usb 4-1: device not accepting address 4, error -71
+Jun 15 10:13:54 prod-node-03 kernel: bond0: NIC Link is Down
+Jun 15 10:13:58 prod-node-03 kernel: bond0: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:14:03 prod-node-03 kernel: NETDEV WATCHDOG: bond0 (mlx5_core): transmit queue 0 timed out
+Jun 15 10:14:06 prod-node-03 systemd[1]: Started rsyslog service.
+Jun 15 10:14:08 prod-node-03 CRON[52212]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:14:10 prod-node-03 kernel: audit: type=1400 audit(848.614:330): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/26452/status"
+[851.868871] Out of memory: Kill process 40132 (python3) score 958 or sacrifice child
+[852.431455] Killed process 40132 (python3) total-vm:622907kB, anon-rss:311453kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:14:16 prod-node-03 systemd[1]: python3.service: Main process exited, code=killed, status=9/KILL
+[857.209368] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[858.377761] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[858.844053] Call Trace:
+[859.164143]  <TASK>
+[859.660609]  mount_root+0x127/0x160
+[860.143674]  prepare_namespace+0x13c/0x170
+[861.211519]  kernel_init+0x13/0x150
+[862.794202]  </TASK>
+Jun 15 10:14:25 prod-node-03 systemd[1]: Started sshd service.
+Jun 15 10:14:27 prod-node-03 CRON[53257]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:14:28 prod-node-03 kernel: audit: type=1400 audit(867.965:178): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/12540/status"
+[870.453937] mce: [Hardware Error]: Machine check events logged
+[871.157949] mce: [Hardware Error]: CPU 22: Machine Check: 9 Bank 0: ea7c15b4f9f357b3
+[873.054738] mce: [Hardware Error]: TSC 989951914890 ADDR d2d060242790
+Jun 15 10:14:35 prod-node-03 dhclient[1508]: DHCPREQUEST for 10.0.158.45 on eth0
+[876.611247] Out of memory: Kill process 16245 (mysqld) score 510 or sacrifice child
+[876.613613] Killed process 16245 (mysqld) total-vm:1417751kB, anon-rss:708875kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:14:41 prod-node-03 systemd[1]: mysqld.service: Main process exited, code=killed, status=9/KILL
+[882.645463] blk_update_request: I/O error, dev sda, sector 45835904 op 0x0:(READ) flags 0x0
+[884.483106] Buffer I/O error on dev sda1, logical block 5729488, async page read
+Jun 15 10:14:44 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 95
+Jun 15 10:14:48 prod-node-03 kernel: [47182]: segfault at cddf5f61422f ip cddf5f61422f sp 00007fff0731b6ca error 4 in php-fpm[cddf5f61422f+8982]
+Jun 15 10:14:51 prod-node-03 kernel: [64487]: segfault at 3924b2bff6ff ip 3924b2bff6ff sp 00007fff4b3c4a08 error 4 in apache2[3924b2bff6ff+3983]
+Jun 15 10:14:54 prod-node-03 kernel: audit: type=1400 audit(891.726:227): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/42919/status"
+Jun 15 10:14:54 prod-node-03 kernel: audit: type=1400 audit(894.244:340): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/49846/status"
+Jun 15 10:14:58 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #276042: comm find: deleted inode referenced: 193035
+Jun 15 10:15:02 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+Jun 15 10:15:04 prod-node-03 systemd[1]: Started rsyslog service.
+Jun 15 10:15:05 prod-node-03 CRON[18380]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+[906.950706] EDAC MC2: 33 CE error on CPU#0 Channel#0 DIMM#0 (channel:1 slot:3)
+Jun 15 10:15:08 prod-node-03 kernel: audit: type=1400 audit(906.523:505): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/58787/status"
+[910.484068] CPU6: Package temperature above threshold, cpu clock throttled (temperature: 110C)
+[911.640601] mce: CPU6: Core temperature above threshold, cpu clock throttled
+Jun 15 10:15:12 prod-node-03 systemd[1]: Started sshd service.
+Jun 15 10:15:16 prod-node-03 CRON[5830]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+[916.764017] Out of memory: Kill process 2315 (node) score 987 or sacrifice child
+[917.448292] Killed process 2315 (node) total-vm:1595248kB, anon-rss:797624kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:15:21 prod-node-03 systemd[1]: node.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:15:23 prod-node-03 kernel: [5915]: segfault at 5feb6a9605f6 ip 5feb6a9605f6 sp 00007ffff24fda8d error 4 in nginx[5feb6a9605f6+9849]
+[923.774811] mce: [Hardware Error]: Machine check events logged
+[924.497108] mce: [Hardware Error]: CPU 3: Machine Check: 6 Bank 15: 86ab5127b807f40d
+[925.821487] mce: [Hardware Error]: TSC 9595776d6e16 ADDR a197674bead2
+Jun 15 10:15:26 prod-node-03 kernel: usb 2-1: device descriptor read/64, error -32
+Jun 15 10:15:28 prod-node-03 kernel: usb 3-1: device not accepting address 17, error -32
+Jun 15 10:15:31 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #793150: comm stat: deleted inode referenced: 195563
+Jun 15 10:15:33 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+Jun 15 10:15:34 prod-node-03 kernel: EXT4-fs error (device sdb1): ext4_lookup:1698: inode #487345: comm ls: deleted inode referenced: 567429
+Jun 15 10:15:36 prod-node-03 kernel: EXT4-fs (device sdb1): Remounting filesystem read-only
+[938.038188] mce: [Hardware Error]: Machine check events logged
+[938.726427] mce: [Hardware Error]: CPU 3: Machine Check: 2 Bank 3: 19eaf015c54c0bab
+[939.906290] mce: [Hardware Error]: TSC f7669c8afb69 ADDR 782880f8a7c1
+[941.837579] CPU24: Package temperature above threshold, cpu clock throttled (temperature: 108C)
+[943.212028] mce: CPU24: Core temperature above threshold, cpu clock throttled
+Jun 15 10:15:45 prod-node-03 kernel: audit: type=1400 audit(943.686:903): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/16443/status"
+[946.788582] Out of memory: Kill process 60164 (redis-server) score 757 or sacrifice child
+[947.822700] Killed process 60164 (redis-server) total-vm:645661kB, anon-rss:322830kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:15:50 prod-node-03 systemd[1]: redis-server.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:15:54 prod-node-03 kernel: audit: type=1400 audit(950.250:124): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/63210/status"
+Jun 15 10:15:57 prod-node-03 kernel: [11955]: segfault at c26f6fad4ee1 ip c26f6fad4ee1 sp 00007fff5d775a63 error 4 in php-fpm[c26f6fad4ee1+7510]
+Jun 15 10:16:01 prod-node-03 dhclient[1564]: DHCPREQUEST for 10.0.234.235 on eth0
+Jun 15 10:16:02 prod-node-03 systemd[1]: Started systemd-journald service.
+Jun 15 10:16:03 prod-node-03 CRON[10806]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:16:07 prod-node-03 kernel: usb 1-1: device descriptor read/64, error -110
+Jun 15 10:16:09 prod-node-03 kernel: usb 3-3: device not accepting address 15, error -71
+[970.310772] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[970.386666] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[970.938219] Call Trace:
+[971.226780]  <TASK>
+[972.444482]  mount_root+0x127/0x160
+[973.832111]  prepare_namespace+0x13c/0x170
+[973.910637]  kernel_init+0x13/0x150
+[975.689896]  </TASK>
+Jun 15 10:16:20 prod-node-03 kernel: EXT4-fs error (device sda1): ext4_lookup:1698: inode #151685: comm find: deleted inode referenced: 598302
+Jun 15 10:16:24 prod-node-03 kernel: EXT4-fs (device sda1): Remounting filesystem read-only
+[986.483292] Out of memory: Kill process 54568 (node) score 643 or sacrifice child
+[988.199903] Killed process 54568 (node) total-vm:1804215kB, anon-rss:902107kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:16:31 prod-node-03 systemd[1]: node.service: Main process exited, code=killed, status=9/KILL
+Jun 15 10:16:36 prod-node-03 kernel: audit: type=1400 audit(991.333:138): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/20692/status"
+Jun 15 10:16:37 prod-node-03 kernel: ens5: NIC Link is Down
+Jun 15 10:16:42 prod-node-03 kernel: ens5: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:16:43 prod-node-03 kernel: NETDEV WATCHDOG: ens5 (mlx5_core): transmit queue 1 timed out
+[1004.082018] blk_update_request: I/O error, dev sdb, sector 99547927 op 0x0:(READ) flags 0x0
+[1005.115505] Buffer I/O error on dev sdb1, logical block 12443490, async page read
+Jun 15 10:16:49 prod-node-03 smartd[892]: Device: /dev/sdb, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 95
+[1009.557276] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[1010.180211] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[1011.194295] Call Trace:
+[1011.466459]  <TASK>
+[1013.169198]  mount_root+0x127/0x160
+[1014.927984]  prepare_namespace+0x13c/0x170
+[1014.986851]  kernel_init+0x13/0x150
+[1015.373185]  </TASK>
+Jun 15 10:16:57 prod-node-03 dhclient[618]: DHCPREQUEST for 10.0.127.9 on eth0
+Jun 15 10:16:59 prod-node-03 kernel: audit: type=1400 audit(1017.821:204): apparmor="ALLOWED" operation="open" profile="/usr/sbin/sshd" name="/proc/18955/status"
+Jun 15 10:17:02 prod-node-03 kernel: ens5: NIC Link is Down
+Jun 15 10:17:05 prod-node-03 kernel: ens5: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:17:07 prod-node-03 kernel: NETDEV WATCHDOG: ens5 (ixgbe): transmit queue 3 timed out
+Jun 15 10:17:10 prod-node-03 kernel: usb 2-4: device descriptor read/64, error -110
+Jun 15 10:17:11 prod-node-03 kernel: usb 3-2: device not accepting address 10, error -32
+Jun 15 10:17:16 prod-node-03 kernel: EXT4-fs error (device sda1): ext4_lookup:1698: inode #995296: comm find: deleted inode referenced: 917711
+Jun 15 10:17:20 prod-node-03 kernel: EXT4-fs (device sda1): Remounting filesystem read-only
+Jun 15 10:17:22 prod-node-03 kernel: usb 2-3: device descriptor read/64, error -110
+Jun 15 10:17:26 prod-node-03 kernel: usb 1-1: device not accepting address 17, error -32
+Jun 15 10:17:29 prod-node-03 kernel: usb 1-2: device descriptor read/64, error -71
+Jun 15 10:17:33 prod-node-03 kernel: usb 3-3: device not accepting address 15, error -71
+Jun 15 10:17:36 prod-node-03 kernel: eth0: NIC Link is Down
+Jun 15 10:17:41 prod-node-03 kernel: eth0: NIC Link is Up 10000 Mbps Full Duplex, Flow Control: Rx/Tx
+Jun 15 10:17:44 prod-node-03 kernel: NETDEV WATCHDOG: eth0 (mlx5_core): transmit queue 6 timed out
+[1065.575980] Out of memory: Kill process 44408 (node) score 831 or sacrifice child
+[1066.142051] Killed process 44408 (node) total-vm:2854921kB, anon-rss:1427460kB, file-rss:0kB, shmem-rss:0kB
+Jun 15 10:17:49 prod-node-03 systemd[1]: node.service: Main process exited, code=killed, status=9/KILL
+[1070.268906] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[1070.822596] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[1071.473545] Call Trace:
+[1072.028038]  <TASK>
+[1073.340621]  mount_root+0x127/0x160
+[1075.245045]  prepare_namespace+0x13c/0x170
+[1076.548326]  kernel_init+0x13/0x150
+[1076.925858]  </TASK>
+[1077.407222] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[1077.521714] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[1079.236488] Call Trace:
+[1080.856736]  <TASK>
+[1081.665528]  mount_root+0x127/0x160
+[1082.305380]  prepare_namespace+0x13c/0x170
+[1082.586099]  kernel_init+0x13/0x150
+[1082.637985]  </TASK>
+[1083.229898] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+[1085.043814] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.15.0-91-generic #101-Ubuntu
+[1085.853608] Call Trace:
+[1087.327335]  <TASK>
+[1088.493799]  mount_root+0x127/0x160
+[1090.483312]  prepare_namespace+0x13c/0x170
+[1092.115526]  kernel_init+0x13/0x150
+[1092.802516]  </TASK>
+[1092.998625] EDAC MC3: 86 CE error on CPU#2 Channel#1 DIMM#1 (channel:0 slot:2)
+Jun 15 10:18:15 prod-node-03 kernel: [17951]: segfault at fea33d6e5971 ip fea33d6e5971 sp 00007fffdac5bd0d error 4 in php-fpm[fea33d6e5971+2166]
+[1096.176458] blk_update_request: I/O error, dev sda, sector 91461707 op 0x0:(READ) flags 0x0
+[1096.773871] Buffer I/O error on dev sda1, logical block 11432713, async page read
+Jun 15 10:18:21 prod-node-03 smartd[892]: Device: /dev/sda, SMART Prefailure Attribute: 5 Reallocated_Sector_Ct changed from 100 to 90
+Jun 15 10:18:24 prod-node-03 kernel: [14126]: segfault at 69e75bc7a2a0 ip 69e75bc7a2a0 sp 00007fff0eec0546 error 4 in apache2[69e75bc7a2a0+4430]
+Jun 15 10:18:26 prod-node-03 kernel: [51101]: segfault at 7c19a6f60350 ip 7c19a6f60350 sp 00007fff508f7c52 error 4 in php-fpm[7c19a6f60350+9700]
+[1107.011875] EDAC MC1: 29 CE error on CPU#2 Channel#1 DIMM#1 (channel:0 slot:3)
+[1107.143384] mce: [Hardware Error]: Machine check events logged
+[1108.184440] mce: [Hardware Error]: CPU 2: Machine Check: 4 Bank 9: 2096b774223153ba
+[1109.558314] mce: [Hardware Error]: TSC fd922c867c56 ADDR 36af046f52e3
+Jun 15 10:18:31 prod-node-03 kernel: [60073]: segfault at 53fe63b2b925 ip 53fe63b2b925 sp 00007fff7fd089a6 error 4 in haproxy[53fe63b2b925+1612]
+Jun 15 10:18:32 prod-node-03 kernel: usb 1-1: device descriptor read/64, error -110
+Jun 15 10:18:34 prod-node-03 kernel: usb 1-1: device not accepting address 5, error -71
+Jun 15 10:18:35 prod-node-03 kernel: [17563]: segfault at b3a06189b6e8 ip b3a06189b6e8 sp 00007fff1f74219e error 4 in haproxy[b3a06189b6e8+2928]
+Jun 15 10:18:36 prod-node-03 systemd[1]: Started systemd-journald service.
+Jun 15 10:18:40 prod-node-03 CRON[14090]: (root) CMD (/usr/bin/logrotate /etc/logrotate.conf)
+Jun 15 10:18:42 prod-node-03 dhclient[913]: DHCPREQUEST for 10.0.183.181 on eth0
