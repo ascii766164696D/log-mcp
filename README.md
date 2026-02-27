@@ -1,5 +1,7 @@
 # log-mcp
 
+[![CI](https://github.com/ascii766164696D/log-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/ascii766164696D/log-mcp/actions/workflows/ci.yml)
+
 MCP server for log file analysis. Gives LLMs the ability to efficiently analyze large log files without loading them into context.
 
 ```
