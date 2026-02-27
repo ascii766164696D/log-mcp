@@ -109,6 +109,21 @@ Stack trace:
   ...
 ```
 
+Find anomalies that don't have ERROR level — on a Thunderbird HPC log (2K lines), `classify_lines` finds 92 interesting lines while `search_logs level=ERROR` finds only 2:
+
+```
+> classify_lines("/var/log/thunderbird/tbird_2k.log")
+
+Lines: 2,000 total | 92 LOOK (4.6%) | 1,908 SKIP
+Pipeline: TF-IDF 0.00s (1,298,701 lines/sec, 105 LOOK) → BERT 0.15s (13 demoted to SKIP)
+
+--- Sample LOOK lines (30 of 92 captured) ---
+L2    [1.000] ... postfix/postdrop[10896]: warning: unable to look up public/pickup: No such file
+L438  [0.999] ... sendmail[�20588]: unable to qualify my own domain name (tbird-sm1)
+L816  [0.998] ... dhcpd: DHCPDISCOVER from 00:09:3d:12:00:e2 via eth2: unknown lease
+L1024 [0.997] ... rrdtool: illegal attempt to update using time 1131710�721 when last update time is 1131710721
+```
+
 Compare two CI log files:
 
 ```
@@ -125,11 +140,13 @@ B: 298 unique (top: 'test UNKNOWN STEP | ##[endgroup]' 21x)
 
 **Where it genuinely helps:** The main value is as a compression layer. A 67MB Spark log (705K lines) would obliterate my context window, but `analyze_errors` distills it into 5 error groups with stack traces in a few seconds. `compare_logs` across two 1500-line server logs immediately surfaces which errors are unique to each server and which patterns have suspicious frequency differences. I couldn't do that by reading the files directly — I'd lose older content as new content scrolled in.
 
+**Where the classifier changes the game:** Before the classifier, log analysis was limited to lines with explicit ERROR/FATAL levels. On a Thunderbird HPC log, `search_logs level=ERROR` returns 2 lines. `classify_lines` returns 92 — sendmail DNS failures, DHCP lease errors, RRD update collisions, negative boot times — none of which have ERROR level. The classifier finds what's semantically wrong, not just syntactically marked.
+
 **Where it's a wash:** For small files (under a few hundred lines), you're better off just pasting the log into the conversation. The tools add indirection without much benefit when the whole file fits in context anyway.
 
-**What it can't do:** It won't catch issues that require domain understanding. When I analyzed a Zookeeper log, the tools correctly found the `ERROR` entries, but the most operationally interesting signals — state transitions between LOOKING, FOLLOWING, and LEADING — were all `INFO` level and invisible to error analysis. A human who knows Zookeeper would spot those immediately. The tools find what's syntactically wrong, not what's semantically wrong.
+**What it still can't do:** Domain-specific state machine reasoning. When I analyzed a Zookeeper log, the classifier correctly flagged `Cannot open channel` warnings and epoch resets, but the most operationally interesting signal — rapid cycling between LOOKING, FOLLOWING, and LEADING states — showed up as low-confidence LOOK lines. A Zookeeper expert would spot the pattern immediately; the classifier sees each line independently without tracking state transitions across time.
 
-**The pattern I landed on:** Start with `log_overview` to get bearings, then `analyze_errors` for the quick wins, then `search_logs` to dig into specific patterns that look suspicious. `compare_logs` is most useful when you have a "working" and "broken" run to diff against each other.
+**The pattern I landed on:** Start with `classify_lines` to surface anomalies regardless of log level, then `analyze_errors` to group them, then `search_logs` to dig into specific patterns. `compare_logs` is most useful when you have a "working" and "broken" run to diff against each other.
 
 ## LOOK/SKIP classifier
 
