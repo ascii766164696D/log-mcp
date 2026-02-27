@@ -8,5 +8,8 @@ build/
 test.log
 test2.log
 .DS_Store
-data/
+data/*
+!data/models/
+data/models/*
+!data/models/look_skip_model.json
 **/target/
