@@ -201,6 +201,7 @@ On a Thunderbird HPC log (2K lines), this finds **92 interesting lines** includi
 | `classify_lines` | Full pipeline: TF-IDF → BERT | Error if classifier not installed |
 | `analyze_errors` | TF-IDF pre-filters to LOOK lines, then groups by error fingerprint | Python parser scans all lines |
 | `search_logs` | TF-IDF pre-filters when searching for errors (level=ERROR, pattern=error/fail/etc) | Python parser scans all lines |
+| `compare_logs` | Scores patterns by LOOK probability, surfaces interesting diffs first | Sorts by frequency only |
 
 ## Benchmarks
 
