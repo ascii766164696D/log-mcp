@@ -144,8 +144,6 @@ B: 298 unique (top: 'test UNKNOWN STEP | ##[endgroup]' 21x)
 
 **Where it's a wash:** For small files (under a few hundred lines), you're better off just pasting the log into the conversation. The tools add indirection without much benefit when the whole file fits in context anyway.
 
-**What it still can't do:** Domain-specific state machine reasoning. When I analyzed a Zookeeper log, the classifier correctly flagged `Cannot open channel` warnings and epoch resets, but the most operationally interesting signal — rapid cycling between LOOKING, FOLLOWING, and LEADING states — showed up as low-confidence LOOK lines. A Zookeeper expert would spot the pattern immediately; the classifier sees each line independently without tracking state transitions across time.
-
 **The pattern I landed on:** Start with `classify_lines` to surface anomalies regardless of log level, then `analyze_errors` to group them, then `search_logs` to dig into specific patterns. `compare_logs` is most useful when you have a "working" and "broken" run to diff against each other.
 
 ## LOOK/SKIP classifier
