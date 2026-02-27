@@ -4,6 +4,7 @@ import string
 
 from mcp.server.fastmcp import FastMCP
 
+from ..classifier_bridge import get_classifier
 from ..normalize import normalize
 from ..parsing.detector import detect_parser
 from ..util import validate_file
@@ -63,6 +64,30 @@ def register_tools(mcp: FastMCP) -> None:
         for patterns in file_patterns:
             all_pattern_keys.update(patterns.keys())
 
+        # Classify pattern keys for LOOK/SKIP scoring.
+        # Prepend the log level (if known) so the classifier sees e.g.
+        # "ERROR connection refused" instead of just "connection refused".
+        pattern_probs: dict[str, float] = {}
+        clf = get_classifier()
+        if clf:
+            all_keys = list(all_pattern_keys)
+            if all_keys:
+                # Build level lookup: pick the first level seen across files
+                key_level: dict[str, str] = {}
+                for patterns in file_patterns:
+                    for k, v in patterns.items():
+                        if k not in key_level and v["level"]:
+                            key_level[k] = v["level"]
+
+                clf_inputs = []
+                for k in all_keys:
+                    level = key_level.get(k)
+                    clf_inputs.append(f"[{level}] {k}" if level else k)
+
+                results = clf.classify_batch(clf_inputs, 0.5)
+                for key, (_label, prob) in zip(all_keys, results):
+                    pattern_probs[key] = prob
+
         # Shared patterns: present in every file
         shared = all_pattern_keys.copy()
         for patterns in file_patterns:
@@ -82,7 +107,7 @@ def register_tools(mcp: FastMCP) -> None:
                     (patterns[k]["count"], patterns[k]["level"] or "", k)
                     for k in unique_keys
                 ],
-                key=lambda e: e[0],
+                key=lambda e: (pattern_probs.get(e[2], 0.0), e[0]),
                 reverse=True,
             )[:max_unique_per_file]
 
@@ -98,7 +123,10 @@ def register_tools(mcp: FastMCP) -> None:
             level = file_patterns[0][key]["level"] or ""
             total_count = sum(counts.values())
             shared_detail.append((key, level, counts))
-        shared_detail.sort(key=lambda e: sum(e[2].values()), reverse=True)
+        shared_detail.sort(
+            key=lambda e: (pattern_probs.get(e[0], 0.0), sum(e[2].values())),
+            reverse=True,
+        )
         shared_detail = shared_detail[:max_shared_patterns]
 
         # Build frequency_outliers: shared patterns with skewed counts
@@ -118,7 +146,10 @@ def register_tools(mcp: FastMCP) -> None:
                 }
                 level = file_patterns[0][key]["level"] or ""
                 outliers.append((round(ratio, 1), key, level, counts))
-        outliers.sort(key=lambda e: e[0], reverse=True)
+        outliers.sort(
+            key=lambda e: (pattern_probs.get(e[1], 0.0), e[0]),
+            reverse=True,
+        )
 
         # Build summary
         summary_parts = [
@@ -153,7 +184,9 @@ def register_tools(mcp: FastMCP) -> None:
                 parts.append(f"=== Unique to {label} ({unique_count} total) ===")
                 for count, level, pattern in unique_entries:
                     level_tag = f"[{level}] " if level else ""
-                    parts.append(f"  {count:>4}x {level_tag}{pattern}")
+                    prob = pattern_probs.get(pattern)
+                    prob_tag = f"[{prob:.2f}] " if prob is not None else ""
+                    parts.append(f"  {prob_tag}{count:>4}x {level_tag}{pattern}")
 
         if shared_detail:
             total_shared = len(shared)
@@ -165,7 +198,9 @@ def register_tools(mcp: FastMCP) -> None:
             for pattern, level, counts in shared_detail:
                 counts_str = " ".join(f"{l}={c}" for l, c in counts.items())
                 level_tag = f"[{level}] " if level else ""
-                parts.append(f"  {counts_str} {level_tag}{pattern}")
+                prob = pattern_probs.get(pattern)
+                prob_tag = f"[{prob:.2f}] " if prob is not None else ""
+                parts.append(f"  {prob_tag}{counts_str} {level_tag}{pattern}")
 
         if outliers:
             parts.append("")
@@ -173,6 +208,8 @@ def register_tools(mcp: FastMCP) -> None:
             for ratio, pattern, level, counts in outliers:
                 counts_str = " ".join(f"{l}={c}" for l, c in counts.items())
                 level_tag = f"[{level}] " if level else ""
-                parts.append(f"  {ratio}x {counts_str} {level_tag}{pattern}")
+                prob = pattern_probs.get(pattern)
+                prob_tag = f"[{prob:.2f}] " if prob is not None else ""
+                parts.append(f"  {prob_tag}{ratio}x {counts_str} {level_tag}{pattern}")
 
         return "\n".join(parts)
