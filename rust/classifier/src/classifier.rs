@@ -406,5 +406,116 @@ impl Model {
             warn_captured,
         })
     }
+}
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::io::Write;
+    use std::path::PathBuf;
+
+    fn model_path() -> PathBuf {
+        PathBuf::from(env!("CARGO_MANIFEST_DIR"))
+            .join("../../data/models/look_skip_model.json")
+    }
+
+    fn load_model() -> Model {
+        let path = model_path();
+        Model::load(&path).unwrap_or_else(|e| {
+            panic!("Failed to load model from {}: {e}", path.display())
+        })
+    }
+
+    #[test]
+    fn test_model_loads() {
+        let model = load_model();
+        assert!(model.coef.len() > 0);
+        assert!(model.n_word_features > 0);
+        assert!(model.n_char_features > 0);
+    }
+
+    #[test]
+    fn test_classify_error_lines_as_look() {
+        let model = load_model();
+        let error_lines = [
+            "ERROR: connection refused to database server",
+            "FATAL: out of memory, cannot allocate 1024 bytes",
+            "java.lang.NullPointerException: null",
+            "  at com.example.Service.handle(Service.java:42)",
+            "Traceback (most recent call last):",
+            "CRITICAL: disk /dev/sda1 is 99% full",
+            "kernel: segfault at 0000000000000000",
+            "Permission denied: /etc/shadow",
+        ];
+        for line in &error_lines {
+            let (label, prob) = model.classify_line(line, 0.5);
+            assert_eq!(
+                label,
+                Label::Look,
+                "Expected LOOK for {line:?}, got SKIP (p_look={prob:.3})"
+            );
+        }
+    }
+
+    #[test]
+    fn test_classify_routine_lines_as_skip() {
+        let model = load_model();
+        let routine_lines = [
+            "2024-01-15 10:30:45 INFO  Server started on port 8080",
+            "2024-01-15 10:30:46 DEBUG Processing request GET /api/health",
+            "INFO: Heartbeat check passed",
+            "Compiling dependencies... done",
+            "Downloaded 150 packages in 2.3s",
+        ];
+        for line in &routine_lines {
+            let (label, prob) = model.classify_line(line, 0.5);
+            assert_eq!(
+                label,
+                Label::Skip,
+                "Expected SKIP for {line:?}, got LOOK (p_look={prob:.3})"
+            );
+        }
+    }
+
+    #[test]
+    fn test_classify_file_end_to_end() {
+        let model = load_model();
+
+        let mut tmp = tempfile::NamedTempFile::new().unwrap();
+        writeln!(tmp, "INFO: starting up").unwrap();
+        writeln!(tmp, "DEBUG: loaded config").unwrap();
+        writeln!(tmp, "ERROR: connection refused").unwrap();
+        writeln!(tmp, "INFO: retrying in 5s").unwrap();
+        writeln!(tmp, "FATAL: giving up after 3 retries").unwrap();
+        tmp.flush().unwrap();
+
+        let result = model
+            .classify_file(tmp.path(), 0.5, 0, 200)
+            .unwrap();
+
+        assert_eq!(result.total_lines, 5);
+        assert_eq!(result.look_count + result.skip_count, 5);
+        assert!(result.look_count >= 2, "Expected at least 2 LOOK lines, got {}", result.look_count);
+        assert!(result.processing_time_s >= 0.0);
+    }
+
+    #[test]
+    fn test_classify_file_with_keywords() {
+        let model = load_model();
+
+        let mut tmp = tempfile::NamedTempFile::new().unwrap();
+        writeln!(tmp, "INFO: all good").unwrap();
+        writeln!(tmp, "ERROR: disk full").unwrap();
+        writeln!(tmp, "WARNING: memory usage high").unwrap();
+        writeln!(tmp, "FATAL: cannot continue").unwrap();
+        tmp.flush().unwrap();
+
+        let result = model
+            .classify_file_with_keywords(tmp.path(), 0.5, 0, 200)
+            .unwrap();
+
+        assert_eq!(result.base.total_lines, 4);
+        assert!(result.error_lines >= 2, "Expected at least 2 error keyword lines, got {}", result.error_lines);
+        assert!(result.warn_lines >= 1, "Expected at least 1 warn keyword line, got {}", result.warn_lines);
+    }
 }
